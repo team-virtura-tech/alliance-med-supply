@@ -15,7 +15,7 @@ export default function Home() {
 
   const heroContent = {
     eyebrow: '',
-    title: 'With Alliance Medical Supply & Rental, mobility is simple.',
+    title: 'With Alliance Medical Supply and Rental, mobility is simple.',
     subtitle: 'From transport chairs to rollators delivered and ready to go.',
     ctas: [
       {

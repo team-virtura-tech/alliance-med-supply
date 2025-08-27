@@ -77,7 +77,7 @@ export const HeroLandingContent = ({
       >
         {/* Eyebrow */}
         {eyebrow && (
-          <p className="text-sm md:text-base font-medium text-white/90 tracking-wide uppercase mb-4">
+          <p className="text-sm md:text-base font-thin text-white/90 tracking-wide uppercase mb-4">
             {eyebrow}
           </p>
         )}
@@ -85,7 +85,7 @@ export const HeroLandingContent = ({
         {/* Main Headline */}
         <h1
           id={`${rootId}-headline`}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          className="text-3xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight"
         >
           {title}
         </h1>
@@ -108,7 +108,7 @@ export const HeroLandingContent = ({
         {ctas.map((cta, index) => {
           const isPrimary = cta.variant !== 'secondary';
           const buttonClasses = cn(
-            'px-8 py-4 rounded-full text-base font-semibold transition-all duration-200',
+            'px-8 py-4 rounded-full text-base font-book transition-all duration-200',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             isPrimary
