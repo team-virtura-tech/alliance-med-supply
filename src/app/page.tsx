@@ -1,8 +1,20 @@
+'use client';
+
+import { LandingHero } from '@/app/components/custom/landingHero/landingHero';
+import { ParallaxBackground } from '@/app/components/custom/parallaxBackground';
+import { ScrollAnimation } from '@/app/components/custom/scrollAnimation';
+import { ScrollProgress } from '@/app/components/custom/scrollProgress';
+
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start"></main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
-    </div>
+    <ParallaxBackground>
+      <div className="min-h-screen">
+        {/* Hero Section - already has internal animations */}
+        <ScrollAnimation direction="fade" duration={0.8}>
+          <LandingHero />
+        </ScrollAnimation>
+      </div>
+      <ScrollProgress />
+    </ParallaxBackground>
   );
 }
