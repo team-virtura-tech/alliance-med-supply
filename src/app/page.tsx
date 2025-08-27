@@ -61,6 +61,10 @@ export default function Home() {
         title: 'Laser TouchOne',
         body: 'Advanced pain relief technology available for convenient rental.',
       },
+      {
+        title: 'Click to view more',
+        body: '',
+      },
     ],
   };
 

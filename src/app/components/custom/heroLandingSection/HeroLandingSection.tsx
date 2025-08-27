@@ -35,7 +35,7 @@ export const HeroLandingSection = ({
       className={cn('relative min-h-screen w-full p-4 pt-0', className)}
     >
       {/* Container with rounded corners */}
-      <div className="relative h-full min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)] rounded-3xl overflow-hidden">
+      <div className="relative h-full min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)] rounded-3xl overflow-hidden justify-items-center">
         {/* Background Image with Scrim */}
         <HeroLandingFigure id={`${rootId}-figure`} {...figure} />
 
@@ -51,6 +51,21 @@ export const HeroLandingSection = ({
             <HeroLandingCards id={`${rootId}-cards`} {...cards} />
           </div>
         </div>
+
+        {/*
+        Content + Cards Layout
+        <div className="relative z-10 h-full flex flex-col md:flex-row items-center justify-center gap-8 p-6">
+          Left Side: Text
+          <div className="flex-1 flex items-center justify-center">
+            <HeroLandingContent id={`${rootId}-content`} {...content} />
+          </div>
+
+            Right Side: Cards
+          <div className="flex-1 flex items-center justify-center">
+            <HeroLandingCards id={`${rootId}-cards`} {...cards} />
+          </div>
+        </div>
+        */}
       </div>
     </section>
   );

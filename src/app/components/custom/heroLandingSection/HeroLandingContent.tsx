@@ -85,7 +85,7 @@ export const HeroLandingContent = ({
         {/* Main Headline */}
         <h1
           id={`${rootId}-headline`}
-          className="text-3xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight"
+          className="text-3xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight tracking-wide"
         >
           {title}
         </h1>

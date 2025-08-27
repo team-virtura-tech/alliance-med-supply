@@ -54,6 +54,8 @@ export const HeroLandingCards = ({
         className
       )}
     >
+      {/* className="grid grid-cols-1 md:grid-cols-3 gap-6" */}
+      {/* className="grid grid-cols-1 gap-6" */}
       <motion.ul
         initial={shouldReduceMotion ? false : 'hidden'}
         animate={shouldReduceMotion ? {} : 'visible'}
@@ -84,7 +86,7 @@ export const HeroLandingCards = ({
 
               {/* Content */}
               <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-white leading-tight">
+                <h3 className="text-xl font-medium text-white leading-tight">
                   {item.title}
                 </h3>
                 <p className="text-base text-white/90 leading-relaxed">

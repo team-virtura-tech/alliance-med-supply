@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
-  { label: 'Rental Equipment', href: '/rental-equipment' },
+  { label: 'Rental Equipments', href: '/rental-equipments' },
   { label: 'Parts & Repairs', href: '/parts-repairs' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact Us', href: '/contact' },
@@ -31,25 +31,24 @@ export const Header = ({ className, id }: HeaderProps) => {
       className={cn('w-full bg-background', className)}
     >
       <nav
-        className="mx-auto flex max-w-screen-xl items-center justify-between px-4 py-3 md:px-8"
+        className="mx-auto flex items-center justify-between px-4 py-3 md:px-8"
         aria-label="Main navigation"
       >
         {/* Logo/Brand */}
         <div className="flex items-center gap-2">
-          <Image
-            src="/logo/logo.jpg"
-            alt="Alliance Medical Supply Logo"
-            width={100}
-            height={100}
-            className="rounded-md object-contain"
-            priority
-          />
           <Link
             href="/"
             className="text-lg font-normal"
             aria-label="Alliance Medical Supply and Rental"
           >
-            Alliance Medical Supply and Rental
+            <Image
+              src="/logo/logo.jpg"
+              alt="Alliance Medical Supply Logo"
+              width={100}
+              height={100}
+              className="rounded-md object-contain"
+              priority
+            />
           </Link>
         </div>
 
