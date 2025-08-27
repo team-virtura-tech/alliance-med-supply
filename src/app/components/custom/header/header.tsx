@@ -27,7 +27,7 @@ export const Header = ({ className, id }: HeaderProps) => {
     <header
       id={rootId}
       data-component={componentName}
-      className={cn('w-full border-b bg-background', className)}
+      className={cn('w-full bg-background', className)}
     >
       <nav
         className="mx-auto flex max-w-screen-xl items-center justify-between px-4 py-3 md:px-8"
@@ -36,10 +36,10 @@ export const Header = ({ className, id }: HeaderProps) => {
         {/* Logo/Brand */}
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight"
-          aria-label="Alliance Med Supply"
+          className="text-lg font-normal"
+          aria-label="Alliance Medical Supply and Rental"
         >
-          Alliance Med Supply
+          Alliance Medical Supply and Rental
         </Link>
 
         {/* Mobile menu button */}
@@ -60,7 +60,7 @@ export const Header = ({ className, id }: HeaderProps) => {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block rounded px-2 py-1 text-base font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="block rounded px-2 py-1 text-base font-normal text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {item.label}
               </Link>
