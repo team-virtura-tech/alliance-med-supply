@@ -77,7 +77,7 @@ export const HeroLandingContent = ({
       >
         {/* Eyebrow */}
         {eyebrow && (
-          <p className="text-sm md:text-base font-thin text-white/90 tracking-wide uppercase mb-4">
+          <p className="text-sm md:text-base font-medium text-white/90 tracking-widest uppercase mb-4">
             {eyebrow}
           </p>
         )}
@@ -85,7 +85,7 @@ export const HeroLandingContent = ({
         {/* Main Headline */}
         <h1
           id={`${rootId}-headline`}
-          className="text-3xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight"
+          className="text-3xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight tracking-wide"
         >
           {title}
         </h1>
@@ -112,7 +112,7 @@ export const HeroLandingContent = ({
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             isPrimary
-              ? 'bg-[#0A2A5E] text-white hover:bg-[#083554] focus-visible:ring-[#0A2A5E] shadow-lg hover:shadow-xl'
+              ? 'bg-primary text-white hover:bg-[#083554] focus-visible:ring-[#0A2A5E] shadow-lg hover:shadow-xl'
               : 'bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-white/20 focus-visible:ring-white/50'
           );
 

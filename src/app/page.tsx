@@ -9,14 +9,14 @@ export default function Home() {
   // Mock props for HeroLandingSection
   const heroFigure = {
     // Add your actual props here
-    src: '/images/hero-landing-image.jpg',
+    src: '/images/hero-landing-image-2.jpg',
     alt: 'Hero background',
   };
 
   const heroContent = {
-    eyebrow: '',
+    eyebrow: 'From transport chairs to rollators delivered and ready to go.',
     title: 'With Alliance Medical Supply and Rental, mobility is simple.',
-    subtitle: 'From transport chairs to rollators delivered and ready to go.',
+    subtitle: '',
     ctas: [
       {
         label: 'Get Started',
@@ -34,16 +34,36 @@ export default function Home() {
   const heroCards = {
     items: [
       {
-        title: 'Fast Delivery',
-        body: 'We ensure quick and reliable delivery for all orders.',
+        title: 'Wheelchairs',
+        body: 'Durable and easy-to-use wheelchairs for short or long-term rental.',
       },
       {
-        title: 'Quality Products',
-        body: 'All our products are certified and quality-checked.',
+        title: 'Hospital Beds',
+        body: 'Safe, adjustable hospital beds delivered and set up in your home.',
       },
       {
-        title: '24/7 Support',
-        body: 'Our team is available around the clock for your needs.',
+        title: 'Walkers',
+        body: 'Lightweight walkers to help you stay mobile and independent.',
+      },
+      {
+        title: 'Transport Chairs',
+        body: 'Convenient chairs designed for easy transport and travel.',
+      },
+      {
+        title: 'Crutches',
+        body: 'Comfortable and adjustable crutches to support safe recovery.',
+      },
+      {
+        title: 'Knee Walkers',
+        body: 'Stable knee walkers that provide smooth mobility during healing.',
+      },
+      {
+        title: 'Laser TouchOne',
+        body: 'Advanced pain relief technology available for convenient rental.',
+      },
+      {
+        title: 'Click to view more',
+        body: '',
       },
     ],
   };
