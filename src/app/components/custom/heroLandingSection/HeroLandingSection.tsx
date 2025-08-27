@@ -32,7 +32,7 @@ export const HeroLandingSection = ({
       data-component={componentName}
       role="region"
       aria-labelledby={`${rootId}-headline`}
-      className={cn('relative min-h-screen w-full p-4', className)}
+      className={cn('relative min-h-screen w-full p-4 pt-0', className)}
     >
       {/* Container with rounded corners */}
       <div className="relative h-full min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] lg:min-h-[calc(100vh-4rem)] rounded-3xl overflow-hidden">

@@ -69,18 +69,11 @@ export const HeroLandingCards = ({
             <article
               className={cn(
                 'h-full flex flex-col items-center justify-center text-center',
-                'p-6 md:p-8 rounded-3xl',
-                'border border-white/15',
-                'shadow-xl',
+                'p-2 md:p-4 rounded-2xl',
                 'transition-all duration-200',
-                'min-h-[160px] md:min-h-[180px]'
+                'min-h-[80px] md:min-h-[100px]',
+                'bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-white/20 focus-visible:ring-white/50'
               )}
-              style={{
-                backdropFilter: 'none',
-                backgroundColor: '#fff0',
-                backgroundImage:
-                  'linear-gradient(10deg, #353435 23%, #423b3a 38%, #554742 87%)',
-              }}
             >
               {/* Icon */}
               {item.icon && (

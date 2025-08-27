@@ -7,6 +7,7 @@ export type HeaderProps = {
 
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -34,13 +35,23 @@ export const Header = ({ className, id }: HeaderProps) => {
         aria-label="Main navigation"
       >
         {/* Logo/Brand */}
-        <Link
-          href="/"
-          className="text-lg font-normal"
-          aria-label="Alliance Medical Supply and Rental"
-        >
-          Alliance Medical Supply and Rental
-        </Link>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/logo/logo.jpg"
+            alt="Alliance Medical Supply Logo"
+            width={100}
+            height={100}
+            className="rounded-md object-contain"
+            priority
+          />
+          <Link
+            href="/"
+            className="text-lg font-normal"
+            aria-label="Alliance Medical Supply and Rental"
+          >
+            Alliance Medical Supply and Rental
+          </Link>
+        </div>
 
         {/* Mobile menu button */}
         <button
