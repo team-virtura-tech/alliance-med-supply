@@ -3,125 +3,130 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { Clock, Mail, MapPin, Phone, Star } from 'lucide-react';
+import { ArrowRight, Clock, Mail, MapPin, Phone, Star } from 'lucide-react';
 
 export const ContactSection = () => {
   return (
     <section
       id="contact"
       data-component="ContactSection"
-      className="bg-white py-16 md:py-24"
+      className="relative bg-gradient-to-b from-gray-50/20 via-white to-gray-50/20 py-16 md:py-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <Badge className="mb-4 bg-orange-100 text-orange-700 hover:bg-orange-100">
+      {/* Background decorative elements */}
+      <div className="absolute top-20 right-20 h-32 w-32 rounded-full bg-gradient-to-r from-teal-100/20 to-cyan-100/20 blur-2xl" />
+      <div className="absolute bottom-20 left-20 h-24 w-24 rounded-full bg-gradient-to-r from-orange-100/20 to-pink-100/20 blur-xl" />
+
+      <div className="relative mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
+        {/* Enhanced Header */}
+        <div className="mx-auto mb-12 max-w-3xl text-center space-y-4">
+          <Badge className="bg-teal-50 text-teal-700 border border-teal-200 hover:bg-teal-50 font-medium px-3 py-1">
             Get In Touch
           </Badge>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-4xl">
             Contact Alliance Medical{' '}
-            <span className="text-teal-600">Supply</span>
+            <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              Supply
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 md:text-xl">
-            Ready to rent or purchase medical equipment? We&apos;re here to help
+          <p className="text-base leading-relaxed text-gray-600 md:text-lg max-w-2xl mx-auto">
+            Ready to rent or purchase medical equipment? We&apos;re here to help{' '}
             with expert advice and same-day delivery throughout the Bay Area.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* Contact Information */}
+          {/* Left Column - Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="mb-6 text-2xl font-semibold text-gray-900">
+              <h3 className="mb-6 text-xl font-bold text-gray-900">
                 Reach Out Today
               </h3>
 
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
                 {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-100">
-                    <Phone className="h-6 w-6 text-teal-600" />
+                <div className="group flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-teal-200 hover:shadow-md transition-all duration-200">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 shadow-sm">
+                    <Phone className="h-4 w-4 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Call Us</h4>
-                    <p className="text-gray-600">
-                      <a href="tel:4089429000" className="hover:text-teal-600">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-semibold text-gray-900">
+                      Call Us
+                    </h4>
+                    <p className="text-sm font-medium text-gray-700">
+                      <a
+                        href="tel:4089429000"
+                        className="hover:text-teal-600 transition-colors"
+                      >
                         (408) 942-9000
                       </a>
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Speak with our friendly staff
                     </p>
                   </div>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
-                    <MapPin className="h-6 w-6 text-orange-600" />
+                <div className="group flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-orange-200 hover:shadow-md transition-all duration-200">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 shadow-sm">
+                    <MapPin className="h-4 w-4 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-semibold text-gray-900">
                       Visit Our Store
                     </h4>
-                    <p className="text-gray-600">
-                      1630 Oakland Road, Suite A110
-                      <br />
-                      San Jose, CA 95131
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Easy parking available
+                    <p className="text-xs text-gray-600">
+                      1630 Oakland Road, Suite A110, San Jose
                     </p>
                   </div>
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-100">
-                    <Clock className="h-6 w-6 text-teal-600" />
+                <div className="group flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-purple-200 hover:shadow-md transition-all duration-200">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 shadow-sm">
+                    <Clock className="h-4 w-4 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Store Hours</h4>
-                    <div className="text-gray-600">
-                      <p>Monday - Friday: 10:00 AM - 6:00 PM</p>
-                      <p>Saturday: 10:00 AM - 2:00 PM</p>
-                      <p>Sunday: Closed</p>
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      Saturday by appointment only
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-semibold text-gray-900">
+                      Store Hours
+                    </h4>
+                    <p className="text-xs text-gray-600">
+                      Mon-Fri: 10AM-6PM • Sat: 10AM-2PM
                     </p>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
-                    <Mail className="h-6 w-6 text-orange-600" />
+                <div className="group flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all duration-200">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 shadow-sm">
+                    <Mail className="h-4 w-4 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Email Us</h4>
-                    <p className="text-gray-600">info@alliancemedsupply.com</p>
-                    <p className="text-sm text-gray-500">
-                      We&apos;ll respond within 24 hours
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-semibold text-gray-900">
+                      Email Us
+                    </h4>
+                    <p className="text-xs text-gray-600">
+                      <a
+                        href="mailto:info@alliancemedsupply.com"
+                        className="hover:text-teal-600 transition-colors"
+                      >
+                        info@alliancemedsupply.com
+                      </a>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Accreditation */}
-            <Card className="border-2 border-teal-100 bg-teal-50">
-              <CardContent className="p-6">
+            {/* Accreditation Card */}
+            <Card className="bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-100">
+              <CardContent className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-600">
-                    <Star className="h-5 w-5 text-white" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 shadow-sm">
+                    <Star className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-teal-900">
+                    <h4 className="text-sm font-semibold text-gray-900">
                       JACHO Accredited Provider
                     </h4>
-                    <p className="text-sm text-teal-700">
+                    <p className="text-xs text-gray-600">
                       Certified for quality and safety standards
                     </p>
                   </div>
@@ -130,79 +135,109 @@ export const ContactSection = () => {
             </Card>
           </div>
 
-          {/* Quick Contact Form / CTA */}
-          <div className="space-y-8">
-            <Card className="border-2 border-gray-100">
+          {/* Right Column - Main CTA */}
+          <div className="flex items-center">
+            <Card className="w-full bg-white border border-gray-200 shadow-lg">
               <CardContent className="p-8">
-                <h3 className="mb-6 text-xl font-semibold text-gray-900">
+                <h3 className="mb-6 text-2xl font-bold text-gray-900 text-center">
                   Need Equipment Right Away?
                 </h3>
 
                 <div className="space-y-4">
                   <Button
                     size="lg"
-                    className="w-full bg-teal-600 text-white hover:bg-teal-700 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 shadow-md hover:shadow-lg text-base font-medium py-4 h-14"
                   >
-                    <Phone className="mr-2 h-4 w-4" />
+                    <Phone className="mr-2 h-5 w-5" />
                     Call (408) 942-9000
                   </Button>
 
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center">
-                      <Separator className="w-full" />
+                      <div className="w-full border-t border-gray-200" />
                     </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-2 text-gray-500">Or</span>
+                    <div className="relative flex justify-center text-sm">
+                      <span className="bg-white px-3 text-gray-500 font-medium">
+                        OR
+                      </span>
                     </div>
                   </div>
 
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full border-2 border-orange-300 bg-white text-orange-700 hover:bg-orange-50 hover:text-orange-800 hover:border-orange-400 transition-all duration-200"
+                    className="w-full border-2 border-orange-300 bg-white text-orange-700 hover:bg-orange-50 hover:text-orange-800 hover:border-orange-400 transition-all duration-300 font-medium text-base py-4 h-14"
                   >
                     Request Equipment Quote
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
 
-                <div className="mt-6 rounded-lg bg-gray-50 p-4">
-                  <h4 className="mb-2 font-medium text-gray-900">
+                <div className="mt-6 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 p-6 border border-green-100">
+                  <h4 className="mb-3 text-base font-semibold text-gray-900 flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-green-500" />
                     Same-Day Delivery Available
                   </h4>
-                  <p className="text-sm text-gray-600">
-                    Most equipment can be delivered and set up the same day for
-                    customers in San Jose, Santa Clara, Milpitas, Fremont, Palo
-                    Alto, Sunnyvale, Gilroy, and Morgan Hill.
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Most equipment delivered and set up same day in San Jose,
+                    Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale,
+                    Gilroy, and Morgan Hill.
                   </p>
                 </div>
               </CardContent>
             </Card>
-
-            {/* Service Areas */}
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="mb-4 text-lg font-semibold text-gray-900">
-                  We Serve These Bay Area Communities
-                </h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                  <p>• San Jose</p>
-                  <p>• Santa Clara</p>
-                  <p>• Milpitas</p>
-                  <p>• Fremont</p>
-                  <p>• Palo Alto</p>
-                  <p>• Sunnyvale</p>
-                  <p>• Gilroy</p>
-                  <p>• Morgan Hill</p>
-                  <p>• Watsonville</p>
-                  <p>• Campbell</p>
-                </div>
-                <p className="mt-3 text-xs text-gray-500">
-                  Don&apos;t see your area? Call us - we may still be able to
-                  help!
-                </p>
-              </CardContent>
-            </Card>
           </div>
+        </div>
+
+        {/* Full-width Service Areas Section */}
+        <div className="mt-8">
+          <Card className="bg-gradient-to-r from-gray-50 to-white border border-gray-200 shadow-md">
+            <CardContent className="p-6">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900 text-center">
+                Bay Area Communities We Serve
+              </h3>
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-5xl mx-auto">
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">San Jose</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Santa Clara</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Milpitas</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Fremont</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Palo Alto</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Sunnyvale</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Gilroy</span>
+                </div>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Morgan Hill</span>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xs text-gray-500 bg-gray-50 rounded-lg p-3 inline-block">
+                  <span className="font-medium">Don&apos;t see your area?</span>{' '}
+                  Call us - we may still be able to help!
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

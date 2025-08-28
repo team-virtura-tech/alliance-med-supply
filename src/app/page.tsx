@@ -2,6 +2,7 @@
 
 import { ScrollProgress } from '@/app/components/custom/scrollProgress';
 import { AboutSection } from '@/components/custom/about-section';
+// import { AboutSection } from '@/components/custom/about-section';
 import { ContactSection } from '@/components/custom/contact-section';
 import { HeroSection } from '@/components/custom/hero-section';
 import { ServicesSection } from '@/components/custom/services-section';
