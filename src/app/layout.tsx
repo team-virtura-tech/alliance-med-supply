@@ -1,6 +1,7 @@
+import { Footer } from '@/components/custom/footer';
+import { Header } from '@/components/custom/header';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Header } from './components/custom/header/header';
 import './globals.css';
 
 const geistSans = Geist({
@@ -14,9 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Alliance Medical Supply and Rental',
+  title:
+    'Alliance Medical Supply and Rental | Bay Area Medical Equipment Rentals',
   description:
-    'We deliver the best medical supplies and equipment for your needs.',
+    'Professional medical equipment rentals & sales in San Jose, CA. Wheelchairs, hospital beds, walkers & more. JACHO accredited. Same-day delivery. Call (408) 942-9000.',
+  keywords:
+    'medical equipment rental, wheelchair rental, hospital bed rental, San Jose, Bay Area, medical supplies, JACHO accredited',
+  authors: [{ name: 'Alliance Medical Supply and Rental' }],
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Alliance Medical Supply and Rental | Bay Area Medical Equipment',
+    description:
+      'Professional medical equipment rentals & sales in San Jose, CA. Same-day delivery available.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Alliance Medical Supply and Rental',
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -31,6 +50,7 @@ export default function RootLayout({
       >
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

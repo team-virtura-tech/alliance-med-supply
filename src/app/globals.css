@@ -101,64 +101,64 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
-  --radius: 0.625rem;
+/* :root { */
+/* --radius: 0.625rem; */
 
-  /* Light mode */
-  --background: #ffffff;
+/* Light mode */
+/* --background: #ffffff;
   --foreground: #111111;
 
   --card: #ffffff;
   --card-foreground: #111111;
 
   --popover: #ffffff;
-  --popover-foreground: #111111;
+  --popover-foreground: #111111; */
 
-  /* Base teal as primary */
-  --primary: #00a79d;
-  --primary-foreground: #ffffff;
+/* Base teal as primary */
+/* --primary: #00a79d;
+  --primary-foreground: #ffffff; */
 
-  /* Slightly lighter teal for secondary */
-  --secondary: #33bfb7;
-  --secondary-foreground: #ffffff;
+/* Slightly lighter teal for secondary */
+/* --secondary: #33bfb7;
+  --secondary-foreground: #ffffff; */
 
-  /* Muted tone (light teal background) */
-  --muted: #e6f8f7;
-  --muted-foreground: #00736b;
+/* Muted tone (light teal background) */
+/* --muted: #e6f8f7;
+  --muted-foreground: #00736b; */
 
-  /* Accent tone (a softer variation) */
-  --accent: #66d1ca;
-  --accent-foreground: #003e3b;
+/* Accent tone (a softer variation) */
+/* --accent: #66d1ca;
+  --accent-foreground: #003e3b; */
 
-  /* Alerts/destructive fallback */
-  --destructive: #e53935;
+/* Alerts/destructive fallback */
+/* --destructive: #e53935;
   --destructive-foreground: #ffffff;
 
   --border: #dcecec;
   --input: #dcecec;
-  --ring: #00a79d;
+  --ring: #00a79d; */
 
-  /* Optional chart tones – keep monochrome teal variations */
-  --chart-1: #00a79d;
+/* Optional chart tones – keep monochrome teal variations */
+/* --chart-1: #00a79d;
   --chart-2: #33bfb7;
   --chart-3: #66d1ca;
   --chart-4: #99e3df;
-  --chart-5: #ccf5f3;
+  --chart-5: #ccf5f3; */
 
-  /* Sidebar */
-  --sidebar: #ffffff;
+/* Sidebar */
+/* --sidebar: #ffffff;
   --sidebar-foreground: #111111;
   --sidebar-primary: #00a79d;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #33bfb7;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #dcecec;
-  --sidebar-ring: #00a79d;
-}
+  --sidebar-ring: #00a79d; */
+/* } */
 
-.dark {
-  /* Dark mode */
-  --background: #0b1d1c;
+/* .dark { */
+/* Dark mode */
+/* --background: #0b1d1c;
   --foreground: #e6f8f7;
 
   --card: #132c2b;
@@ -200,16 +200,232 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #1a3433;
   --sidebar-ring: #00a79d;
+} */
+
+:root {
+  --radius: 0.65rem;
+
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+
+  /* Teal/Aqua primary colors */
+  --primary: #00b8b5; /* Main teal */
+  --primary-foreground: #ffffff;
+  --secondary: #20d0cc; /* Lighter teal */
+  --secondary-foreground: #ffffff;
+
+  /* Orange accent colors */
+  --accent: #ff7a00; /* Main orange */
+  --accent-foreground: #ffffff;
+
+  /* Muted colors with teal tints */
+  --muted: #f0fdfc;
+  --muted-foreground: #006663;
+
+  /* Utility colors */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e0f2f1;
+  --input: #e0f2f1;
+  --ring: #00b8b5;
+
+  /* Chart colors - teal and orange variations */
+  --chart-1: #00b8b5;
+  --chart-2: #20d0cc;
+  --chart-3: #ff7a00;
+  --chart-4: #4fd1c7;
+  --chart-5: #ffb366;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #00b8b5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #20d0cc;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0f2f1;
+  --sidebar-ring: #00b8b5;
+}
+
+.dark {
+  --background: #0a0f0f;
+  --foreground: #f0fdfc;
+  --card: #1a2626;
+  --card-foreground: #f0fdfc;
+  --popover: #1a2626;
+  --popover-foreground: #f0fdfc;
+
+  /* Teal/Aqua primary colors for dark mode */
+  --primary: #20d0cc;
+  --primary-foreground: #ffffff;
+  --secondary: #4fd1c7;
+  --secondary-foreground: #ffffff;
+
+  /* Orange accent colors for dark mode */
+  --accent: #ff9933;
+  --accent-foreground: #ffffff;
+
+  /* Muted colors for dark mode */
+  --muted: #1a2626;
+  --muted-foreground: #4fd1c7;
+
+  /* Utility colors for dark mode */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #2d4040;
+  --input: #2d4040;
+  --ring: #20d0cc;
+
+  /* Chart colors for dark mode */
+  --chart-1: #20d0cc;
+  --chart-2: #4fd1c7;
+  --chart-3: #ff9933;
+  --chart-4: #7dd3d8;
+  --chart-5: #ffcc80;
+
+  /* Sidebar for dark mode */
+  --sidebar: #1a2626;
+  --sidebar-foreground: #f0fdfc;
+  --sidebar-primary: #20d0cc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #4fd1c7;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2d4040;
+  --sidebar-ring: #20d0cc;
 }
 
 @layer base {
   html {
     font-family: var(--font-sans);
+    scroll-behavior: smooth;
   }
   * {
-    @apply border-border outline-ring/50;
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+
+  /* Gradient text utilities */
+  .text-gradient-teal-orange {
+    background: linear-gradient(135deg, hsl(var(--primary)), #ff7a00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s infinite;
+  }
+
+  /* Button contrast utilities */
+  .btn-orange-outline {
+    border: 2px solid rgb(253 186 116);
+    background-color: white;
+    color: rgb(194 65 12);
+    transition: all 200ms;
+  }
+
+  .btn-orange-outline:hover {
+    background-color: rgb(255 247 237);
+    color: rgb(154 52 18);
+    border-color: rgb(251 146 60);
+  }
+
+  .btn-teal-outline {
+    border: 2px solid rgb(94 234 212);
+    background-color: white;
+    color: rgb(15 118 110);
+    transition: all 200ms;
+  }
+
+  .btn-teal-outline:hover {
+    background-color: rgb(240 253 250);
+    color: rgb(17 94 89);
+    border-color: rgb(45 212 191);
+  }
+
+  .btn-teal-solid {
+    background-color: rgb(13 148 136);
+    color: white;
+    transition: all 200ms;
+  }
+
+  .btn-teal-solid:hover {
+    background-color: rgb(15 118 110);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-2px);
   }
 }
