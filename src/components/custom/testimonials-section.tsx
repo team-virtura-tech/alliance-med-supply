@@ -36,62 +36,101 @@ export const TestimonialsSection = () => {
     <section
       id="testimonials"
       data-component="TestimonialsSection"
-      className="bg-gradient-to-b from-gray-50 to-white py-16 md:py-24"
+      className="relative bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50 py-20 md:py-32 overflow-hidden"
     >
-      <div className="mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <Badge className="mb-4 bg-teal-100 text-teal-700 hover:bg-teal-100">
+      {/* Background decorative elements */}
+      <div className="absolute top-40 left-10 h-32 w-32 rounded-full bg-teal-100/20 blur-3xl" />
+      <div className="absolute bottom-40 right-10 h-40 w-40 rounded-full bg-cyan-100/30 blur-2xl" />
+
+      <div className="relative mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
+        {/* Enhanced Header - Aceternity style */}
+        <div className="mx-auto mb-20 max-w-4xl text-center space-y-6">
+          <Badge className="bg-teal-50 text-teal-700 border border-teal-200 hover:bg-teal-50 font-medium px-4 py-2">
             Customer Reviews
           </Badge>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
-            Trusted by Bay Area <span className="text-teal-600">Families</span>
+
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+            Trusted by Bay Area{' '}
+            <span className="block bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              Families
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 md:text-xl">
+
+          <p className="text-lg leading-relaxed text-gray-600 md:text-xl max-w-3xl mx-auto">
             See what our customers say about our service, equipment quality, and
             dedication to helping when you need it most.
           </p>
+
+          {/* Stats section */}
+          <div className="flex flex-wrap items-center justify-center gap-8 pt-8 opacity-70">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-teal-600">5.0★</div>
+              <div className="text-sm text-gray-600">Google Rating</div>
+            </div>
+            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+            <div className="text-center">
+              <div className="text-2xl font-bold text-teal-600">500+</div>
+              <div className="text-sm text-gray-600">Happy Customers</div>
+            </div>
+            <div className="w-1 h-1 bg-gray-400 rounded-full" />
+            <div className="text-center">
+              <div className="text-2xl font-bold text-teal-600">15+</div>
+              <div className="text-sm text-gray-600">Years Trusted</div>
+            </div>
+          </div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+        {/* Enhanced Testimonials Grid - Aceternity style */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="h-full border-2 border-gray-100">
-              <CardContent className="p-6">
-                {/* Quote Icon */}
-                <div className="mb-4">
-                  <Quote className="h-8 w-8 text-teal-200" />
+            <Card
+              key={index}
+              className="group relative h-full bg-white/80 backdrop-blur-sm border border-gray-200/50 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-gray-200/20 hover:-translate-y-1"
+            >
+              <CardContent className="p-8">
+                {/* Enhanced Quote Icon */}
+                <div className="mb-6 relative">
+                  <div className="absolute -top-2 -left-2 h-12 w-12 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full opacity-20" />
+                  <Quote className="relative h-10 w-10 text-teal-500" />
                 </div>
 
-                {/* Rating */}
-                <div className="mb-4 flex items-center">
+                {/* Enhanced Rating */}
+                <div className="mb-6 flex items-center gap-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="h-4 w-4 fill-orange-400 text-orange-400"
+                      className="h-5 w-5 fill-amber-400 text-amber-400"
                     />
                   ))}
+                  <span className="ml-2 text-sm font-medium text-gray-600">
+                    {testimonial.rating}.0
+                  </span>
                 </div>
 
-                {/* Testimonial Text */}
-                <p className="mb-6 text-gray-700 leading-relaxed">
+                {/* Enhanced Testimonial Text */}
+                <p className="mb-8 text-gray-700 leading-relaxed text-base italic">
                   &quot;{testimonial.text}&quot;
                 </p>
 
-                {/* Customer Info */}
-                <div className="border-t pt-4">
+                {/* Enhanced Customer Info */}
+                <div className="border-t border-gray-100 pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-semibold text-gray-900">
+                      <h4 className="font-bold text-gray-900 text-lg">
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-teal-600 font-medium">
                         {testimonial.service}
                       </p>
                     </div>
-                    <Badge variant="outline" className="text-teal-600">
-                      Verified Customer
-                    </Badge>
+                    <div className="rounded-full bg-gradient-to-r from-teal-100 to-cyan-100 p-2">
+                      <Badge
+                        variant="outline"
+                        className="text-teal-700 border-teal-200 bg-white/80 font-medium"
+                      >
+                        Verified
+                      </Badge>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -99,30 +138,47 @@ export const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Review Stats */}
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="text-center">
-            <div className="mb-2 text-4xl font-bold text-teal-600">★★★★★</div>
-            <p className="text-lg font-semibold text-gray-900">
-              5.0 Average Rating
-            </p>
-            <p className="text-gray-600">Google & Yelp Reviews</p>
-          </div>
+        {/* Enhanced Review Stats - Aceternity style */}
+        <div className="mt-20 relative">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="text-center group">
+              <div className="mb-4 mx-auto w-20 h-20 bg-gradient-to-r from-amber-400 to-orange-400 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                <div className="text-2xl font-bold text-white">★★★</div>
+              </div>
+              <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                5.0
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-1">
+                Average Rating
+              </p>
+              <p className="text-gray-600">Google & Yelp Reviews</p>
+            </div>
 
-          <div className="text-center">
-            <div className="mb-2 text-4xl font-bold text-orange-600">100+</div>
-            <p className="text-lg font-semibold text-gray-900">
-              Happy Customers
-            </p>
-            <p className="text-gray-600">Served This Year</p>
-          </div>
+            <div className="text-center group">
+              <div className="mb-4 mx-auto w-20 h-20 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                <div className="text-2xl font-bold text-white">500+</div>
+              </div>
+              <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
+                500+
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-1">
+                Happy Customers
+              </p>
+              <p className="text-gray-600">Served This Year</p>
+            </div>
 
-          <div className="text-center">
-            <div className="mb-2 text-4xl font-bold text-teal-600">15+</div>
-            <p className="text-lg font-semibold text-gray-900">
-              Years Experience
-            </p>
-            <p className="text-gray-600">In Medical Supply</p>
+            <div className="text-center group">
+              <div className="mb-4 mx-auto w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                <div className="text-2xl font-bold text-white">15+</div>
+              </div>
+              <div className="mb-2 text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                15+
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-1">
+                Years Experience
+              </p>
+              <p className="text-gray-600">In Medical Supply</p>
+            </div>
           </div>
         </div>
       </div>
