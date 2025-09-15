@@ -1,0 +1,227 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Wheelchairs",
+      "products": [
+        {
+          "id": 101,
+          "name": "Pediatric Wheelchair",
+          "sizes": ["12\"", "14\""],
+          "description": "Sized for children, lightweight and easy to maneuver."
+        },
+        {
+          "id": 102,
+          "name": "Bariatric Wheelchair",
+          "sizes": ["22\"", "24\""],
+          "description": "Heavy-duty design with wider seat options for extra support."
+        },
+        {
+          "id": 103,
+          "name": "Standard Wheelchair",
+          "sizes": ["17\"", "18\"", "20\""],
+          "description": "Everyday wheelchair in multiple seat widths for comfort and fit."
+        },
+        {
+          "id": 104,
+          "name": "Reclining Wheelchair",
+          "sizes": ["18\"", "20\""],
+          "description": "Reclining backrest for added comfort and medical support."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Electric Wheelchairs",
+      "products": [
+        {
+          "id": 201,
+          "name": "Collapsible Electric Wheelchair",
+          "description": "Compact, foldable powered chair for portability and convenience."
+        },
+        {
+          "id": 202,
+          "name": "Power Chair",
+          "description": "Full-featured electric chair for smooth indoor and outdoor use."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Transport Chairs",
+      "products": [
+        {
+          "id": 301,
+          "name": "Transport Chair with Brakes",
+          "sizes": ["19\""],
+          "description": "Lightweight, caregiver-controlled with rear brakes for safety."
+        },
+        {
+          "id": 302,
+          "name": "Transport Chair without Brakes",
+          "sizes": ["19\""],
+          "description": "Simple, portable chair designed for easy travel."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Knee Scooters",
+      "products": [
+        {
+          "id": 401,
+          "name": "Seated Knee Walker",
+          "description": "Allows seated use for comfort during longer recovery."
+        },
+        {
+          "id": 402,
+          "name": "Standard Knee Walker",
+          "description": "Easy mobility solution for foot or ankle injuries."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Rollators",
+      "products": [
+        {
+          "id": 501,
+          "name": "Standard Rollator",
+          "description": "Four-wheel walker with seat and hand brakes for everyday mobility."
+        },
+        {
+          "id": 502,
+          "name": "Bariatric Rollator",
+          "description": "Heavy-duty rollator with wider seat and reinforced frame."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Electric Beds",
+      "products": [
+        {
+          "id": 601,
+          "name": "Full Electric Bed",
+          "description": "Fully adjustable head, foot, and height with remote control."
+        },
+        {
+          "id": 602,
+          "name": "Semi-Electric Bed",
+          "description": "Electric head and foot adjustments with manual height control."
+        },
+        {
+          "id": 603,
+          "name": "Bariatric Bed",
+          "description": "Extra-wide, heavy-duty bed for added safety and support."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Stand Assists & Lifts",
+      "products": [
+        {
+          "id": 701,
+          "name": "Manual Stand Assist",
+          "description": "Sturdy support for caregiver-assisted transfers."
+        },
+        {
+          "id": 702,
+          "name": "Electric Stand Assist",
+          "description": "Power-assisted transfers for ease and independence."
+        },
+        {
+          "id": 703,
+          "name": "Manual Hoyer Lift",
+          "description": "Hydraulic lift for safe patient handling."
+        },
+        {
+          "id": 704,
+          "name": "Electric Hoyer Lift",
+          "description": "Powered lift for smooth, effortless transfers."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Mobility Scooters",
+      "products": [
+        {
+          "id": 801,
+          "name": "Small Mobility Scooter",
+          "description": "Compact and collapsible for travel."
+        },
+        {
+          "id": 802,
+          "name": "Standard Mobility Scooter",
+          "description": "Reliable for daily indoor and outdoor use."
+        },
+        {
+          "id": 803,
+          "name": "Lightweight Mobility Scooter",
+          "description": "Easy to lift and transport."
+        },
+        {
+          "id": 804,
+          "name": "Heavy Duty Mobility Scooter",
+          "description": "High-capacity scooter built for rough terrain/all surfaces."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "CPM Machine",
+      "products": [
+        {
+          "id": 901,
+          "name": "Continuous Passive Motion Machine",
+          "description": "Therapy device to gently move joints after surgery. Ideal for knee surgery patients."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Lift Chair",
+      "products": [
+        {
+          "id": 1001,
+          "name": "Reclining Lift Chair",
+          "description": "Reclining chair with lift assistance to help users sit and stand safely."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "PureWick",
+      "products": [
+        {
+          "id": 1101,
+          "name": "PureWick System",
+          "description": "Non-invasive external catheter system for female patients, designed for comfort."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Mattresses",
+      "products": [
+        {
+          "id": 1201,
+          "name": "Gel Foam Mattress",
+          "description": "Provides pressure relief and comfort with supportive gel-infused foam."
+        },
+        {
+          "id": 1202,
+          "name": "Low Air Loss Mattress",
+          "description": "Circulates air to reduce pressure sores and improve skin health."
+        },
+        {
+          "id": 1203,
+          "name": "Bariatric Mattress",
+          "description": "Extra-wide, heavy-duty design for safe and comfortable support."
+        }
+      ]
+    }
+  ]
+}
