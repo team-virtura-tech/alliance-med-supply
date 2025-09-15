@@ -1,5 +1,6 @@
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { HeroBackground } from './HeroBackground';
 import { HeroContent } from './HeroContent';
 
@@ -14,6 +15,11 @@ export const HeroWithMovingCards = ({
 }: HeroWithMovingCardsProps) => {
   const componentName = 'HeroWithMovingCards';
   const rootId = id ?? componentName;
+
+  // Animation timing to sync with H1 completion
+  const h1AnimationDuration = 0.8;
+  const h1AnimationDelay = 0.2;
+  const totalH1AnimationTime = h1AnimationDuration + h1AnimationDelay;
 
   // Medical supply products for the moving cards with images
   const medicalSupplyItems = [
@@ -81,7 +87,16 @@ export const HeroWithMovingCards = ({
           </div>
 
           {/* Infinite Moving Cards - Medical Supply Products */}
-          <div className="w-full">
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.25, 0, 1],
+              delay: totalH1AnimationTime + 0.7,
+            }}
+          >
             <InfiniteMovingCards
               items={medicalSupplyItems}
               direction="left"
@@ -90,7 +105,7 @@ export const HeroWithMovingCards = ({
               variant="image"
               className="mb-8"
             />
-          </div>
+          </motion.div>
         </div>
       </HeroBackground>
     </section>

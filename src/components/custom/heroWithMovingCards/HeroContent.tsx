@@ -14,6 +14,11 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
   const componentName = 'HeroContent';
   const rootId = id ?? componentName;
 
+  // Animation timing constants
+  const h1AnimationDuration = 0.8;
+  const h1AnimationDelay = 0.2;
+  const totalH1AnimationTime = h1AnimationDuration + h1AnimationDelay;
+
   return (
     <section
       id={rootId}
@@ -24,13 +29,23 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
       )}
     >
       {/* Trust Badge */}
-      <Badge
-        variant="secondary"
-        className="mb-6 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 rounded-full"
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: [0.25, 0.25, 0, 1],
+          delay: totalH1AnimationTime + 0.1,
+        }}
       >
-        <Shield className="mr-2 h-4 w-4" />
-        Trusted by 20,000+ Happy Learners
-      </Badge>
+        <Badge
+          variant="secondary"
+          className="mb-6 px-4 py-2 text-sm font-medium bg-gray-100 text-gray-700 rounded-full"
+        >
+          <Shield className="mr-2 h-4 w-4" />
+          Trusted by 20,000+ Happy Learners
+        </Badge>
+      </motion.div>
 
       {/* Main Headline */}
       <motion.h1
@@ -38,9 +53,9 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.8,
+          duration: h1AnimationDuration,
           ease: [0.25, 0.25, 0, 1],
-          delay: 0.2,
+          delay: h1AnimationDelay,
         }}
       >
         Quality Medical Equipments for
@@ -49,17 +64,35 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
       </motion.h1>
 
       {/* Description */}
-      <div className="mt-6 max-w-2xl">
+      <motion.div
+        className="mt-6 max-w-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: [0.25, 0.25, 0, 1],
+          delay: totalH1AnimationTime + 0.3,
+        }}
+      >
         <TextGenerateEffect
           words="Providing premium medical equipment and supplies for healthcare professionals across the Bay Area. Trusted quality, reliable service, and innovative solutions for better patient care."
           className="text-lg text-gray-600 md:text-xl font-normal"
           duration={0.8}
           filter={false}
         />
-      </div>
+      </motion.div>
 
       {/* CTA Buttons */}
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
+      <motion.div
+        className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: [0.25, 0.25, 0, 1],
+          delay: totalH1AnimationTime + 0.5,
+        }}
+      >
         <Button
           size="lg"
           className="px-8 py-3 text-base font-semibold bg-black text-white hover:bg-gray-800 rounded-full"
@@ -73,7 +106,7 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
         >
           Explore Courses
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 };
