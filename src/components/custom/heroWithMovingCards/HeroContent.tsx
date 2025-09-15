@@ -1,6 +1,8 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
 
 export type HeroContentProps = {
@@ -31,17 +33,30 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
       </Badge>
 
       {/* Main Headline */}
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl">
-        Building a Brighter Tomorrow
+      <motion.h1
+        className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.25, 0, 1],
+          delay: 0.2,
+        }}
+      >
+        Quality Medical Equipments for
         <br />
-        With Smarter Learning
-      </h1>
+        Bay Area Healthcare
+      </motion.h1>
 
       {/* Description */}
-      <p className="mt-6 text-lg text-gray-600 max-w-2xl md:text-xl">
-        Learn from trusted experts with interactive courses designed to fit your
-        schedule, match your goals, and support your growth at every step.
-      </p>
+      <div className="mt-6 max-w-2xl">
+        <TextGenerateEffect
+          words="Providing premium medical equipment and supplies for healthcare professionals across the Bay Area. Trusted quality, reliable service, and innovative solutions for better patient care."
+          className="text-lg text-gray-600 md:text-xl font-normal"
+          duration={0.8}
+          filter={false}
+        />
+      </div>
 
       {/* CTA Buttons */}
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
