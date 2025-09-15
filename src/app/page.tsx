@@ -5,6 +5,7 @@ import { AboutSection } from '@/components/custom/about-section';
 // import { AboutSection } from '@/components/custom/about-section';
 import { ContactSection } from '@/components/custom/contact-section';
 import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
+import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
 import { ServicesSection } from '@/components/custom/services-section';
 import { TestimonialsSection } from '@/components/custom/testimonials-section';
 
@@ -94,6 +95,7 @@ export default function Home() {
     <>
       {/* Modern redesigned home page */}
       <HeroWithMovingCards />
+      <RentalCategoriesGrid />
       <ServicesSection />
       <AboutSection />
       <TestimonialsSection />
