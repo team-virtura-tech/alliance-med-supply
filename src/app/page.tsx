@@ -4,7 +4,7 @@ import { ScrollProgress } from '@/app/components/custom/scrollProgress';
 import { AboutSection } from '@/components/custom/about-section';
 // import { AboutSection } from '@/components/custom/about-section';
 import { ContactSection } from '@/components/custom/contact-section';
-import { HeroSection } from '@/components/custom/hero-section';
+import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
 import { ServicesSection } from '@/components/custom/services-section';
 import { TestimonialsSection } from '@/components/custom/testimonials-section';
 
@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <>
       {/* Modern redesigned home page */}
-      <HeroSection />
+      <HeroWithMovingCards />
       <ServicesSection />
       <AboutSection />
       <TestimonialsSection />
