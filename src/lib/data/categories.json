@@ -8,25 +8,29 @@
           "id": 101,
           "name": "Pediatric Wheelchair",
           "sizes": ["12\"", "14\""],
-          "description": "Sized for children, lightweight and easy to maneuver."
+          "description": "Sized for children, lightweight and easy to maneuver.",
+          "image": "/images/wheelchairs/pediatric-wheelchair.jpeg"
         },
         {
           "id": 102,
           "name": "Bariatric Wheelchair",
           "sizes": ["22\"", "24\""],
-          "description": "Heavy-duty design with wider seat options for extra support."
+          "description": "Heavy-duty design with wider seat options for extra support.",
+          "image": "/images/wheelchairs/bariatric-wheelchair.jpeg"
         },
         {
           "id": 103,
           "name": "Standard Wheelchair",
           "sizes": ["17\"", "18\"", "20\""],
-          "description": "Everyday wheelchair in multiple seat widths for comfort and fit."
+          "description": "Everyday wheelchair in multiple seat widths for comfort and fit.",
+          "image": "/images/wheelchairs/standard-wheelchair.jpeg"
         },
         {
           "id": 104,
           "name": "Reclining Wheelchair",
           "sizes": ["18\"", "20\""],
-          "description": "Reclining backrest for added comfort and medical support."
+          "description": "Reclining backrest for added comfort and medical support.",
+          "image": "/images/wheelchairs/reclining-wheelchair.jpeg"
         }
       ]
     },
@@ -37,12 +41,14 @@
         {
           "id": 201,
           "name": "Collapsible Electric Wheelchair",
-          "description": "Compact, foldable powered chair for portability and convenience."
+          "description": "Compact, foldable powered chair for portability and convenience.",
+          "image": "/images/electric-wheelchairs/collapsible-electric-wheelchair.jpeg"
         },
         {
           "id": 202,
           "name": "Power Chair",
-          "description": "Full-featured electric chair for smooth indoor and outdoor use."
+          "description": "Full-featured electric chair for smooth indoor and outdoor use.",
+          "image": "/images/electric-wheelchairs/power-chair.jpeg"
         }
       ]
     },
@@ -54,13 +60,15 @@
           "id": 301,
           "name": "Transport Chair with Brakes",
           "sizes": ["19\""],
-          "description": "Lightweight, caregiver-controlled with rear brakes for safety."
+          "description": "Lightweight, caregiver-controlled with rear brakes for safety.",
+          "image": "/images/transport-chairs/transport-chair-w_-brakes.jpeg"
         },
         {
           "id": 302,
           "name": "Transport Chair without Brakes",
           "sizes": ["19\""],
-          "description": "Simple, portable chair designed for easy travel."
+          "description": "Simple, portable chair designed for easy travel.",
+          "image": "/images/transport-chairs/transport-chair-w_out-brakes.jpeg"
         }
       ]
     },
@@ -71,12 +79,14 @@
         {
           "id": 401,
           "name": "Seated Knee Walker",
-          "description": "Allows seated use for comfort during longer recovery."
+          "description": "Allows seated use for comfort during longer recovery.",
+          "image": "/images/knee-scooters/seated-knee-walker.jpeg"
         },
         {
           "id": 402,
           "name": "Standard Knee Walker",
-          "description": "Easy mobility solution for foot or ankle injuries."
+          "description": "Easy mobility solution for foot or ankle injuries.",
+          "image": "/images/knee-scooters/standard-knee-walker.jpeg"
         }
       ]
     },
@@ -87,12 +97,14 @@
         {
           "id": 501,
           "name": "Standard Rollator",
-          "description": "Four-wheel walker with seat and hand brakes for everyday mobility."
+          "description": "Four-wheel walker with seat and hand brakes for everyday mobility.",
+          "image": "/images/rollators/standard-rollator.jpeg"
         },
         {
           "id": 502,
           "name": "Bariatric Rollator",
-          "description": "Heavy-duty rollator with wider seat and reinforced frame."
+          "description": "Heavy-duty rollator with wider seat and reinforced frame.",
+          "image": "/images/rollators/bariatric-rollator.jpeg"
         }
       ]
     },
@@ -103,17 +115,20 @@
         {
           "id": 601,
           "name": "Full Electric Bed",
-          "description": "Fully adjustable head, foot, and height with remote control."
+          "description": "Fully adjustable head, foot, and height with remote control.",
+          "image": "/images/electric-beds/full-electric-bed.jpeg"
         },
         {
           "id": 602,
           "name": "Semi-Electric Bed",
-          "description": "Electric head and foot adjustments with manual height control."
+          "description": "Electric head and foot adjustments with manual height control.",
+          "image": "/images/electric-beds/semi-electric-bed.jpeg"
         },
         {
           "id": 603,
           "name": "Bariatric Bed",
-          "description": "Extra-wide, heavy-duty bed for added safety and support."
+          "description": "Extra-wide, heavy-duty bed for added safety and support.",
+          "image": "/images/electric-beds/bariatric-bed.jpeg"
         }
       ]
     },
@@ -124,22 +139,26 @@
         {
           "id": 701,
           "name": "Manual Stand Assist",
-          "description": "Sturdy support for caregiver-assisted transfers."
+          "description": "Sturdy support for caregiver-assisted transfers.",
+          "image": "/images/stand-assists-and-lifts/manual-stand-assist.jpeg"
         },
         {
           "id": 702,
           "name": "Electric Stand Assist",
-          "description": "Power-assisted transfers for ease and independence."
+          "description": "Power-assisted transfers for ease and independence.",
+          "image": "/images/stand-assists-and-lifts/electric-stand-assist.jpeg"
         },
         {
           "id": 703,
           "name": "Manual Hoyer Lift",
-          "description": "Hydraulic lift for safe patient handling."
+          "description": "Hydraulic lift for safe patient handling.",
+          "image": "/images/stand-assists-and-lifts/manual-hoyer-lift.jpeg"
         },
         {
           "id": 704,
           "name": "Electric Hoyer Lift",
-          "description": "Powered lift for smooth, effortless transfers."
+          "description": "Powered lift for smooth, effortless transfers.",
+          "image": "/images/stand-assists-and-lifts/electric-hoyer-lift.jpeg"
         }
       ]
     },
@@ -150,22 +169,26 @@
         {
           "id": 801,
           "name": "Small Mobility Scooter",
-          "description": "Compact and collapsible for travel."
+          "description": "Compact and collapsible for travel.",
+          "image": "/images/mobility-scooters/small-mobility-scooter.jpeg"
         },
         {
           "id": 802,
           "name": "Standard Mobility Scooter",
-          "description": "Reliable for daily indoor and outdoor use."
+          "description": "Reliable for daily indoor and outdoor use.",
+          "image": "/images/mobility-scooters/standard-mobility-scooter.jpeg"
         },
         {
           "id": 803,
           "name": "Lightweight Mobility Scooter",
-          "description": "Easy to lift and transport."
+          "description": "Easy to lift and transport.",
+          "image": "/images/mobility-scooters/lightweight-mobility-scooter.jpeg"
         },
         {
           "id": 804,
           "name": "Heavy Duty Mobility Scooter",
-          "description": "High-capacity scooter built for rough terrain/all surfaces."
+          "description": "High-capacity scooter built for rough terrain/all surfaces.",
+          "image": "/images/mobility-scooters/heavy-duty-mobility-scooter.jpeg"
         }
       ]
     },
@@ -176,7 +199,8 @@
         {
           "id": 901,
           "name": "Continuous Passive Motion Machine",
-          "description": "Therapy device to gently move joints after surgery. Ideal for knee surgery patients."
+          "description": "Therapy device to gently move joints after surgery. Ideal for knee surgery patients.",
+          "image": "/images/cpm-machine/cpm-machine.jpeg"
         }
       ]
     },
@@ -187,7 +211,8 @@
         {
           "id": 1001,
           "name": "Reclining Lift Chair",
-          "description": "Reclining chair with lift assistance to help users sit and stand safely."
+          "description": "Reclining chair with lift assistance to help users sit and stand safely.",
+          "image": "/images/lift-chair/lift-chair.jpeg"
         }
       ]
     },
@@ -198,7 +223,8 @@
         {
           "id": 1101,
           "name": "PureWick System",
-          "description": "Non-invasive external catheter system for female patients, designed for comfort."
+          "description": "Non-invasive external catheter system for female patients, designed for comfort.",
+          "image": "/images/purewick/purewick.jpeg"
         }
       ]
     },
@@ -209,17 +235,20 @@
         {
           "id": 1201,
           "name": "Gel Foam Mattress",
-          "description": "Provides pressure relief and comfort with supportive gel-infused foam."
+          "description": "Provides pressure relief and comfort with supportive gel-infused foam.",
+          "image": "/images/mattresses/gel-foam-mattress.avif"
         },
         {
           "id": 1202,
           "name": "Low Air Loss Mattress",
-          "description": "Circulates air to reduce pressure sores and improve skin health."
+          "description": "Circulates air to reduce pressure sores and improve skin health.",
+          "image": "/images/mattresses/low-air-loss-mattress.jpeg"
         },
         {
           "id": 1203,
           "name": "Bariatric Mattress",
-          "description": "Extra-wide, heavy-duty design for safe and comfortable support."
+          "description": "Extra-wide, heavy-duty design for safe and comfortable support.",
+          "image": "/images/mattresses/bariatric-mattress.jpeg"
         }
       ]
     }
