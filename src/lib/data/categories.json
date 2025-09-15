@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Wheelchairs",
+      "image": "/images/wheelchairs/pediatric-wheelchair.jpeg",
       "products": [
         {
           "id": 101,
@@ -37,6 +38,7 @@
     {
       "id": 2,
       "name": "Electric Wheelchairs",
+      "image": "/images/electric-wheelchairs/collapsible-electric-wheelchair.jpeg",
       "products": [
         {
           "id": 201,
@@ -55,6 +57,7 @@
     {
       "id": 3,
       "name": "Transport Chairs",
+      "image": "/images/transport-chairs/transport-chair-w_-brakes.jpeg",
       "products": [
         {
           "id": 301,
@@ -75,6 +78,7 @@
     {
       "id": 4,
       "name": "Knee Scooters",
+      "image": "/images/knee-scooters/seated-knee-walker.jpeg",
       "products": [
         {
           "id": 401,
@@ -93,6 +97,7 @@
     {
       "id": 5,
       "name": "Rollators",
+      "image": "/images/rollators/standard-rollator.jpeg",
       "products": [
         {
           "id": 501,
@@ -111,6 +116,7 @@
     {
       "id": 6,
       "name": "Electric Beds",
+      "image": "/images/electric-beds/full-electric-bed.jpeg",
       "products": [
         {
           "id": 601,
@@ -135,6 +141,7 @@
     {
       "id": 7,
       "name": "Stand Assists & Lifts",
+      "image": "/images/stand-assists-and-lifts/manual-stand-assist.jpeg",
       "products": [
         {
           "id": 701,
@@ -165,6 +172,7 @@
     {
       "id": 8,
       "name": "Mobility Scooters",
+      "image": "/images/mobility-scooters/small-mobility-scooter.jpeg",
       "products": [
         {
           "id": 801,
@@ -195,6 +203,7 @@
     {
       "id": 9,
       "name": "CPM Machine",
+      "image": "/images/cpm-machine/cpm-machine.jpeg",
       "products": [
         {
           "id": 901,
@@ -207,6 +216,7 @@
     {
       "id": 10,
       "name": "Lift Chair",
+      "image": "/images/lift-chair/lift-chair.jpeg",
       "products": [
         {
           "id": 1001,
@@ -219,6 +229,7 @@
     {
       "id": 11,
       "name": "PureWick",
+      "image": "/images/purewick/purewick.jpeg",
       "products": [
         {
           "id": 1101,
@@ -231,6 +242,7 @@
     {
       "id": 12,
       "name": "Mattresses",
+      "image": "/images/mattresses/gel-foam-mattress.avif",
       "products": [
         {
           "id": 1201,
