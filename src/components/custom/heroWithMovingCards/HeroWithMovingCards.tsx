@@ -1,4 +1,7 @@
+'use client';
+
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
+import { useFeaturedProducts } from '@/hooks/useCategories';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { HeroBackground } from './HeroBackground';
@@ -16,62 +19,23 @@ export const HeroWithMovingCards = ({
   const componentName = 'HeroWithMovingCards';
   const rootId = id ?? componentName;
 
+  // Get featured products (first product from each category)
+  const { data: featuredProducts } = useFeaturedProducts();
+
   // Animation timing to sync with H1 completion
   const h1AnimationDuration = 0.8;
   const h1AnimationDelay = 0.2;
   const totalH1AnimationTime = h1AnimationDuration + h1AnimationDelay;
 
-  // Medical supply products for the moving cards with images
-  const medicalSupplyItems = [
-    {
-      name: 'Surgical Instruments',
-      title: 'Professional Grade Equipment',
-      image: '/images/knee-cpm-machine.png',
-      alt: 'High-quality surgical instruments for medical procedures',
-      quote:
-        'Premium quality surgical instruments with precision engineering for critical procedures.',
-    },
-    {
-      name: 'Diagnostic Tools',
-      title: 'Precision Healthcare Technology',
-      image: '/images/diagnostic-equipment.jpg',
-      alt: 'Advanced diagnostic equipment for accurate medical analysis',
-      quote:
-        'Advanced diagnostic equipment ensuring accurate results and reliable performance.',
-    },
-    {
-      name: 'Patient Care Supplies',
-      title: 'Comprehensive Health Solutions',
-      image: '/images/patient-care.jpg',
-      alt: 'Complete patient care supplies and mobility aids',
-      quote:
-        'Complete patient care solutions including mobility aids and monitoring devices.',
-    },
-    {
-      name: 'Medical Furniture',
-      title: 'Healthcare Infrastructure',
-      image: '/images/medical-furniture.jpg',
-      alt: 'State-of-the-art hospital furniture and equipment',
-      quote:
-        'State-of-the-art hospital furniture designed for durability and patient comfort.',
-    },
-    {
-      name: 'Safety Equipment',
-      title: 'Protection & Compliance',
-      image: '/images/safety-equipment.jpg',
-      alt: 'Essential safety equipment and protective gear',
-      quote:
-        'Essential safety equipment and protective gear meeting industry standards.',
-    },
-    {
-      name: 'Rehabilitation Gear',
-      title: 'Recovery & Wellness',
-      image: '/images/rehabilitation-equipment.jpg',
-      alt: 'Advanced rehabilitation equipment for patient recovery',
-      quote:
-        'Advanced rehabilitation equipment supporting patient recovery programs.',
-    },
-  ];
+  // Transform featured products into the format expected by InfiniteMovingCards
+  const medicalSupplyItems =
+    featuredProducts?.map((item) => ({
+      name: item.product.name,
+      title: item.category.name,
+      image: item.product.image,
+      alt: `${item.product.name} - ${item.category.name}`,
+      quote: item.product.description,
+    })) || [];
 
   return (
     <section
