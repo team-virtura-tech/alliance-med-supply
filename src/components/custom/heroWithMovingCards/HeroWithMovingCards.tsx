@@ -26,7 +26,7 @@ export const HeroWithMovingCards = ({
     {
       name: 'Surgical Instruments',
       title: 'Professional Grade Equipment',
-      image: '/images/surgical-instruments.jpg',
+      image: '/images/knee-cpm-machine.png',
       alt: 'High-quality surgical instruments for medical procedures',
       quote:
         'Premium quality surgical instruments with precision engineering for critical procedures.',
