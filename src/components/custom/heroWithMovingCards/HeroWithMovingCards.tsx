@@ -2,6 +2,7 @@
 
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import { useFeaturedProducts } from '@/hooks/useCategories';
+import { isFeatureEnabled } from '@/lib/config';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { HeroBackground } from './HeroBackground';
@@ -19,6 +20,9 @@ export const HeroWithMovingCards = ({
   const componentName = 'HeroWithMovingCards';
   const rootId = id ?? componentName;
 
+  // Feature flag check
+  const showInfiniteCards = isFeatureEnabled('enableInfiniteMovingCards');
+
   // Get featured products (first product from each category)
   const { data: featuredProducts } = useFeaturedProducts();
 
@@ -30,11 +34,8 @@ export const HeroWithMovingCards = ({
   // Transform featured products into the format expected by InfiniteMovingCards
   const medicalSupplyItems =
     featuredProducts?.map((item) => ({
-      name: item.product.name,
-      title: item.category.name,
       image: item.product.image,
       alt: `${item.product.name} - ${item.category.name}`,
-      quote: item.product.description,
     })) || [];
 
   return (
@@ -46,30 +47,32 @@ export const HeroWithMovingCards = ({
       <HeroBackground>
         <div className="w-full py-12">
           {/* Hero Content - Full Width */}
-          <div className="container mx-auto px-4 mb-16">
+          <div className="w-full px-4 mb-16">
             <HeroContent />
           </div>
 
           {/* Infinite Moving Cards - Medical Supply Products */}
-          <motion.div
-            className="w-full"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.25, 0.25, 0, 1],
-              delay: totalH1AnimationTime + 0.7,
-            }}
-          >
-            <InfiniteMovingCards
-              items={medicalSupplyItems}
-              direction="left"
-              speed="slow"
-              pauseOnHover={true}
-              variant="image"
-              className="mb-8"
-            />
-          </motion.div>
+          {showInfiniteCards && (
+            <motion.div
+              className="w-full"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.25, 0, 1],
+                delay: totalH1AnimationTime + 0.7,
+              }}
+            >
+              <InfiniteMovingCards
+                items={medicalSupplyItems}
+                direction="left"
+                speed="slow"
+                pauseOnHover={true}
+                variant="image"
+                className="mb-8"
+              />
+            </motion.div>
+          )}
         </div>
       </HeroBackground>
     </section>

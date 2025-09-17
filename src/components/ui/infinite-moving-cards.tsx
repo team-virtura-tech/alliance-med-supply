@@ -14,8 +14,8 @@ export const InfiniteMovingCards = ({
 }: {
   items: {
     quote?: string;
-    name: string;
-    title: string;
+    name?: string;
+    title?: string;
     image?: string;
     alt?: string;
   }[];
@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li
             className={cn(
               'relative shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]',
@@ -103,7 +103,7 @@ export const InfiniteMovingCards = ({
                 ? 'w-[280px] max-w-full p-4 md:w-[320px]'
                 : 'w-[350px] max-w-full px-8 py-6 md:w-[450px]'
             )}
-            key={item.name}
+            key={item.name || item.alt || index}
           >
             {variant === 'image' ? (
               <div className="flex flex-col items-center text-center">
@@ -111,19 +111,23 @@ export const InfiniteMovingCards = ({
                   <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={item.alt || item.name}
+                      alt={item.alt || item.name || 'Medical equipment'}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 280px, 320px"
                     />
                   </div>
                 )}
-                <h3 className="text-lg font-semibold text-neutral-800 dark:text-gray-100 mb-2">
-                  {item.name}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-gray-300">
-                  {item.title}
-                </p>
+                {item.name && (
+                  <h3 className="text-lg font-semibold text-neutral-800 dark:text-gray-100 mb-2">
+                    {item.name}
+                  </h3>
+                )}
+                {item.title && (
+                  <p className="text-sm text-neutral-600 dark:text-gray-300">
+                    {item.title}
+                  </p>
+                )}
                 {item.quote && (
                   <p className="text-xs text-neutral-500 dark:text-gray-400 mt-2 line-clamp-3">
                     {item.quote}
