@@ -6,6 +6,7 @@ import {
 } from '@/lib/data/medicalEquipment';
 import { cn } from '@/lib/utils';
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import React, {
@@ -161,6 +162,7 @@ export const MedicalEquipmentCarousel = ({
 }: MedicalEquipmentCarouselProps) => {
   const defaultOptions: EmblaOptionsType = {
     slidesToScroll: 1,
+    loop: true, // Enable infinite scrolling for better autoplay experience
     breakpoints: {
       '(min-width: 768px)': { slidesToScroll: 2 },
       '(min-width: 1024px)': { slidesToScroll: 3 },
@@ -168,7 +170,9 @@ export const MedicalEquipmentCarousel = ({
     ...options,
   };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(defaultOptions);
+  const [emblaRef, emblaApi] = useEmblaCarousel(defaultOptions, [
+    Autoplay({ delay: 4000, stopOnInteraction: false }),
+  ]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
@@ -180,18 +184,35 @@ export const MedicalEquipmentCarousel = ({
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
+  // Autoplay control hook
+  const onAutoplayButtonClick = useCallback(
+    (callback: () => void) => {
+      const autoplay = emblaApi?.plugins()?.autoplay;
+      if (!autoplay) return;
+
+      const resetOrStop =
+        autoplay.options.stopOnInteraction === false
+          ? autoplay.reset
+          : autoplay.stop;
+
+      resetOrStop();
+      callback();
+    },
+    [emblaApi]
+  );
+
   return (
-    <div className={cn('w-full', className)}>
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-4">
+    <div className={cn('w-full h-full', className)}>
+      <div className="overflow-hidden h-[75%]" ref={emblaRef}>
+        <div className="flex gap-4 h-full">
           {items.map((item) => (
             <div
               key={item.id}
               className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden group cursor-pointer hover:shadow-md transition-shadow duration-300">
+              <div className="h-full bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden group cursor-pointer hover:shadow-md transition-shadow duration-300 flex flex-col">
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-full overflow-hidden flex-shrink-0">
                   <Image
                     src={item.image}
                     alt={`Medical equipment ${item.id}`}
@@ -210,8 +231,14 @@ export const MedicalEquipmentCarousel = ({
       <div className="flex items-center justify-between mt-6">
         {/* Arrow Buttons */}
         <div className="flex items-center gap-2">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          <PrevButton
+            onClick={() => onAutoplayButtonClick(onPrevButtonClick)}
+            disabled={prevBtnDisabled}
+          />
+          <NextButton
+            onClick={() => onAutoplayButtonClick(onNextButtonClick)}
+            disabled={nextBtnDisabled}
+          />
         </div>
 
         {/* Dot Indicators */}
@@ -219,7 +246,9 @@ export const MedicalEquipmentCarousel = ({
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
-              onClick={() => onDotButtonClick(index)}
+              onClick={() =>
+                onAutoplayButtonClick(() => onDotButtonClick(index))
+              }
               isSelected={index === selectedIndex}
             />
           ))}
