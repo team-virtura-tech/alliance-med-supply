@@ -4,7 +4,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
-import { HeroImages } from './HeroImages';
+// import { HeroImages } from './HeroImages';
 
 export type HeroContentProps = {
   id?: string;
@@ -121,7 +121,7 @@ export const HeroContent = ({ id, className }: HeroContentProps) => {
       </div>
 
       {/* Hero Images */}
-      <HeroImages totalH1AnimationTime={totalH1AnimationTime} />
+      {/* <HeroImages totalH1AnimationTime={totalH1AnimationTime} /> */}
     </section>
   );
 };

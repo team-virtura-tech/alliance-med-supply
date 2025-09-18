@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { HeroBackground } from './HeroBackground';
 import { HeroContent } from './HeroContent';
+import { HeroImages } from './HeroImages';
+import { MobileHeroImage } from './MobileHeroImage';
 
 export type HeroWithMovingCardsProps = {
   id?: string;
@@ -45,9 +47,19 @@ export const HeroWithMovingCards = ({
       className={cn('w-full min-h-screen', className)}
     >
       <HeroBackground>
-        <div className="w-full py-12">
+        {/* Background Images - Desktop only (behind content) */}
+        <div className="hidden md:block">
+          <HeroImages totalH1AnimationTime={totalH1AnimationTime} />
+        </div>
+
+        <div className="relative z-10 w-full py-12">
+          {/* Hero Images - Mobile only (above content) */}
+
           {/* Hero Content - Full Width */}
           <div className="w-full px-4 mb-16">
+            <div className="block md:hidden w-full">
+              <MobileHeroImage totalH1AnimationTime={totalH1AnimationTime} />
+            </div>
             <HeroContent />
           </div>
 

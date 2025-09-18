@@ -22,11 +22,11 @@ export const HeroImages = ({
     <div
       id={rootId}
       data-component={componentName}
-      className={cn('absolute inset-0 pointer-events-none', className)}
+      className={cn('absolute inset-0 pointer-events-none z-0', className)}
     >
-      {/* Bottom-Left Wheels Image */}
+      {/* Bottom-Left Wheels Image - Hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-8 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] pointer-events-none"
+        className="absolute bottom-8 left-8 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] pointer-events-none hidden md:block"
         initial={{ opacity: 0, x: -50, y: 50 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{
@@ -47,7 +47,7 @@ export const HeroImages = ({
 
       {/* Bottom-Right Walker Image */}
       <motion.div
-        className="absolute bottom-8 right-8 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] pointer-events-none"
+        className="absolute bottom-8 right-8 w-80 h-80 md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] 2xl:w-[700px] 2xl:h-[700px] pointer-events-none hidden md:block"
         initial={{ opacity: 0, x: 50, y: 50 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{
