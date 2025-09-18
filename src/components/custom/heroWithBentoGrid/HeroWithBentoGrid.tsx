@@ -40,7 +40,7 @@ export const HeroWithBentoGrid = ({
           {/* LEFT COLUMN - 40% (2 out of 5 columns) */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Top Block - Hero Content */}
-            <div className="flex-1 p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl">
+            <div className="h-80 p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl flex flex-col justify-center">
               <div className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300 w-fit">
                 {subtitle}
               </div>
@@ -139,22 +139,22 @@ export const HeroWithBentoGrid = ({
                 priority
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-            </div>
 
-            {/* Bottom - Stacked Blocks */}
-            <div className="flex flex-col gap-6 flex-1">
-              {/* Small Image Block */}
-              <div className="h-32 relative rounded-2xl overflow-hidden bg-gradient-to-br from-orange-400 to-red-500 group cursor-pointer">
+              {/* Small Square Image Overlay - Bottom Right */}
+              {/* <div className="absolute bottom-4 right-4 w-42 h-42 rounded-xl overflow-hidden bg-gradient-to-br from-orange-400 to-red-500 group cursor-pointer ">
                 <Image
                   src="/images/knee-scooters/standard-knee-walker.jpeg"
                   alt="Knee Scooter"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="96px"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-              </div>
+              </div> */}
+            </div>
 
+            {/* Bottom - Stacked Blocks */}
+            <div className="h-80 flex flex-col gap-6">
               {/* Wide Content Card */}
               <div className="flex-1 bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
                 <div className="flex items-start gap-4">
