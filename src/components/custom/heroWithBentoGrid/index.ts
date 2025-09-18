@@ -1,0 +1,1 @@
+export { HeroWithBentoGrid } from './HeroWithBentoGrid';

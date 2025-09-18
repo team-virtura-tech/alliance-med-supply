@@ -20,9 +20,9 @@ export const Header = () => {
     <header
       id="header"
       data-component="Header"
-      className="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-200"
+      className="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-md"
     >
-      <div className="mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
+      <div className="px-4 md:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
