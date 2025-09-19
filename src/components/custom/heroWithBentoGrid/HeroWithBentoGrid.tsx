@@ -97,32 +97,15 @@ export const HeroWithBentoGrid = ({
               </div>
 
               {/* Right Block - Dark Card with Countdown */}
-              <div className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 text-white relative overflow-hidden">
-                <div className="absolute top-4 right-4">
-                  <div className="flex items-center gap-2 text-xs text-gray-400">
-                    <span>6 day left</span>
-                    <div className="w-4 h-4 rounded bg-blue-500 flex items-center justify-center">
-                      <span className="text-xs">↗</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <h3 className="text-xl font-semibold mb-2">Rent 50% Off</h3>
-                  <p className="text-gray-300 text-sm mb-4">
-                    Any equipment rental
-                  </p>
-
-                  <div className="relative rounded-lg overflow-hidden h-20 bg-gray-800">
-                    <Image
-                      src="/images/electric-wheelchairs/power-chair.jpeg"
-                      alt="Featured Equipment"
-                      fill
-                      className="object-cover"
-                      sizes="200px"
-                    />
-                  </div>
-                </div>
+              <div className="bg-[#006663] rounded-2xl p-6 text-white relative overflow-hidden">
+                <Image
+                  src="/images/walker.png"
+                  alt="Mobility Equipment"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
               </div>
             </div>
           </div>
