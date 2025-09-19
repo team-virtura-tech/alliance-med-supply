@@ -1,0 +1,1 @@
+export { MedicalEquipmentCarousel } from './MedicalEquipmentCarousel';

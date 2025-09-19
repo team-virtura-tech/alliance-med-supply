@@ -4,7 +4,8 @@ import { ScrollProgress } from '@/app/components/custom/scrollProgress';
 import { AboutSection } from '@/components/custom/about-section';
 // import { AboutSection } from '@/components/custom/about-section';
 import { ContactSection } from '@/components/custom/contact-section';
-import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
+// import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
+import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
 import { ServicesSection } from '@/components/custom/services-section';
 import { TestimonialsSection } from '@/components/custom/testimonials-section';
@@ -92,15 +93,17 @@ import { TestimonialsSection } from '@/components/custom/testimonials-section';
 
 export default function Home() {
   return (
-    <>
+    <div className="pt-20 md:pt-24 lg:pt-28">
       {/* Modern redesigned home page */}
-      <HeroWithMovingCards />
+      <div className="w-full">
+        <HeroWithBentoGrid />
+      </div>
       <RentalCategoriesGrid />
       <ServicesSection />
       <AboutSection />
       <TestimonialsSection />
       <ContactSection />
       <ScrollProgress />
-    </>
+    </div>
   );
 }
