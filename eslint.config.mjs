@@ -21,6 +21,7 @@ const eslintConfig = [
       '.husky/**',
       '.vscode/**',
       'coverage/**',
+      'next-env.d.ts', // Next.js generated file, shouldn't be linted
     ],
   },
   // 1) Load all the legacy shareable configs:
