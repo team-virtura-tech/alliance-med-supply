@@ -1,10 +1,8 @@
 'use client';
 
-import {
-  medicalEquipmentData,
-  type MedicalEquipmentItem,
-} from '@/lib/data/medicalEquipment';
+import medicalEquipmentData from '@/lib/data/medicalEquipment.json';
 import { cn } from '@/lib/utils';
+import { type MedicalEquipmentItem } from '@/types/medicalEquipment';
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
