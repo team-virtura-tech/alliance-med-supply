@@ -1,6 +1,9 @@
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
+import { getCategorySlug } from '@/lib/categories/utils';
+import { cn } from '@/lib/utils';
 
 export type RentalCategoryCardProps = {
   id: number;
@@ -8,7 +11,6 @@ export type RentalCategoryCardProps = {
   image: string;
   description?: string;
   productCount?: number;
-  onClick?: () => void;
   className?: string;
 };
 
@@ -18,10 +20,10 @@ export const RentalCategoryCard = ({
   image,
   description = 'Professional medical equipment rental with delivery and setup included.',
   productCount,
-  onClick,
   className,
 }: RentalCategoryCardProps) => {
   const componentName = 'RentalCategoryCard';
+  const categoryUrl = `/products/${getCategorySlug(name)}`;
 
   return (
     <div
@@ -72,10 +74,10 @@ export const RentalCategoryCard = ({
 
         {/* CTA Button */}
         <Button
-          onClick={onClick}
+          asChild
           className="w-full rounded-full py-5 text-lg font-medium"
         >
-          View Product
+          <Link href={categoryUrl}>View Products</Link>
         </Button>
       </div>
     </div>

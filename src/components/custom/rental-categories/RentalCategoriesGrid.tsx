@@ -59,7 +59,6 @@ export const RentalCategoriesGrid = () => {
             image={cat.image || cat.products[0]?.image || ''}
             description={`Professional ${cat.name.toLowerCase()} rental with delivery, setup, and 24/7 support included.`}
             productCount={cat.products?.length || 0}
-            onClick={() => console.log(`Clicked ${cat.name}`)}
           />
         ))}
       </div>
