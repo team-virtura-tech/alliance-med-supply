@@ -1,18 +1,12 @@
 'use client';
 
+import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/types/categories';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ShoppingCart } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -84,58 +78,20 @@ export const ProductCategoryPage = ({
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {category.products.map((product, index) => (
-            <motion.div
+            <ProductCard
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-            >
-              <Card className="group h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-
-                <CardHeader className="pb-3">
-                  <CardTitle className="line-clamp-2 text-lg">
-                    {product.name}
-                  </CardTitle>
-                  {product.sizes && product.sizes.length > 0 && (
-                    <div className="flex flex-wrap gap-1">
-                      {product.sizes.map((size) => (
-                        <Badge key={size} variant="outline" className="text-xs">
-                          {size}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </CardHeader>
-
-                <CardContent className="pt-0">
-                  <CardDescription className="line-clamp-3 text-sm">
-                    {product.description}
-                  </CardDescription>
-
-                  <div className="mt-4 flex gap-2">
-                    <Button asChild className="flex-1">
-                      <Link
-                        href={`/products/${encodeURIComponent(category.name)}/${product.id}`}
-                      >
-                        View Details
-                      </Link>
-                    </Button>
-                    <Button variant="outline" size="icon">
-                      <ShoppingCart className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              variant="product"
+              index={index}
+              data={{
+                id: product.id,
+                name: product.name,
+                image: product.image,
+                description: product.description,
+                sizes: product.sizes,
+                href: `/products/${getCategorySlug(category.name)}/${getProductSlug(product.name)}`,
+                ctaText: 'View Details',
+              }}
+            />
           ))}
         </motion.div>
 

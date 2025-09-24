@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation';
 import { ProductDetailPage } from '@/components/custom/ProductDetailPage';
 import {
   getCategories,
-  getProductByIdInCategory,
+  getCategorySlug,
+  getProductBySlugInCategory,
+  getProductSlug,
 } from '@/lib/categories/utils';
 
 interface PageProps {
@@ -19,11 +21,11 @@ export async function generateStaticParams() {
   const paths: { category: string; productId: string }[] = [];
 
   categories.forEach((category) => {
-    const categorySlug = encodeURIComponent(category.name);
+    const categorySlug = getCategorySlug(category.name);
     category.products.forEach((product) => {
       paths.push({
         category: categorySlug,
-        productId: product.id.toString(),
+        productId: getProductSlug(product.name),
       });
     });
   });
@@ -34,8 +36,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { category: categorySlug, productId } = await params;
-  const result = getProductByIdInCategory(categorySlug, parseInt(productId));
+  const { category: categorySlug, productId: productSlug } = await params;
+  const result = getProductBySlugInCategory(categorySlug, productSlug);
 
   if (!result) {
     return {
@@ -65,8 +67,8 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const { category: categorySlug, productId } = await params;
-  const result = getProductByIdInCategory(categorySlug, parseInt(productId));
+  const { category: categorySlug, productId: productSlug } = await params;
+  const result = getProductBySlugInCategory(categorySlug, productSlug);
 
   if (!result) {
     notFound();
