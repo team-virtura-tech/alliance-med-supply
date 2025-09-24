@@ -103,26 +103,54 @@ export const HeroWithBentoGrid = ({
           <div className="w-full lg:flex-[0_0_40%] flex gap-4 lg:gap-6">
             {/* Mobility Scooter Image */}
             <div className="flex-1">
-              <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]">
-                <Image
+              {/* <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"> */}
+              {/* Yellow gradient: 'linear-gradient(124deg, rgb(255, 200, 94) 21.94%, rgb(255, 197, 8) 89.55%)' */}
+              {/* Orange gradient: 'linear-gradient(124deg, rgb(255, 220, 180) 21.94%, rgb(255, 200, 150) 89.55%)' */}
+              {/* <Image
                   src="/images/categories/mobility-scooters.jpg"
                   alt="Mobility Scooter - Patient mobility solutions"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
+                /> */}
+              <div
+                className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px] bg-orange-300 group cursor-pointer"
+                // style={{
+                //   background:
+                //     'linear-gradient(124deg, rgb(255, 220, 180) 21.94%, rgb(255, 200, 150) 89.55%)',
+                // }}
+              >
+                <Image
+                  src="/images/wheels.png"
+                  alt="Mobility Equipment"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 50vw, 25vw"
                 />
+                {/* </div> */}
               </div>
             </div>
 
             {/* Medical Equipment Image Card */}
             <div className="flex-1">
-              <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]">
+              {/* <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]">
                 <Image
                   src="/images/categories/electric-wheelchair.jpg"
                   alt="Electric Wheelchair - Medical Equipment"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 20vw"
+                />
+              </div> */}
+              {/* <div className="bg-sky-200 p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"> */}
+              {/* <div className="bg-blue-500 p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"> */}
+              <div className="bg-[#006663] p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]">
+                <Image
+                  src="/images/walker.png"
+                  alt="Mobility Equipment"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
             </div>
