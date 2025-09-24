@@ -5,9 +5,9 @@ import { ArrowLeft, Phone, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import type { Category, Product } from '@/types/categories';
@@ -153,41 +153,21 @@ export const ProductDetailPage = ({
             {category.products
               .filter((p) => p.id !== product.id)
               .slice(0, 3)
-              .map((relatedProduct) => (
-                <Card
+              .map((relatedProduct, index) => (
+                <ProductCard
                   key={relatedProduct.id}
-                  className="group overflow-hidden transition-all duration-300 hover:shadow-lg"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={relatedProduct.image}
-                      alt={relatedProduct.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-
-                  <CardHeader className="pb-3">
-                    <CardTitle className="line-clamp-2 text-lg">
-                      {relatedProduct.name}
-                    </CardTitle>
-                  </CardHeader>
-
-                  <CardContent className="pt-0">
-                    <p className="line-clamp-2 text-sm text-muted-foreground mb-4">
-                      {relatedProduct.description}
-                    </p>
-
-                    <Button asChild className="w-full">
-                      <Link
-                        href={`/products/${encodeURIComponent(category.name)}/${relatedProduct.id}`}
-                      >
-                        View Details
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                  variant="product"
+                  index={index}
+                  data={{
+                    id: relatedProduct.id,
+                    name: relatedProduct.name,
+                    image: relatedProduct.image,
+                    description: relatedProduct.description,
+                    sizes: relatedProduct.sizes,
+                    href: `/products/${encodeURIComponent(category.name)}/${relatedProduct.id}`,
+                    ctaText: 'View Details',
+                  }}
+                />
               ))}
           </div>
         </motion.div>
