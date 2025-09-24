@@ -7,7 +7,6 @@ import { ContactSection } from '@/components/custom/contact-section';
 // import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
-import { ServicesSection } from '@/components/custom/services-section';
 import { TestimonialsSection } from '@/components/custom/testimonials-section';
 
 // Keep the existing commented code for reference
@@ -99,7 +98,7 @@ export default function Home() {
         <HeroWithBentoGrid />
       </div>
       <RentalCategoriesGrid />
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <AboutSection />
       <TestimonialsSection />
       <ContactSection />
