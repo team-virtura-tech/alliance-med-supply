@@ -2,6 +2,7 @@
 
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
+import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/types/categories';
 import { motion } from 'framer-motion';
@@ -87,7 +88,7 @@ export const ProductCategoryPage = ({
                 image: product.image,
                 description: product.description,
                 sizes: product.sizes,
-                href: `/products/${encodeURIComponent(category.name)}/${product.id}`,
+                href: `/products/${getCategorySlug(category.name)}/${getProductSlug(product.name)}`,
                 ctaText: 'View Details',
               }}
             />

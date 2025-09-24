@@ -64,17 +64,64 @@ export const getProductByIdInCategory = (
 };
 
 /**
+ * Convert string to URL-safe slug
+ */
+export const createSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+};
+
+/**
  * Generate URL-safe category slug
  */
 export const getCategorySlug = (categoryName: string): string => {
-  return encodeURIComponent(categoryName);
+  return createSlug(categoryName);
+};
+
+/**
+ * Generate URL-safe product slug
+ */
+export const getProductSlug = (productName: string): string => {
+  return createSlug(productName);
+};
+
+/**
+ * Get category by slug
+ */
+export const getCategoryBySlug = (slug: string): Category | null => {
+  const categories = getCategories();
+  return (
+    categories.find((category) => getCategorySlug(category.name) === slug) ||
+    null
+  );
+};
+
+/**
+ * Get product by slug within a category
+ */
+export const getProductBySlugInCategory = (
+  categorySlug: string,
+  productSlug: string
+): { product: Product; category: Category } | null => {
+  const category = getCategoryBySlug(categorySlug);
+  if (!category) return null;
+
+  const product = category.products.find(
+    (p) => getProductSlug(p.name) === productSlug
+  );
+  if (!product) return null;
+
+  return { product, category };
 };
 
 /**
  * Generate URL-safe category name for display
  */
 export const getCategoryDisplayName = (categorySlug: string): string => {
-  return decodeURIComponent(categorySlug);
+  const category = getCategoryBySlug(categorySlug);
+  return category ? category.name : categorySlug;
 };
 
 /**
@@ -83,4 +130,13 @@ export const getCategoryDisplayName = (categorySlug: string): string => {
 export const getCategorySlugs = (): string[] => {
   const categories = getCategories();
   return categories.map((category) => getCategorySlug(category.name));
+};
+
+/**
+ * Get all product slugs for a category
+ */
+export const getProductSlugsForCategory = (categorySlug: string): string[] => {
+  const category = getCategoryBySlug(categorySlug);
+  if (!category) return [];
+  return category.products.map((product) => getProductSlug(product.name));
 };

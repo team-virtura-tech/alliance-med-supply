@@ -9,6 +9,7 @@ import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 import type { Category, Product } from '@/types/categories';
 
@@ -42,7 +43,7 @@ export const ProductDetailPage = ({
           </Link>
           <span>/</span>
           <Link
-            href={`/products/${encodeURIComponent(category.name)}`}
+            href={`/products/${getCategorySlug(category.name)}`}
             className="hover:text-foreground transition-colors"
           >
             {category.name}
@@ -143,7 +144,7 @@ export const ProductDetailPage = ({
           <div className="mb-8 flex items-center justify-between">
             <h2 className="text-2xl font-bold">More {category.name}</h2>
             <Button variant="outline" asChild>
-              <Link href={`/products/${encodeURIComponent(category.name)}`}>
+              <Link href={`/products/${getCategorySlug(category.name)}`}>
                 View All
               </Link>
             </Button>
@@ -164,7 +165,7 @@ export const ProductDetailPage = ({
                     image: relatedProduct.image,
                     description: relatedProduct.description,
                     sizes: relatedProduct.sizes,
-                    href: `/products/${encodeURIComponent(category.name)}/${relatedProduct.id}`,
+                    href: `/products/${getCategorySlug(category.name)}/${getProductSlug(relatedProduct.name)}`,
                     ctaText: 'View Details',
                   }}
                 />
@@ -181,7 +182,7 @@ export const ProductDetailPage = ({
         >
           <Button variant="outline" asChild>
             <Link
-              href={`/products/${encodeURIComponent(category.name)}`}
+              href={`/products/${getCategorySlug(category.name)}`}
               className="inline-flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" />

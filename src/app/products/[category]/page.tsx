@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ProductCategoryPage } from '@/components/custom/ProductCategoryPage';
-import { getCategoryByName, getCategorySlugs } from '@/lib/categories/utils';
+import { getCategoryBySlug, getCategorySlugs } from '@/lib/categories/utils';
 
 interface PageProps {
   params: Promise<{
@@ -22,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { category: categorySlug } = await params;
-  const category = getCategoryByName(categorySlug);
+  const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
     return {
@@ -51,7 +51,7 @@ export async function generateMetadata({
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category: categorySlug } = await params;
-  const category = getCategoryByName(categorySlug);
+  const category = getCategoryBySlug(categorySlug);
 
   if (!category) {
     notFound();
