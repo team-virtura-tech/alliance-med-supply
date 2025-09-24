@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
+import { useSimpleParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Eye, Heart } from 'lucide-react';
 import Image from 'next/image';
 
@@ -27,18 +29,35 @@ export const HeroWithBentoGrid = ({
   onSecondaryClick,
 }: HeroWithBentoGridProps) => {
   const componentName = 'HeroWithBentoGrid';
+  const reduceMotion = useReducedMotion();
   const rootId = id ?? componentName;
+
+  // Parallax effects for depth
+  const vanParallax = useSimpleParallax(0.3); // Slow parallax for background
+  const cardsParallax = useSimpleParallax(0.15); // Subtle parallax for cards
+  const cardsParallax2 = useSimpleParallax(0.2); // Slightly different parallax for second card
 
   return (
     <section
       id={rootId}
       data-component={componentName}
-      className={cn('w-full min-w-0 p-4 md:p-6 lg:p-8', className)}
+      className={cn(
+        'w-full min-w-0 min-h-screen flex items-center p-4 md:p-6 lg:p-8',
+        className
+      )}
     >
       {/* Main Wrapper - Full Width */}
-      <div className="w-full">
+      <div className="w-full min-h-screen ">
         {/* ROW 1 - Content Card + Van Image */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-4 lg:mb-6">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.4, 0.0, 0.2, 1],
+          }}
+          className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-4 lg:mb-6"
+        >
           {/* ROW 1, COL 1 - Content Card (40%) */}
           <div className="w-full lg:flex-[0_0_40%]">
             <div className="bg-gradient-to-br from-teal-50 via-white to-orange-50 rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 h-full flex flex-col justify-center shadow-sm min-h-[350px] lg:min-h-[400px]">
@@ -77,7 +96,11 @@ export const HeroWithBentoGrid = ({
 
           {/* ROW 1, COL 2 - Van Image (60%) */}
           <div className="w-full lg:flex-[0_0_60%]">
-            <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[250px] lg:min-h-[400px]">
+            <div
+              ref={vanParallax.ref}
+              style={vanParallax.style}
+              className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[250px] lg:min-h-[400px]"
+            >
               <Image
                 src="/images/branding/van-1.png"
                 alt="Alliance Medical Supply Van - Professional medical equipment delivery"
@@ -95,10 +118,19 @@ export const HeroWithBentoGrid = ({
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ROW 2 - Two Images Side by Side + Article Card */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.3,
+            ease: [0.4, 0.0, 0.2, 1],
+          }}
+          className="flex flex-col lg:flex-row gap-4 lg:gap-6"
+        >
           {/* ROW 2, COL 1 - Two Images Side by Side (40%) */}
           <div className="w-full lg:flex-[0_0_40%] flex gap-4 lg:gap-6">
             {/* Mobility Scooter Image */}
@@ -114,6 +146,8 @@ export const HeroWithBentoGrid = ({
                   sizes="(max-width: 768px) 50vw, 25vw"
                 /> */}
               <div
+                ref={cardsParallax.ref}
+                style={cardsParallax.style}
                 className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px] bg-orange-300 group cursor-pointer"
                 // style={{
                 //   background:
@@ -144,7 +178,11 @@ export const HeroWithBentoGrid = ({
               </div> */}
               {/* <div className="bg-sky-200 p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"> */}
               {/* <div className="bg-blue-500 p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"> */}
-              <div className="bg-[#006663] p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]">
+              <div
+                ref={cardsParallax2.ref}
+                style={cardsParallax2.style}
+                className="bg-[#006663] p-6 relative rounded-2xl lg:rounded-3xl overflow-hidden h-full min-h-[200px] lg:min-h-[250px]"
+              >
                 <Image
                   src="/images/walker.png"
                   alt="Mobility Equipment"
@@ -222,7 +260,7 @@ export const HeroWithBentoGrid = ({
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
