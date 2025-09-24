@@ -11,7 +11,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Equipment', href: '/products' },
+    { name: 'Products', href: '/products' },
     { name: 'About Us', href: '/about' },
     { name: 'Reviews', href: '/reviews' },
     { name: 'Contact', href: '/contact' },
@@ -21,7 +21,7 @@ export const Header = () => {
     <header
       id="header"
       data-component="Header"
-      className="fixed top-0 z-50 w-full bg-white/95 backdrop-blur-md"
+      className="fixed top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       <div className="px-4 md:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
