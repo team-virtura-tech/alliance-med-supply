@@ -54,7 +54,13 @@ export const ProductCard = ({
       transition={{ duration: 0.3, delay: reduce ? 0 : 0.1 + index * 0.05 }}
       className={className}
     >
-      <Card className="group h-full overflow-hidden border-0 shadow-lg bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-3xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+      <Card
+        className="group h-full overflow-hidden border-0 shadow-lg rounded-3xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+        style={{
+          background:
+            'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(45 35% 94%) 100%)',
+        }}
+      >
         {/* Hero Image */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl mx-8">
           <Image
@@ -68,7 +74,12 @@ export const ProductCard = ({
           {/* Product Count Badge (Category variant only) */}
           {variant === 'category' && typeof data.productCount === 'number' && (
             <div className="absolute top-4 left-4">
-              <Badge className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-3 py-1.5 text-sm rounded-full">
+              <Badge
+                className="text-white font-semibold px-3 py-1.5 text-sm rounded-full transition-colors duration-300"
+                style={{
+                  backgroundColor: 'hsl(175 65% 45%)',
+                }}
+              >
                 {data.productCount} Product{data.productCount !== 1 ? 's' : ''}
               </Badge>
             </div>
@@ -113,7 +124,10 @@ export const ProductCard = ({
           {/* CTA Button */}
           <Button
             asChild
-            className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            className="w-full text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+            style={{
+              backgroundColor: 'hsl(175 65% 45%)',
+            }}
           >
             <Link
               href={data.href}
