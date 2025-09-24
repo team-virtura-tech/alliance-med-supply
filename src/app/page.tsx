@@ -8,6 +8,7 @@ import { GoogleReviews } from '@/components/custom/GoogleReviews';
 // import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
+import { useSimpleParallax } from '@/hooks/useParallax';
 
 // Keep the existing commented code for reference
 // export default function Home() {
@@ -91,15 +92,23 @@ import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
 // }
 
 export default function Home() {
+  // Subtle parallax for background sections
+  const backgroundParallax = useSimpleParallax(0.1);
+  const sectionsParallax = useSimpleParallax(0.05);
+
   return (
     <div className="pt-20 md:pt-24 lg:pt-28">
       {/* Modern redesigned home page */}
       <div className="w-full">
         <HeroWithBentoGrid />
       </div>
-      <RentalCategoriesGrid />
+      <div ref={sectionsParallax.ref} style={sectionsParallax.style}>
+        <RentalCategoriesGrid />
+      </div>
       {/* <ServicesSection /> */}
-      <AboutSection />
+      <div ref={backgroundParallax.ref} style={backgroundParallax.style}>
+        <AboutSection />
+      </div>
       {/* <TestimonialsSection /> */}
       <GoogleReviews />
       <ContactSection />
