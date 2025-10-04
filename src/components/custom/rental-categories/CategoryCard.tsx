@@ -80,7 +80,8 @@ export const CategoryCard = ({
         <CardFooter className="px-4 pb-4 pt-2 mt-auto">
           <Button asChild className="w-full">
             <Link href={categoryUrl}>
-              View All {productCount || 0} Products
+              View {productCount && productCount > 1 ? productCount : ''}{' '}
+              Products
             </Link>
           </Button>
         </CardFooter>
