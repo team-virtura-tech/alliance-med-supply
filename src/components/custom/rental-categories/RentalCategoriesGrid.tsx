@@ -11,7 +11,7 @@ export const RentalCategoriesGrid = () => {
       <section
         data-component={componentName}
         id={componentName}
-        className="mx-auto w-full max-w-screen-xl px-4 md:px-6"
+        className="py-16 md:py-20 lg:py-24 mx-auto w-full max-w-screen-xl px-4 md:px-6"
       >
         <div className="py-12 text-center text-muted-foreground">
           Loading categories…
@@ -25,7 +25,7 @@ export const RentalCategoriesGrid = () => {
       <section
         data-component={componentName}
         id={componentName}
-        className="mx-auto w-full max-w-screen-xl px-4 md:px-6"
+        className="py-16 md:py-20 lg:py-24 mx-auto w-full max-w-screen-xl px-4 md:px-6"
       >
         <div className="py-12 text-center text-destructive">{error}</div>
       </section>
@@ -40,7 +40,7 @@ export const RentalCategoriesGrid = () => {
     <section
       data-component={componentName}
       id={componentName}
-      className=" mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8"
+      className="py-16 md:py-20 lg:py-24 mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8"
     >
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
