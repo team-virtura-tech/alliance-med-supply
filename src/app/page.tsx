@@ -97,7 +97,7 @@ export default function Home() {
   const sectionsParallax = useSimpleParallax(0.05);
 
   return (
-    <div className="pt-20 md:pt-24 lg:pt-28">
+    <div className="pt-24 md:pt-28 lg:pt-32">
       {/* Modern redesigned home page */}
       <div className="w-full">
         <HeroWithBentoGrid />
