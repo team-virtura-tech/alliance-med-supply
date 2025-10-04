@@ -147,7 +147,7 @@ export const HeroWithBentoGrid = ({
               delay: 0.2,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="flex-1 min-h-[300px] lg:min-h-0"
+            className="flex-1 min-h-[250px] lg:min-h-0"
           >
             <div
               ref={vanParallax.ref}
@@ -172,7 +172,7 @@ export const HeroWithBentoGrid = ({
             </div>
           </motion.div>
 
-          {/* BOTTOM - Four Equal Image Cards in a Row */}
+          {/* BOTTOM - Title + Four Equal Image Cards in a Row */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}
             animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
@@ -181,7 +181,13 @@ export const HeroWithBentoGrid = ({
               delay: 0.4,
               ease: [0.4, 0.0, 0.2, 1],
             }}
+            className="flex-shrink-0"
           >
+            {/* Section Title */}
+            <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 lg:mb-4">
+              Popular Rentals
+            </h3>
+
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
               {/* Image Card 1 */}
               <div
