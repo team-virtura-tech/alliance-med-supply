@@ -115,7 +115,7 @@
     },
     {
       "id": 6,
-      "name": "Electric Beds",
+      "name": "Electric Hospital Beds and Mattresses",
       "image": "/images/categories/electric-bed.jpg",
       "products": [
         {
@@ -135,6 +135,24 @@
           "name": "Bariatric Bed",
           "description": "Extra-wide, heavy-duty bed for added safety and support.",
           "image": "/images/electric-beds/bariatric-bed.jpeg"
+        },
+        {
+          "id": 604,
+          "name": "Gel Foam Mattress",
+          "description": "Provides pressure relief and comfort with supportive gel-infused foam.",
+          "image": "/images/mattresses/gel-foam-mattress.avif"
+        },
+        {
+          "id": 605,
+          "name": "Low Air Loss Mattress",
+          "description": "Circulates air to reduce pressure sores and improve skin health.",
+          "image": "/images/mattresses/low-air-loss-mattress.jpeg"
+        },
+        {
+          "id": 606,
+          "name": "Bariatric Mattress",
+          "description": "Extra-wide, heavy-duty design for safe and comfortable support.",
+          "image": "/images/mattresses/bariatric-mattress.jpeg"
         }
       ]
     },
@@ -236,31 +254,6 @@
           "name": "PureWick System",
           "description": "Non-invasive external catheter system for female patients, designed for comfort.",
           "image": "/images/purewick/purewick.jpeg"
-        }
-      ]
-    },
-    {
-      "id": 12,
-      "name": "Mattresses",
-      "image": "/images/categories/mattresses.jpg",
-      "products": [
-        {
-          "id": 1201,
-          "name": "Gel Foam Mattress",
-          "description": "Provides pressure relief and comfort with supportive gel-infused foam.",
-          "image": "/images/mattresses/gel-foam-mattress.avif"
-        },
-        {
-          "id": 1202,
-          "name": "Low Air Loss Mattress",
-          "description": "Circulates air to reduce pressure sores and improve skin health.",
-          "image": "/images/mattresses/low-air-loss-mattress.jpeg"
-        },
-        {
-          "id": 1203,
-          "name": "Bariatric Mattress",
-          "description": "Extra-wide, heavy-duty design for safe and comfortable support.",
-          "image": "/images/mattresses/bariatric-mattress.jpeg"
         }
       ]
     }

@@ -4,7 +4,6 @@ import { ScrollProgress } from '@/app/components/custom/scrollProgress';
 import { AboutSection } from '@/components/custom/about-section';
 // import { AboutSection } from '@/components/custom/about-section';
 import { ContactSection } from '@/components/custom/contact-section';
-import { GoogleReviews } from '@/components/custom/GoogleReviews';
 // import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
@@ -110,7 +109,7 @@ export default function Home() {
         <AboutSection />
       </div>
       {/* <TestimonialsSection /> */}
-      <GoogleReviews />
+      {/* <GoogleReviews /> */}
       <ContactSection />
       <ScrollProgress />
     </div>

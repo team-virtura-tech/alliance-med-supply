@@ -1,6 +1,6 @@
 import { useCategories } from '@/hooks/useCategories';
 import type { Category } from '@/types/categories';
-import { RentalCategoryCard } from './RentalCategoryCard';
+import { CategoryList } from './CategoryList';
 
 export const RentalCategoriesGrid = () => {
   const { data, loading, error } = useCategories();
@@ -50,18 +50,7 @@ export const RentalCategoriesGrid = () => {
           Professional-grade medical equipment delivered to your door
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-        {categories?.map((cat) => (
-          <RentalCategoryCard
-            key={cat.id}
-            id={cat.id}
-            name={cat.name}
-            image={cat.image || cat.products[0]?.image || ''}
-            description={`Professional ${cat.name.toLowerCase()} rental with delivery, setup, and 24/7 support included.`}
-            productCount={cat.products?.length || 0}
-          />
-        ))}
-      </div>
+      <CategoryList products={categories || []} />
     </section>
   );
 };
