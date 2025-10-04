@@ -10,7 +10,7 @@
           "name": "Pediatric Wheelchair",
           "sizes": ["12\"", "14\""],
           "description": "Sized for children, lightweight and easy to maneuver.",
-          "image": "/images/wheelchairs/pediatric-wheelchair.jpeg"
+          "image": "/images/wheelchairs/pediatric-wheelchair.png"
         },
         {
           "id": 102,
@@ -24,14 +24,14 @@
           "name": "Standard Wheelchair",
           "sizes": ["17\"", "18\"", "20\""],
           "description": "Everyday wheelchair in multiple seat widths for comfort and fit.",
-          "image": "/images/wheelchairs/standard-wheelchair.jpeg"
+          "image": "/images/wheelchairs/standard-wheelchair.png"
         },
         {
           "id": 104,
           "name": "Reclining Wheelchair",
           "sizes": ["18\"", "20\""],
           "description": "Reclining backrest for added comfort and medical support.",
-          "image": "/images/wheelchairs/reclining-wheelchair.jpeg"
+          "image": "/images/wheelchairs/reclining-wheelchair.png"
         }
       ]
     },
@@ -44,13 +44,13 @@
           "id": 201,
           "name": "Collapsible Electric Wheelchair",
           "description": "Compact, foldable powered chair for portability and convenience.",
-          "image": "/images/electric-wheelchairs/collapsible-electric-wheelchair.jpeg"
+          "image": "/images/electric-wheelchairs/collapsible-electric-wheelchair.png"
         },
         {
           "id": 202,
           "name": "Power Chair",
           "description": "Full-featured electric chair for smooth indoor and outdoor use.",
-          "image": "/images/electric-wheelchairs/power-chair.jpeg"
+          "image": "/images/electric-wheelchairs/power-chair.png"
         }
       ]
     },
@@ -64,14 +64,14 @@
           "name": "Transport Chair with Brakes",
           "sizes": ["19\""],
           "description": "Lightweight, caregiver-controlled with rear brakes for safety.",
-          "image": "/images/transport-chairs/transport-chair-w_-brakes.jpeg"
+          "image": "/images/transport-chairs/transport-chair-w_-brakes.png"
         },
         {
           "id": 302,
           "name": "Transport Chair without Brakes",
           "sizes": ["19\""],
           "description": "Simple, portable chair designed for easy travel.",
-          "image": "/images/transport-chairs/transport-chair-w_out-brakes.jpeg"
+          "image": "/images/transport-chairs/transport-chair-w_out-brakes.png"
         }
       ]
     },
@@ -84,13 +84,13 @@
           "id": 401,
           "name": "Seated Knee Walker",
           "description": "Allows seated use for comfort during longer recovery.",
-          "image": "/images/knee-scooters/seated-knee-walker.jpeg"
+          "image": "/images/knee-scooters/seated-knee-walker.png"
         },
         {
           "id": 402,
           "name": "Standard Knee Walker",
           "description": "Easy mobility solution for foot or ankle injuries.",
-          "image": "/images/knee-scooters/standard-knee-walker.jpeg"
+          "image": "/images/knee-scooters/standard-knee-walker.png"
         }
       ]
     },
@@ -103,13 +103,13 @@
           "id": 501,
           "name": "Standard Rollator",
           "description": "Four-wheel walker with seat and hand brakes for everyday mobility.",
-          "image": "/images/rollators/standard-rollator.jpeg"
+          "image": "/images/rollators/standard-rollator.png"
         },
         {
           "id": 502,
           "name": "Bariatric Rollator",
           "description": "Heavy-duty rollator with wider seat and reinforced frame.",
-          "image": "/images/rollators/bariatric-rollator.jpeg"
+          "image": "/images/rollators/bariatric-rollator.png"
         }
       ]
     },
