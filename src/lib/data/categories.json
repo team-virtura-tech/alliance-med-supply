@@ -147,25 +147,25 @@
           "id": 701,
           "name": "Manual Stand Assist",
           "description": "Sturdy support for caregiver-assisted transfers.",
-          "image": "/images/stand-assists-and-lifts/manual-stand-assist.jpeg"
+          "image": "/images/stand-assists-and-lifts/manual-stand-assist.png"
         },
         {
           "id": 702,
           "name": "Electric Stand Assist",
           "description": "Power-assisted transfers for ease and independence.",
-          "image": "/images/stand-assists-and-lifts/electric-stand-assist.jpeg"
+          "image": "/images/stand-assists-and-lifts/electric-stand-assist.png"
         },
         {
           "id": 703,
           "name": "Manual Hoyer Lift",
           "description": "Hydraulic lift for safe patient handling.",
-          "image": "/images/stand-assists-and-lifts/manual-hoyer-lift.jpeg"
+          "image": "/images/stand-assists-and-lifts/manual-hoyer-lift.png"
         },
         {
           "id": 704,
           "name": "Electric Hoyer Lift",
           "description": "Powered lift for smooth, effortless transfers.",
-          "image": "/images/stand-assists-and-lifts/electric-hoyer-lift.jpeg"
+          "image": "/images/stand-assists-and-lifts/electric-hoyer-lift.png"
         }
       ]
     },
@@ -178,25 +178,25 @@
           "id": 801,
           "name": "Small Mobility Scooter",
           "description": "Compact and collapsible for travel.",
-          "image": "/images/mobility-scooters/small-mobility-scooter.jpeg"
+          "image": "/images/mobility-scooters/small-mobility-scooter.png"
         },
         {
           "id": 802,
           "name": "Standard Mobility Scooter",
           "description": "Reliable for daily indoor and outdoor use.",
-          "image": "/images/mobility-scooters/standard-mobility-scooter.jpeg"
+          "image": "/images/mobility-scooters/standard-mobility-scooter.png"
         },
         {
           "id": 803,
           "name": "Lightweight Mobility Scooter",
           "description": "Easy to lift and transport.",
-          "image": "/images/mobility-scooters/lightweight-mobility-scooter.jpeg"
+          "image": "/images/mobility-scooters/lightweight-mobility-scooter.png"
         },
         {
           "id": 804,
           "name": "Heavy Duty Mobility Scooter",
           "description": "High-capacity scooter built for rough terrain/all surfaces.",
-          "image": "/images/mobility-scooters/heavy-duty-mobility-scooter.jpeg"
+          "image": "/images/mobility-scooters/heavy-duty-mobility-scooter.png"
         }
       ]
     },
@@ -209,7 +209,7 @@
           "id": 901,
           "name": "Continuous Passive Motion Machine",
           "description": "Therapy device to gently move joints after surgery. Ideal for knee surgery patients.",
-          "image": "/images/cpm-machine/cpm-machine.jpeg"
+          "image": "/images/cpm-machine/cpm-machine.png"
         }
       ]
     },
@@ -222,7 +222,7 @@
           "id": 1001,
           "name": "Reclining Lift Chair",
           "description": "Reclining chair with lift assistance to help users sit and stand safely.",
-          "image": "/images/lift-chair/lift-chair.jpeg"
+          "image": "/images/lift-chair/lift-chair.png"
         }
       ]
     },
