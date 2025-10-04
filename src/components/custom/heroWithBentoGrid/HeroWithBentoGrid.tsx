@@ -74,7 +74,7 @@ export const HeroWithBentoGrid = ({
             </div>
 
             <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm text-primary w-fit mb-6">
-              Bay Area&apos;s Trusted Medical Equipment Provider
+              All equipments are available for rent or purchase
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 lg:mb-6">
@@ -93,7 +93,7 @@ export const HeroWithBentoGrid = ({
             <div className="grid grid-cols-2 gap-4 mb-6 lg:mb-8">
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
-                Same-day processing
+                All equipments are sanitized
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
@@ -101,7 +101,7 @@ export const HeroWithBentoGrid = ({
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
-                Professional delivery
+                Professional delivery service
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-700">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
