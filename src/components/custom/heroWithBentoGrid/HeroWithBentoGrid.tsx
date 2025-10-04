@@ -42,7 +42,7 @@ export const HeroWithBentoGrid = ({
       id={rootId}
       data-component={componentName}
       className={cn(
-        'w-full min-w-0 h-[calc(100vh-5rem)] flex items-center px-4 pb-6 md:px-6 md:pb-8 lg:px-8 lg:pb-10',
+        'w-full min-w-0 min-h-[600px] md:min-h-[700px] lg:h-[calc(100vh-8rem)] flex items-center px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:pb-10',
         className
       )}
     >
