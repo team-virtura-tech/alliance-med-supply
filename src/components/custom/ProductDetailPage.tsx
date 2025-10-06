@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, Phone, ShoppingCart } from 'lucide-react';
+import { ArrowLeft, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,7 +27,10 @@ export const ProductDetailPage = ({
     <div
       id="ProductDetailPage"
       data-component="ProductDetailPage"
-      className={cn('min-h-screen bg-background py-8', className)}
+      className={cn(
+        'min-h-screen bg-background pt-24 md:pt-28 lg:pt-32 pb-8',
+        className
+      )}
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 md:px-6">
         {/* Breadcrumb Navigation */}
@@ -78,9 +81,19 @@ export const ProductDetailPage = ({
             className="space-y-8"
           >
             {/* Category Badge */}
-            <div>
+            {/* <div>
               <Badge className="bg-teal-100 text-teal-700 hover:bg-teal-200 px-4 py-2 text-sm font-medium rounded-full">
                 {category.name}
+              </Badge>
+            </div> */}
+
+            {/* Availability Pills */}
+            <div className="flex flex-wrap gap-2">
+              <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1.5 text-xs font-medium rounded-full">
+                Rental Available
+              </Badge>
+              <Badge className="bg-green-100 text-green-700 hover:bg-green-200 px-3 py-1.5 text-xs font-medium rounded-full">
+                Purchase Available
               </Badge>
             </div>
 
@@ -127,37 +140,24 @@ export const ProductDetailPage = ({
                   className="flex-1 bg-teal-500 hover:bg-teal-600 text-white font-semibold py-4 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <ShoppingCart className="mr-3 h-5 w-5" />
-                  Request Quote
+                  Call (408) 942-9000 for Quote
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="flex-1 border-2 border-slate-300 text-slate-700 hover:border-slate-400 hover:bg-slate-50 font-semibold py-4 px-8 rounded-2xl text-lg transition-all duration-300"
-                >
-                  <Phone className="mr-3 h-5 w-5" />
-                  Call (408) 942-9000
-                </Button>
+              </div>
+            </div>
+
+            {/* Professional Medical Equipment Rental Banner */}
+            <div className="bg-teal-50 rounded-3xl p-8 border border-teal-100">
+              <div className="text-center space-y-4">
+                <h3 className="text-2xl font-bold text-teal-800">
+                  Professional Medical Equipment Rental
+                </h3>
+                <p className="text-lg text-teal-700">
+                  Same-day delivery available in the Bay Area
+                </p>
               </div>
             </div>
           </motion.div>
         </div>
-
-        {/* Professional Medical Equipment Rental Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          className="mt-16 bg-teal-50 rounded-3xl p-8 border border-teal-100"
-        >
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl font-bold text-teal-800">
-              Professional Medical Equipment Rental
-            </h3>
-            <p className="text-lg text-teal-700">
-              Same-day delivery available in the Bay Area
-            </p>
-          </div>
-        </motion.div>
 
         {/* Related Products */}
         <motion.div
