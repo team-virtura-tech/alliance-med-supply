@@ -23,7 +23,10 @@ export const ProductCategoryPage = ({
     <div
       id="ProductCategoryPage"
       data-component="ProductCategoryPage"
-      className={cn('min-h-screen bg-background py-8', className)}
+      className={cn(
+        'min-h-screen bg-background pt-24 md:pt-28 lg:pt-32 pb-8',
+        className
+      )}
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 md:px-6">
         {/* Header Section */}
