@@ -40,8 +40,11 @@ export const ProductDetailPage = ({
           transition={{ duration: 0.3 }}
           className="mb-8 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
         >
-          <Link href="/" className="hover:text-foreground transition-colors">
-            Home
+          <Link
+            href="/products"
+            className="hover:text-foreground transition-colors"
+          >
+            Products
           </Link>
           <span>/</span>
           <Link
