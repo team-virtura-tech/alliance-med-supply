@@ -1,3 +1,4 @@
+export { ContactForm, type ContactFormProps } from './ContactForm';
 export {
   ProductCard,
   type ProductCardData,
