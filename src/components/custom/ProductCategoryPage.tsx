@@ -37,11 +37,11 @@ export const ProductCategoryPage = ({
           className="mb-8"
         >
           <Link
-            href="/"
+            href="/products"
             className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            Back to Products
           </Link>
 
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
