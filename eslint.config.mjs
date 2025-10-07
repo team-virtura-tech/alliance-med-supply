@@ -64,6 +64,9 @@ const eslintConfig = [
       // Next.js auto-imports React
       'react/react-in-jsx-scope': 'off',
 
+      // Disable prop-types since we use TypeScript
+      'react/prop-types': 'off',
+
       // Hooks rules
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
