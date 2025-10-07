@@ -1,5 +1,8 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
+import { motion } from 'motion/react';
 import React from 'react';
 
 type ContactInfoProps = React.ComponentProps<'div'> & {
@@ -23,40 +26,73 @@ export function ContactCard({
   className,
   formSectionClassName,
   children,
-  ...props
 }: ContactCardProps) {
   return (
-    <div
+    <motion.div
       className={cn(
         'bg-card relative grid h-full w-full shadow md:grid-cols-2 lg:grid-cols-3',
         className
       )}
-      {...props}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      whileHover={{ y: -2 }}
+      data-component="ContactCard"
     >
       <div className="flex flex-col justify-between lg:col-span-2">
-        <div className="relative h-full space-y-4 px-4 py-8 md:p-8">
-          <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+        <motion.div
+          className="relative h-full space-y-4 px-4 py-8 md:p-8"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.h1
+            className="text-3xl font-bold md:text-4xl lg:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             {title}
-          </h1>
-          <p className="text-muted-foreground max-w-xl text-sm md:text-base lg:text-lg">
+          </motion.h1>
+          <motion.p
+            className="text-muted-foreground max-w-xl text-sm md:text-base lg:text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             {description}
-          </p>
-          <div className="grid gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
+          </motion.p>
+          <motion.div
+            className="grid gap-4 md:grid md:grid-cols-2 lg:grid-cols-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             {contactInfo?.map((info, index) => (
-              <ContactInfo key={index} {...info} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+              >
+                <ContactInfo {...info} />
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-      <div
+      <motion.div
         className={cn(
           'bg-muted/40 flex h-full w-full items-center p-5 md:col-span-1',
           formSectionClassName
         )}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
       >
         {children}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -65,17 +101,25 @@ function ContactInfo({
   label,
   value,
   className,
-  ...props
 }: ContactInfoProps) {
   return (
-    <div className={cn('flex items-center gap-3 py-3', className)} {...props}>
-      <div className="bg-muted/40 rounded-lg p-3">
+    <motion.div
+      className={cn('flex items-center gap-3 py-3', className)}
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.2 }}
+      data-component="ContactInfo"
+    >
+      <motion.div
+        className="bg-muted/40 rounded-lg p-3"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ duration: 0.2 }}
+      >
         <Icon className="h-5 w-5" />
-      </div>
+      </motion.div>
       <div>
         <p className="font-medium">{label}</p>
         <p className="text-muted-foreground text-xs">{value}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }

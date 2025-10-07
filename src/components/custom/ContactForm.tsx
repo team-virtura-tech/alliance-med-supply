@@ -1,10 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { motion } from 'motion/react';
 import { useState } from 'react';
 
 export type ContactFormProps = {
@@ -118,42 +118,68 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
   };
 
   return (
-    <div
+    <motion.div
       id={rootId}
       data-component={componentName}
       className={`space-y-6 ${className || ''}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.5 }}
     >
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <motion.form
+        onSubmit={handleSubmit}
+        className="space-y-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.7 }}
+      >
         {/* First Name & Last Name */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-2">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+        >
+          <motion.div
+            className="space-y-2"
+            whileFocus={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <Label
               htmlFor="firstName"
               className="typography-small font-medium text-foreground"
             >
               First name
             </Label>
-            <Input
-              id="firstName"
-              type="text"
-              placeholder="First name"
-              value={formData.firstName}
-              onChange={(e) => handleInputChange('firstName', e.target.value)}
-              className={`h-12 ${errors.firstName ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-              aria-invalid={!!errors.firstName}
-              aria-describedby={
-                errors.firstName ? 'firstName-error' : undefined
-              }
-            />
+            <motion.div
+              whileFocus={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Input
+                id="firstName"
+                type="text"
+                placeholder="First name"
+                value={formData.firstName}
+                onChange={(e) => handleInputChange('firstName', e.target.value)}
+                className={`h-12 ${errors.firstName ? 'border-destructive focus-visible:ring-destructive' : ''}`}
+                aria-invalid={!!errors.firstName}
+                aria-describedby={
+                  errors.firstName ? 'firstName-error' : undefined
+                }
+              />
+            </motion.div>
             {errors.firstName && (
-              <p
+              <motion.p
                 id="firstName-error"
                 className="typography-small text-destructive"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
               >
                 {errors.firstName}
-              </p>
+              </motion.p>
             )}
-          </div>
+          </motion.div>
 
           <div className="space-y-2">
             <Label
@@ -181,7 +207,7 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
               </p>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Email */}
         <div className="space-y-2">
@@ -259,20 +285,37 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
         </div>
 
         {/* Submit Button */}
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 1.2 }}
         >
-          {isSubmitting ? (
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-              Sending...
-            </div>
-          ) : (
-            'Send message'
-          )}
-        </Button>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <motion.div
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                  Sending...
+                </motion.div>
+              ) : (
+                'Send message'
+              )}
+            </Button>
+          </motion.div>
+        </motion.div>
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
@@ -292,7 +335,7 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
             </p>
           </div>
         )}
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
