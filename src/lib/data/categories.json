@@ -122,37 +122,37 @@
           "id": 601,
           "name": "Full Electric Bed",
           "description": "Fully adjustable head, foot, and height with remote control.",
-          "image": "/images/electric-beds/full-electric-bed.jpeg"
+          "image": "/images/electric-beds/full-electric-bed.png"
         },
         {
           "id": 602,
           "name": "Semi-Electric Bed",
           "description": "Electric head and foot adjustments with manual height control.",
-          "image": "/images/electric-beds/semi-electric-bed.jpeg"
+          "image": "/images/electric-beds/semi-electric-bed.png"
         },
         {
           "id": 603,
           "name": "Bariatric Bed",
           "description": "Extra-wide, heavy-duty bed for added safety and support.",
-          "image": "/images/electric-beds/bariatric-bed.jpeg"
+          "image": "/images/electric-beds/bariatric-bed.png"
         },
         {
           "id": 604,
           "name": "Gel Foam Mattress",
           "description": "Provides pressure relief and comfort with supportive gel-infused foam.",
-          "image": "/images/mattresses/gel-foam-mattress.avif"
+          "image": "/images/mattresses/gel-foam-mattress.png"
         },
         {
           "id": 605,
           "name": "Low Air Loss Mattress",
           "description": "Circulates air to reduce pressure sores and improve skin health.",
-          "image": "/images/mattresses/low-air-loss-mattress.jpeg"
+          "image": "/images/mattresses/low-air-loss-mattress.png"
         },
         {
           "id": 606,
           "name": "Bariatric Mattress",
           "description": "Extra-wide, heavy-duty design for safe and comfortable support.",
-          "image": "/images/mattresses/bariatric-mattress.jpeg"
+          "image": "/images/mattresses/bariatric-mattress.png"
         }
       ]
     },
@@ -253,7 +253,7 @@
           "id": 1101,
           "name": "PureWick System",
           "description": "Non-invasive external catheter system for female patients, designed for comfort.",
-          "image": "/images/purewick/purewick.jpeg"
+          "image": "/images/purewick/purewick.png"
         }
       ]
     }
