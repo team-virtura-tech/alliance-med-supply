@@ -4,6 +4,12 @@ import { Avatar } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
+  fetchGoogleReviews,
+  isGoogleReviewsError,
+  type GoogleReview,
+  type GoogleReviewsResponse,
+} from '@/lib/api/googleReviews';
+import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
@@ -13,26 +19,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
-
-type Review = {
-  author_name: string;
-  author_url?: string;
-  profile_photo_url?: string;
-  rating: number;
-  relative_time_description?: string;
-  text: string;
-  time?: number;
-};
-
-type ReviewsPayload = {
-  name?: string;
-  url?: string;
-  rating?: number;
-  user_ratings_total?: number;
-  editorial_summary?: string;
-  html_attributions?: string[];
-  reviews: Review[];
-};
 
 const StarRating = ({
   rating = 0,
@@ -70,18 +56,18 @@ const StarRating = ({
 };
 
 export const GoogleReviews = () => {
-  const [data, setData] = useState<ReviewsPayload | null>(null);
+  const [data, setData] = useState<GoogleReviewsResponse | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/api/google-reviews')
-      .then((r) => r.json())
-      .then((d) => {
-        if (d?.error) setErr(d.error);
-        else setData(d);
-      })
-      .catch(() => setErr('Failed to load reviews'));
+    fetchGoogleReviews().then((response) => {
+      if (isGoogleReviewsError(response)) {
+        setErr(response.error);
+      } else {
+        setData(response);
+      }
+    });
   }, []);
 
   // Auto-rotate carousel every 6 seconds
@@ -263,7 +249,7 @@ export const GoogleReviews = () => {
                 transform: `translateX(-${currentIndex * (100 / getCardsPerView())}%)`,
               }}
             >
-              {reviews?.map((review) => (
+              {reviews?.map((review: GoogleReview) => (
                 <div
                   key={review.time}
                   className="flex-none w-full md:w-1/2 lg:w-1/3 px-2"
