@@ -226,6 +226,197 @@ _We use OKLCH for perceptually uniform colors and better dark mode transitions._
 
 ---
 
+## 🎨 Icons
+
+### Icon Libraries
+
+**Use ONLY these two icon libraries:**
+
+1. **Lucide React** - For all UI icons
+2. **Simple Icons** - For brand logos ONLY (social media, tech brands)
+
+### 1. Lucide React (Primary Icon Library)
+
+**Installation:** Already installed (`lucide-react` in package.json)
+
+**Usage:**
+
+```tsx
+import { Phone, MapPin, Star, Award, Clock, Heart, ArrowRight } from 'lucide-react';
+
+// Standard size (matches button icon size)
+<Phone className="h-4 w-4" />
+
+// Larger icons for emphasis
+<Star className="h-5 w-5" />
+
+// With color
+<Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+
+// In buttons (auto-sized by button component)
+<Button>
+  <Phone className="h-4 w-4" />
+  Call Now
+</Button>
+```
+
+**Common Icons:**
+
+| Use Case         | Icon Component | Example                                                        |
+| ---------------- | -------------- | -------------------------------------------------------------- |
+| Phone/Call       | `Phone`        | `<Phone className="h-4 w-4" />`                                |
+| Location/Map     | `MapPin`       | `<MapPin className="h-4 w-4" />`                               |
+| Time/Clock       | `Clock`        | `<Clock className="h-4 w-4" />`                                |
+| Rating/Star      | `Star`         | `<Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />` |
+| Award/Badge      | `Award`        | `<Award className="h-4 w-4" />`                                |
+| Navigation Arrow | `ArrowRight`   | `<ArrowRight className="h-4 w-4" />`                           |
+| Favorite/Like    | `Heart`        | `<Heart className="h-4 w-4" />`                                |
+| Menu             | `Menu`         | `<Menu className="h-5 w-5" />`                                 |
+| Close/X          | `X`            | `<X className="h-5 w-5" />`                                    |
+| Check/Success    | `Check`        | `<Check className="h-5 w-5" />`                                |
+| Shopping         | `ShoppingCart` | `<ShoppingCart className="h-5 w-5" />`                         |
+| User/Profile     | `User`         | `<User className="h-5 w-5" />`                                 |
+
+**Icon Sizes:**
+
+```tsx
+// Small (in-text icons, button icons)
+className = 'h-4 w-4'; // 16px × 16px
+
+// Medium (default standalone icons)
+className = 'h-5 w-5'; // 20px × 20px
+
+// Large (feature icons, hero sections)
+className = 'h-6 w-6'; // 24px × 24px
+
+// Extra Large (decorative)
+className = 'h-8 w-8'; // 32px × 32px
+```
+
+**Icon Colors:**
+
+```tsx
+// Primary brand color
+<Phone className="h-4 w-4 text-primary" />
+
+// Muted/secondary
+<Clock className="h-4 w-4 text-muted-foreground" />
+
+// Accent/orange
+<Award className="h-4 w-4 text-accent" />
+
+// Custom colors
+<Star className="h-4 w-4 text-yellow-400" />
+
+// With fill (for stars, hearts, etc.)
+<Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+```
+
+---
+
+### 2. Simple Icons (Brand Logos Only)
+
+**Installation:** Already installed (`simple-icons` in package.json)
+
+**Usage:**
+
+```tsx
+import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
+
+// Use with custom SVG component or inline
+<svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+  <path d={siGoogle.path} />
+</svg>;
+```
+
+**When to use:**
+
+- Social media icons (Facebook, Instagram, LinkedIn, etc.)
+- Tech brand logos (Google, Apple, Microsoft, etc.)
+- Payment provider logos (Visa, Mastercard, PayPal, etc.)
+
+**Common Brand Icons:**
+
+- `siGoogle` - Google logo
+- `siApple` - Apple logo
+- `siFacebook` - Facebook logo
+- `siInstagram` - Instagram logo
+- `siLinkedin` - LinkedIn logo
+- `siTwitter` / `siX` - Twitter/X logo
+- `siYelp` - Yelp logo
+
+---
+
+### Icon Usage Rules
+
+✅ **DO:**
+
+- Use Lucide React for ALL UI icons
+- Use Simple Icons ONLY for brand logos
+- Keep icon sizes consistent (h-4 w-4 for buttons, h-5 w-5 for standalone)
+- Use semantic colors (text-primary, text-muted-foreground)
+- Add descriptive aria-labels for icon-only buttons
+
+❌ **DON'T:**
+
+- Don't use emoji icons (🔍, 📞, 📍, ⭐, 🕒) in production code
+- Don't mix different icon libraries
+- Don't use custom SVGs unless absolutely necessary
+- Don't use icon images when icon components are available
+- Don't create inconsistent icon sizes
+
+---
+
+### Icon Examples in Context
+
+**Trust Indicators:**
+
+```tsx
+<div className="flex items-center gap-2">
+  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+  <span>4.9/5 Rating</span>
+</div>
+
+<div className="flex items-center gap-2">
+  <Award className="h-4 w-4 text-primary" />
+  <span>15+ Years Experience</span>
+</div>
+```
+
+**Buttons with Icons:**
+
+```tsx
+<Button variant="default">
+  <Phone className="h-4 w-4" />
+  Call (650) 961-4646
+</Button>
+
+<Button variant="secondary">
+  <MapPin className="h-4 w-4" />
+  Find Location
+</Button>
+```
+
+**Feature Lists:**
+
+```tsx
+<div className="flex items-center gap-2">
+  <Check className="h-5 w-5 text-primary" />
+  <span>Professional delivery service</span>
+</div>
+```
+
+**Hours/Time:**
+
+```tsx
+<div className="flex items-center gap-2">
+  <Clock className="h-4 w-4" />
+  <span>Mon-Fri: 10AM-5PM | Sat: 10AM-2PM</span>
+</div>
+```
+
+---
+
 ## 🎯 Usage Examples
 
 ### Hero Section
@@ -269,7 +460,7 @@ _We use OKLCH for perceptually uniform colors and better dark mode transitions._
 1. **Consistency:** Use semantic variants, not custom classes
 2. **Hierarchy:** Primary → Secondary → Ghost → Destructive
 3. **Spacing:** Use standard sizes (sm, default, lg)
-4. **Icons:** 4x4 size, use Lucide icons only
+4. **Icons:** Use Lucide React (h-4 w-4 in buttons, h-5 w-5 standalone)
 5. **Accessibility:** All buttons have proper focus states
 6. **Mobile-first:** All buttons are responsive and touch-friendly
 
@@ -281,7 +472,9 @@ _We use OKLCH for perceptually uniform colors and better dark mode transitions._
 ❌ Don't mix button variants on the same page without purpose  
 ❌ Don't overuse the accent (orange) variant  
 ❌ Don't use ghost for primary actions  
-❌ Don't use too many button variants in one section
+❌ Don't use too many button variants in one section  
+❌ Don't use emoji icons (🔍, 📞, 📍) - use Lucide React instead  
+❌ Don't mix icon libraries or use custom SVGs unnecessarily
 
 ---
 

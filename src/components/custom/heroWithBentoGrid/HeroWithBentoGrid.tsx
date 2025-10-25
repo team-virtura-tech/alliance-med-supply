@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useSimpleParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Award, Clock, MapPin, Phone, Star } from 'lucide-react';
 import Image from 'next/image';
 
 export type HeroWithBentoGridProps = {
@@ -66,10 +67,12 @@ export const HeroWithBentoGrid = ({
                 Licensed Provider
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                ⭐ 4.9/5 Rating
+                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                4.9/5 Rating
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                🕒 15+ Years Experience
+                <Award className="h-4 w-4 text-primary" />
+                15+ Years Experience
               </div>
             </div>
 
@@ -111,26 +114,30 @@ export const HeroWithBentoGrid = ({
 
             <div className="flex flex-col sm:flex-row gap-3 lg:gap-4">
               <Button
+                variant="default"
                 size="lg"
                 onClick={onPrimaryClick}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-200"
+                className="w-full sm:w-auto"
               >
-                📞 Call (650) 961-4646
+                <Phone className="h-4 w-4" />
+                Call (650) 961-4646
               </Button>
               <Button
-                variant="ghost"
+                variant="secondary"
                 size="lg"
                 onClick={onSecondaryClick}
-                className="text-primary hover:bg-primary/5 hover:text-primary/80 border border-primary/20 rounded-2xl px-8 py-3 transition-all duration-200"
+                className="w-full sm:w-auto"
               >
-                📍 Find Location
+                <MapPin className="h-4 w-4" />
+                Find Location
               </Button>
             </div>
 
             {/* Hours */}
             <div className="mt-6 pt-4 border-t border-gray-200">
-              <p className="text-sm text-gray-600">
-                🕒 Mon-Fri: 10AM-5PM | Sat: 10AM-2PM
+              <p className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className="h-4 w-4" />
+                Mon-Fri: 10AM-5PM | Sat: 10AM-2PM
               </p>
             </div>
           </div>
