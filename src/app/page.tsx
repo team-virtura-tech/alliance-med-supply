@@ -1,12 +1,13 @@
 'use client';
 
 import { ScrollProgress } from '@/app/components/custom/scrollProgress';
-import { AboutSection } from '@/components/custom/about-section';
 // import { AboutSection } from '@/components/custom/about-section';
-import { ContactSection } from '@/components/custom/contact-section';
 // import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
+import { CtaSection } from '@/components/custom/cta-section';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
+import { ServiceAreaSection } from '@/components/custom/service-area-section';
+// import { TestimonialsSection } from '@/components/custom/testimonials-section';
 import { useSimpleParallax } from '@/hooks/useParallax';
 
 // Keep the existing commented code for reference
@@ -92,7 +93,6 @@ import { useSimpleParallax } from '@/hooks/useParallax';
 
 export default function Home() {
   // Subtle parallax for background sections
-  const backgroundParallax = useSimpleParallax(0.1);
   const sectionsParallax = useSimpleParallax(0.05);
 
   return (
@@ -105,12 +105,14 @@ export default function Home() {
         <RentalCategoriesGrid />
       </div>
       {/* <ServicesSection /> */}
-      <div ref={backgroundParallax.ref} style={backgroundParallax.style}>
+      {/* <div ref={backgroundParallax.ref} style={backgroundParallax.style}>
         <AboutSection />
-      </div>
+      </div> */}
       {/* <TestimonialsSection /> */}
       {/* <GoogleReviews /> */}
-      <ContactSection />
+      {/* <ContactSection /> */}
+      <ServiceAreaSection />
+      <CtaSection />
       <ScrollProgress />
     </div>
   );
