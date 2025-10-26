@@ -203,10 +203,10 @@ export const HeroWithBentoGrid = ({
                 className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer"
               >
                 <Image
-                  src="/images/wheels.png"
-                  alt="Mobility Equipment"
+                  src="/images/hero-section/hero-1.jpg"
+                  alt="Hero section image 1"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 50vw, 15vw"
                 />
               </div>
@@ -218,10 +218,10 @@ export const HeroWithBentoGrid = ({
                 className="bg-primary p-3 lg:p-4 relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square"
               >
                 <Image
-                  src="/images/walker.png"
-                  alt="Walker Equipment"
+                  src="/images/hero-section/hero-2.jpg"
+                  alt="Hero section image 2"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 50vw, 15vw"
                 />
               </div>
@@ -229,8 +229,8 @@ export const HeroWithBentoGrid = ({
               {/* Image Card 3 */}
               <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-muted">
                 <Image
-                  src="/images/categories/electric-wheelchair.jpg"
-                  alt="Electric Wheelchair"
+                  src="/images/hero-section/hero-3.jpg"
+                  alt="Hero section image 3"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 50vw, 15vw"
@@ -240,8 +240,8 @@ export const HeroWithBentoGrid = ({
               {/* Image Card 4 */}
               <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/20">
                 <Image
-                  src="/images/categories/mobility-scooters.jpg"
-                  alt="Mobility Scooter"
+                  src="/images/hero-section/hero-4.jpg"
+                  alt="Hero section image 4"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 50vw, 15vw"
