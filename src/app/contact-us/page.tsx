@@ -5,6 +5,7 @@ import { ContactCard } from '@/components/ui/contact-card';
 import { useInView } from '@/hooks/useInView';
 import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
+import { InteractiveMap } from './interactiveMap';
 
 export default function ContactPage() {
   // Scroll-triggered animations
@@ -70,30 +71,15 @@ export default function ContactPage() {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           <motion.div
-            className="h-96 lg:h-[500px] rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-border overflow-hidden"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
+            className="overflow-hidden rounded-2xl"
           >
-            {/* Map placeholder */}
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <motion.div
-                  className="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <MapPin className="h-8 w-8 text-primary" />
-                </motion.div>
-                <div className="space-y-2">
-                  <h3 className="typography-card-title text-foreground">
-                    Visit Our Location
-                  </h3>
-                  <p className="typography-body text-muted-foreground">
-                    Find us in San Jose, CA
-                  </p>
-                </div>
-              </div>
-            </div>
+            <InteractiveMap
+              address="1630 Oakland Road, Suite A110, San Jose, CA 95131"
+              height="h-96 lg:h-[500px]"
+              className="w-full"
+            />
           </motion.div>
         </motion.div>
       </div>
