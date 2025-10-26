@@ -59,18 +59,18 @@ export const HeroWithBentoGrid = ({
           }}
           className="w-full lg:flex-[0_0_40%] flex"
         >
-          <div className="bg-gradient-to-br from-teal-50 via-white to-orange-50 rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
+          <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
             {/* Trust Indicators Header */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm text-text-muted">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                 Licensed Provider
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+              <div className="flex items-center gap-2 text-sm text-text-muted">
+                <Star className="h-4 w-4 fill-star text-star" />
                 4.9/5 Rating
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm text-text-muted">
                 <Award className="h-4 w-4 text-primary" />
                 15+ Years Experience
               </div>
@@ -80,12 +80,12 @@ export const HeroWithBentoGrid = ({
               All equipments are available for rent or purchase
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-4 lg:mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4 lg:mb-6">
               Bay Area&apos;s Trusted{' '}
               <span className="text-primary">Medical Equipment</span> Services
             </h1>
 
-            <p className="text-base lg:text-lg text-gray-600 leading-relaxed mb-6 lg:mb-8">
+            <p className="text-base lg:text-lg text-text-muted leading-relaxed mb-6 lg:mb-8">
               From mobility aids and hospital beds to specialized equipment for
               recovery, we handle all your medical supply needs quickly and
               professionally. Serving Mountain View, Palo Alto, Sunnyvale, San
@@ -94,19 +94,19 @@ export const HeroWithBentoGrid = ({
 
             {/* Service Features Grid */}
             <div className="grid grid-cols-2 gap-4 mb-6 lg:mb-8">
-              <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="flex items-center gap-2 text-sm text-text-primary">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
                 All equipments are sanitized
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="flex items-center gap-2 text-sm text-text-primary">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
                 Walk-ins welcome
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="flex items-center gap-2 text-sm text-text-primary">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
                 Professional delivery service
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-700">
+              <div className="flex items-center gap-2 text-sm text-text-primary">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
                 Trusted by 15,000+ customers
               </div>
@@ -134,8 +134,8 @@ export const HeroWithBentoGrid = ({
             </div>
 
             {/* Hours */}
-            <div className="mt-6 pt-4 border-t border-gray-200">
-              <p className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="mt-6 pt-4 border-t border-border">
+              <p className="flex items-center gap-2 text-sm text-text-muted">
                 <Clock className="h-4 w-4" />
                 Mon-Fri: 10AM-5PM | Sat: 10AM-2PM
               </p>
@@ -172,7 +172,7 @@ export const HeroWithBentoGrid = ({
 
               {/* Tag overlay */}
               <div className="absolute top-6 left-6">
-                <span className="bg-orange-500 text-white text-sm px-4 py-2 rounded-full font-medium shadow-lg">
+                <span className="bg-accent text-accent-foreground text-sm px-4 py-2 rounded-full font-medium shadow-lg">
                   Professional Service
                 </span>
               </div>
@@ -191,7 +191,7 @@ export const HeroWithBentoGrid = ({
             className="flex-shrink-0"
           >
             {/* Section Title */}
-            <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 lg:mb-4">
+            <h3 className="text-lg lg:text-xl font-semibold text-text-primary mb-3 lg:mb-4">
               Popular Rentals
             </h3>
 
@@ -200,7 +200,7 @@ export const HeroWithBentoGrid = ({
               <div
                 ref={cardsParallax.ref}
                 style={cardsParallax.style}
-                className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-orange-300 group cursor-pointer"
+                className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer"
               >
                 <Image
                   src="/images/wheels.png"
@@ -215,7 +215,7 @@ export const HeroWithBentoGrid = ({
               <div
                 ref={cardsParallax2.ref}
                 style={cardsParallax2.style}
-                className="bg-[#006663] p-3 lg:p-4 relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square"
+                className="bg-primary p-3 lg:p-4 relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square"
               >
                 <Image
                   src="/images/walker.png"
@@ -227,7 +227,7 @@ export const HeroWithBentoGrid = ({
               </div>
 
               {/* Image Card 3 */}
-              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-blue-100 to-blue-200">
+              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-muted">
                 <Image
                   src="/images/categories/electric-wheelchair.jpg"
                   alt="Electric Wheelchair"
@@ -238,7 +238,7 @@ export const HeroWithBentoGrid = ({
               </div>
 
               {/* Image Card 4 */}
-              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-gradient-to-br from-purple-100 to-purple-200">
+              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/20">
                 <Image
                   src="/images/categories/mobility-scooters.jpg"
                   alt="Mobility Scooter"

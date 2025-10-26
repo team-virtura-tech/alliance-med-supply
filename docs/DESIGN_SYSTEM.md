@@ -88,6 +88,92 @@ _We use OKLCH for perceptually uniform colors and better dark mode transitions._
 
 ---
 
+### Star Rating Color: Yellow
+
+| Shade          | OKLCH Value                | Tailwind Ref | Usage                                |
+| -------------- | -------------------------- | ------------ | ------------------------------------ |
+| **yellow-400** | `oklch(0.837 0.179 90.49)` | `yellow-400` | **Star ratings** (industry standard) |
+
+**CSS Variables:**
+
+```css
+--star: oklch(0.837 0.179 90.49); /* yellow-400 #facc15 */
+```
+
+**Usage:**
+
+```tsx
+// Star icon for ratings
+<Star className="h-4 w-4 fill-star text-star" />
+
+// In a rating display
+<div className="flex items-center gap-2">
+  <Star className="h-4 w-4 fill-star text-star" />
+  <span>4.9/5 Rating</span>
+</div>
+```
+
+---
+
+## 📝 Text Color Hierarchy
+
+Use semantic text color tokens for consistent typography across all pages.
+
+### Text Colors
+
+| Token              | OKLCH Value (Light)         | OKLCH Value (Dark)         | Tailwind Class        | Usage                                                   |
+| ------------------ | --------------------------- | -------------------------- | --------------------- | ------------------------------------------------------- |
+| **text-primary**   | `oklch(0.187 0.02 265.755)` | `oklch(0.961 0.001 264.5)` | `text-text-primary`   | Headings, primary text (slate-900 / slate-100)          |
+| **text-secondary** | `oklch(0.354 0.015 266.3)`  | `oklch(0.807 0.01 264.3)`  | `text-text-secondary` | Secondary text, feature lists (slate-700 / slate-300)   |
+| **text-muted**     | `oklch(0.507 0.015 256.8)`  | `oklch(0.663 0.015 256.8)` | `text-text-muted`     | Body text, captions, timestamps (slate-600 / slate-400) |
+
+**CSS Variables:**
+
+```css
+/* Light mode */
+--text-primary: oklch(0.187 0.02 265.755); /* slate-900 */
+--text-secondary: oklch(0.354 0.015 266.3); /* slate-700 */
+--text-muted: oklch(0.507 0.015 256.8); /* slate-600 */
+
+/* Dark mode */
+--text-primary: oklch(0.961 0.001 264.5); /* slate-100 */
+--text-secondary: oklch(0.807 0.01 264.3); /* slate-300 */
+--text-muted: oklch(0.663 0.015 256.8); /* slate-400 */
+```
+
+**When to Use:**
+
+- **`text-text-primary`**: Use for main headings (h1, h2, h3), important labels, and prominent text that needs maximum contrast
+- **`text-text-secondary`**: Use for feature lists, subheadings, navigation items, and supporting text
+- **`text-text-muted`**: Use for body paragraphs, captions, timestamps, placeholders, and less prominent information
+
+**Usage Examples:**
+
+```tsx
+// Headings
+<h1 className="text-2xl font-bold text-text-primary">
+  Bay Area's Trusted Medical Equipment
+</h1>
+
+// Feature list items
+<div className="flex items-center gap-2 text-sm text-text-primary">
+  <Check className="h-4 w-4 text-primary" />
+  All equipments are sanitized
+</div>
+
+// Body text
+<p className="text-base text-text-muted">
+  From mobility aids and hospital beds to specialized equipment...
+</p>
+
+// Small text / captions
+<span className="text-sm text-text-muted">
+  Mon-Fri: 10AM-5PM | Sat: 10AM-2PM
+</span>
+```
+
+---
+
 ## 🔘 Button Variants (Final)
 
 ### 1. Primary (Default)
@@ -373,7 +459,7 @@ import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
 
 ```tsx
 <div className="flex items-center gap-2">
-  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+  <Star className="h-4 w-4 fill-star text-star" />
   <span>4.9/5 Rating</span>
 </div>
 

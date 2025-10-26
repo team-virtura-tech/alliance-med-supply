@@ -1,3 +1,5 @@
+'use client';
+
 import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,8 +9,9 @@ import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
 import { getCategorySlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 
-export type ProductCardProps = {
-  id: number;
+export type CategoryCardProps = {
+  id?: string;
+  categoryId: number;
   name: string;
   image: string;
   productCount?: number;
@@ -19,23 +22,29 @@ export type ProductCardProps = {
 
 export const CategoryCard = ({
   id,
+  categoryId,
   name,
   image,
   productCount,
   rating,
   showRating = false,
   className,
-}: ProductCardProps) => {
-  const componentName = 'ProductCard';
+}: CategoryCardProps) => {
+  const componentName = 'CategoryCard';
   const categoryUrl = `/products/${getCategorySlug(name)}`;
+  const rootId = id ?? `${componentName}-${categoryId}`;
 
   return (
-    <Link href={categoryUrl} className="block">
+    <Link
+      href={categoryUrl}
+      className="block w-full sm:w-64"
+      aria-label={`View ${name} category with ${productCount || 'available'} products`}
+    >
       <Card
         data-component={componentName}
-        id={`ProductCard-${id}`}
+        id={rootId}
         className={cn(
-          'group w-full sm:w-64 md:w-48 lg:w-56 xl:w-64 h-auto flex flex-col overflow-hidden border border-transparent hover:border-orange-400/50 shadow-md hover:shadow-2xl hover:shadow-orange-400/25 transition-all duration-300 hover:scale-105 hover:-translate-y-1 pt-0 cursor-pointer',
+          'group flex h-full w-full flex-col overflow-hidden border border-transparent p-0 shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/25 cursor-pointer',
           className
         )}
       >
@@ -44,7 +53,7 @@ export const CategoryCard = ({
           {/* Product Count Badge */}
           {productCount && productCount > 1 && (
             <div className="absolute left-0 top-0 z-10">
-              <div className="bg-orange-400 text-white px-3 py-1.5 text-xs font-medium shadow-md rounded-br-lg">
+              <div className="bg-accent text-accent-foreground px-3 py-1.5 text-xs font-medium rounded-br-lg">
                 {productCount} Products
               </div>
             </div>
@@ -61,25 +70,25 @@ export const CategoryCard = ({
         </div>
 
         {/* Content area with flex-grow to push button down */}
-        <div className="flex flex-col flex-grow">
-          <CardContent className="px-4 pt-0 pb-2 flex-grow">
-            <CardTitle className="text-base font-semibold text-gray-900 group-hover:text-primary transition-colors leading-tight min-h-[2.5rem] flex items-start">
+        <div className="flex flex-1 flex-col">
+          <CardContent className="flex-1 px-4 pb-2 pt-0">
+            <CardTitle className="flex min-h-[2.5rem] items-start text-base font-semibold leading-tight text-text-primary transition-colors group-hover:text-primary">
               {name}
             </CardTitle>
 
             {/* Optional Rating */}
             {showRating && rating && (
               <div className="mt-2 flex items-center gap-1">
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                <span className="text-sm font-medium text-gray-700">
+                <Star className="h-4 w-4 fill-star text-star" />
+                <span className="text-sm font-medium text-text-secondary">
                   {rating}
                 </span>
               </div>
             )}
           </CardContent>
 
-          <CardFooter className="px-4 pb-4 pt-2 mt-auto">
-            <Button asChild className="w-full">
+          <CardFooter className="mt-auto px-4 pb-4 pt-2">
+            <Button asChild variant="default" className="w-full">
               <span>
                 View {productCount && productCount > 1 ? productCount : ''}{' '}
                 Products
