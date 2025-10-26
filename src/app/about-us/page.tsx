@@ -439,7 +439,7 @@ export default function AboutUsPage() {
               find the right solution.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link href="/contact">
+              <Link href="/contact-us">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md transition-all hover:shadow-lg hover:from-teal-700 hover:to-cyan-700"

@@ -30,7 +30,7 @@ import { useSimpleParallax } from '@/hooks/useParallax';
 //       },
 //       {
 //         label: 'Contact Us',
-//         href: '/contact',
+//         href: '/contact-us',
 //         variant: 'secondary' as const,
 //       },
 //     ],
