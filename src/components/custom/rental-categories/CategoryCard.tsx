@@ -37,14 +37,14 @@ export const CategoryCard = ({
   return (
     <Link
       href={categoryUrl}
-      className="block w-full sm:w-64"
+      className="block w-[calc(50%-1rem)] sm:w-64"
       aria-label={`View ${name} category with ${productCount || 'available'} products`}
     >
       <Card
         data-component={componentName}
         id={rootId}
         className={cn(
-          'group flex h-full w-full flex-col overflow-hidden border border-transparent p-0 shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/25 cursor-pointer',
+          'group flex h-full w-full flex-col overflow-hidden border border-transparent p-0 shadow-md transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/20 cursor-pointer',
           className
         )}
       >
@@ -64,7 +64,7 @@ export const CategoryCard = ({
             alt={name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="object-cover transition-transform duration-200 group-hover:scale-110"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             priority={false}
           />
         </div>
@@ -72,7 +72,7 @@ export const CategoryCard = ({
         {/* Content area with flex-grow to push button down */}
         <div className="flex flex-1 flex-col">
           <CardContent className="flex-1 px-4 pb-2 pt-0">
-            <CardTitle className="flex min-h-[2.5rem] items-start text-base font-semibold leading-tight text-text-primary transition-colors group-hover:text-primary">
+            <CardTitle className="flex min-h-[2.5rem] items-start text-base font-semibold leading-tight text-text-primary">
               {name}
             </CardTitle>
 
@@ -89,10 +89,7 @@ export const CategoryCard = ({
 
           <CardFooter className="mt-auto px-4 pb-4 pt-2">
             <Button asChild variant="default" className="w-full">
-              <span>
-                View {productCount && productCount > 1 ? productCount : ''}{' '}
-                Products
-              </span>
+              <span>View Products</span>
             </Button>
           </CardFooter>
         </div>
