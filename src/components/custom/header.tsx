@@ -31,22 +31,25 @@ export const Header = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex cursor-pointer items-center gap-3 transition-opacity hover:opacity-80"
+            className="flex cursor-pointer items-center transition-opacity"
           >
-            <div className="relative h-12 w-12">
+            <div className="relative h-16 w-16">
               <Image
-                src="/logo/logo.jpg"
+                src="/logo/Allience-Medical-logo-large.svg"
                 alt="Alliance Medical Supply Logo"
                 fill
-                className="rounded-lg object-cover"
+                className="object-contain"
                 sizes="48px"
+                priority
               />
             </div>
-            <div>
-              <h1 className="typography-card-title text-foreground">
+            <div className="text-center">
+              <h1 className="text-xl font-semibold text-foreground md:text-2xl">
                 Alliance Medical
               </h1>
-              <p className="typography-small text-primary">Supply & Rental</p>
+              <p className="text-xs text-primary uppercase tracking-widest">
+                Supply and Rental
+              </p>
             </div>
           </Link>
 

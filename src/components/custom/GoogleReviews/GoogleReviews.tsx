@@ -1,64 +1,22 @@
 'use client';
 
-import { Avatar } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import {
   fetchGoogleReviews,
   isGoogleReviewsError,
-  type GoogleReview,
   type GoogleReviewsResponse,
 } from '@/lib/api/googleReviews';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  MessageSquare,
-  Quote,
-  Star,
-} from 'lucide-react';
-import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
-
-const StarRating = ({
-  rating = 0,
-  size = 'sm',
-  showNumber = false,
-}: {
-  rating?: number;
-  size?: 'sm' | 'lg';
-  showNumber?: boolean;
-}) => {
-  const sizeClass = size === 'lg' ? 'h-5 w-5' : 'h-4 w-4';
-  const stars = Array.from({ length: 5 }, (_, i) => i + 1);
-
-  return (
-    <div className="flex items-center gap-1">
-      <div className="flex">
-        {stars.map((star) => (
-          <Star
-            key={star}
-            className={`${sizeClass} ${
-              star <= Math.round(rating)
-                ? 'fill-yellow-400 text-yellow-400'
-                : 'fill-gray-200 text-gray-200'
-            }`}
-          />
-        ))}
-      </div>
-      {showNumber && (
-        <span className="ml-1 text-sm font-medium text-muted-foreground">
-          {rating.toFixed(1)}
-        </span>
-      )}
-    </div>
-  );
-};
+import { ExternalLink, MessageSquare, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ReviewsCarousel } from '../reviews';
+import { StarRating } from '../reviews/MasonryWall';
+// import { StarRating } from '../star-rating';
 
 export const GoogleReviews = () => {
   const [data, setData] = useState<GoogleReviewsResponse | null>(null);
+  console.log('<> data: ', data);
   const [err, setErr] = useState<string | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     fetchGoogleReviews().then((response) => {
@@ -69,49 +27,6 @@ export const GoogleReviews = () => {
       }
     });
   }, []);
-
-  // Auto-rotate carousel every 6 seconds
-  useEffect(() => {
-    if (!data?.reviews || data.reviews.length <= 3) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const cardsPerView =
-          typeof window !== 'undefined'
-            ? window.innerWidth >= 1024
-              ? 3
-              : window.innerWidth >= 768
-                ? 2
-                : 1
-            : 1;
-        const maxIndex = Math.max(0, data.reviews.length - cardsPerView);
-        return prev >= maxIndex ? 0 : prev + 1;
-      });
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [data?.reviews]);
-
-  const getCardsPerView = useCallback(() => {
-    if (typeof window === 'undefined') return 1;
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  }, []);
-
-  const nextSlide = useCallback(() => {
-    if (!data?.reviews) return;
-    const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, data.reviews.length - cardsPerView);
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  }, [data?.reviews, getCardsPerView]);
-
-  const prevSlide = useCallback(() => {
-    if (!data?.reviews) return;
-    const cardsPerView = getCardsPerView();
-    const maxIndex = Math.max(0, data.reviews.length - cardsPerView);
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  }, [data?.reviews, getCardsPerView]);
 
   if (err) {
     return (
@@ -171,7 +86,6 @@ export const GoogleReviews = () => {
   }
 
   const {
-    name,
     rating,
     user_ratings_total,
     url,
@@ -184,7 +98,7 @@ export const GoogleReviews = () => {
     <section
       id="GoogleReviews"
       data-component="GoogleReviews"
-      className="py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto"
+      className="w-full py-16 px-8 md:px-6 lg:px-8"
     >
       <div className="space-y-12">
         {/* Header Section */}
@@ -195,7 +109,7 @@ export const GoogleReviews = () => {
           </div>
 
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            {name || 'What Our Customers Say'}
+            {'What Our Customers Say'}
           </h2>
 
           <div className="flex items-center justify-center gap-3">
@@ -214,117 +128,10 @@ export const GoogleReviews = () => {
         </div>
 
         {/* Reviews Carousel */}
-        <div className="relative px-16">
-          {/* Left Navigation Button */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full p-0 z-10 bg-background shadow-lg border-2"
-            disabled={
-              !data?.reviews || data.reviews.length <= getCardsPerView()
-            }
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-
-          {/* Right Navigation Button */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full p-0 z-10 bg-background shadow-lg border-2"
-            disabled={
-              !data?.reviews || data.reviews.length <= getCardsPerView()
-            }
-          >
-            <ChevronRight className="h-5 w-5" />
-          </Button>
-
-          {/* Carousel Container */}
-          <div className="overflow-x-hidden py-8">
-            <div
-              className="flex transition-transform duration-500 ease-in-out gap-6 py-4"
-              style={{
-                transform: `translateX(-${currentIndex * (100 / getCardsPerView())}%)`,
-              }}
-            >
-              {reviews?.map((review: GoogleReview) => (
-                <div
-                  key={review.time}
-                  className="flex-none w-full md:w-1/2 lg:w-1/3 px-2"
-                >
-                  <Card className="h-full p-8 border-0 shadow-lg bg-white rounded-2xl my-4">
-                    <div className="text-center space-y-6">
-                      {/* Quote Icon */}
-                      <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                        <Quote className="h-8 w-8" />
-                      </div>
-
-                      {/* Stars */}
-                      <div className="flex justify-center">
-                        <StarRating rating={review.rating} size="lg" />
-                      </div>
-
-                      {/* Review Text */}
-                      <p className="text-muted-foreground leading-relaxed text-base h-24 overflow-hidden">
-                        &ldquo;
-                        {review.text.length > 120
-                          ? `${review.text.substring(0, 120)}...`
-                          : review.text}
-                        &rdquo;
-                      </p>
-
-                      {/* Author Info */}
-                      <div className="flex items-center justify-center gap-3 pt-4">
-                        <Avatar className="h-12 w-12">
-                          {review.profile_photo_url ? (
-                            <div className="relative h-full w-full">
-                              <Image
-                                src={review.profile_photo_url}
-                                alt={review.author_name}
-                                fill
-                                className="object-cover rounded-full"
-                                sizes="48px"
-                              />
-                            </div>
-                          ) : (
-                            <div className="h-full w-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-semibold">
-                              {review.author_name.charAt(0).toUpperCase()}
-                            </div>
-                          )}
-                        </Avatar>
-
-                        <div className="text-left">
-                          {review.author_url ? (
-                            <a
-                              href={review.author_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="font-semibold text-foreground hover:text-primary transition-colors block"
-                            >
-                              {review.author_name}
-                            </a>
-                          ) : (
-                            <div className="font-semibold text-foreground">
-                              {review.author_name}
-                            </div>
-                          )}
-                          <div className="text-sm text-muted-foreground">
-                            {review.relative_time_description}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <ReviewsCarousel testimonials={reviews} />
 
         {/* Footer Actions */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           {url && (
             <Button variant="outline" asChild>
               <a href={url} target="_blank" rel="noopener noreferrer">

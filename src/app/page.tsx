@@ -4,10 +4,10 @@ import { ScrollProgress } from '@/app/components/custom/scrollProgress';
 // import { AboutSection } from '@/components/custom/about-section';
 // import { HeroWithMovingCards } from '@/components/custom/heroWithMovingCards';
 import { CtaSection } from '@/components/custom/cta-section';
+import { GoogleReviews } from '@/components/custom/GoogleReviews';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
 import { ServiceAreaSection } from '@/components/custom/service-area-section';
-// import { TestimonialsSection } from '@/components/custom/testimonials-section';
 import { useSimpleParallax } from '@/hooks/useParallax';
 
 // Keep the existing commented code for reference
@@ -108,8 +108,8 @@ export default function Home() {
       {/* <div ref={backgroundParallax.ref} style={backgroundParallax.style}>
         <AboutSection />
       </div> */}
-      {/* <TestimonialsSection /> */}
-      {/* <GoogleReviews /> */}
+      <GoogleReviews />
+
       {/* <ContactSection /> */}
       <ServiceAreaSection />
       <CtaSection />
