@@ -4,6 +4,7 @@
  */
 
 export type GoogleReview = {
+  id: string;
   author_name: string;
   author_url?: string;
   profile_photo_url?: string;
@@ -11,6 +12,10 @@ export type GoogleReview = {
   relative_time_description?: string;
   text: string;
   time?: number;
+  role?: string;
+  city?: string;
+  tags?: string[];
+  date?: string; // ISO
 };
 
 export type GoogleReviewsResponse = {
@@ -26,6 +31,26 @@ export type GoogleReviewsResponse = {
 export type GoogleReviewsError = {
   error: string;
 };
+
+// Convert Google Review to proper format with mapped properties
+function convertGoogleReviewToTestimonial(
+  review: GoogleReview,
+  index: number
+): GoogleReview {
+  return {
+    ...review,
+    id: review.id || `google-${review.time || index}`,
+    profile_photo_url:
+      review.profile_photo_url || '/images/aboutUs/maleProfile.png',
+    role: review.role || 'Google Reviewer',
+    tags: review.tags || ['Google Review', 'Verified'],
+    date:
+      review.date ||
+      (review.time
+        ? new Date(review.time * 1000).toISOString()
+        : new Date().toISOString()),
+  };
+}
 
 /**
  * Fetches Google Reviews from the API endpoint
@@ -47,7 +72,16 @@ export async function fetchGoogleReviews(): Promise<
       return { error: data.error };
     }
 
-    return data as GoogleReviewsResponse;
+    // Transform reviews to include all required properties
+    const transformedReviews =
+      data.reviews?.map((review: GoogleReview, index: number) =>
+        convertGoogleReviewToTestimonial(review, index)
+      ) || [];
+
+    return {
+      ...data,
+      reviews: transformedReviews,
+    } as GoogleReviewsResponse;
   } catch (error) {
     console.error('Failed to fetch Google reviews:', error);
     return {
