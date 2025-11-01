@@ -21,7 +21,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
       id="ProductsPage"
       data-component="ProductsPage"
       className={cn(
-        'min-h-screen bg-background pt-20 pb-12 md:pt-24',
+        'min-h-screen bg-background pt-28 pb-12 md:pt-32 lg:pt-36',
         className
       )}
     >

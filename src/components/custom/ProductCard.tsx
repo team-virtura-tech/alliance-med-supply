@@ -56,9 +56,15 @@ export const ProductCard = ({
       className={className}
     >
       <Link href={data.href} className="block h-full">
-        <Card className="group h-full flex flex-col overflow-hidden border rounded-3xl transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer bg-background pt-0">
+        <Card
+          className="group h-full flex flex-col overflow-hidden border-0 rounded-3xl transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer pt-0"
+          style={{
+            background:
+              'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(45 35% 96%) 100%)',
+          }}
+        >
           {/* Hero Image */}
-          <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+          <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src={data.image}
               alt={data.name}
@@ -71,7 +77,7 @@ export const ProductCard = ({
             {variant === 'category' &&
               typeof data.productCount === 'number' && (
                 <div className="absolute top-4 left-4">
-                  <Badge className="bg-primary text-primary-foreground font-semibold px-3 py-1.5 text-sm rounded-full hover:bg-primary/90">
+                  <Badge className="bg-accent text-accent-foreground font-semibold px-3 py-1.5 text-sm rounded-full hover:bg-accent/90">
                     {data.productCount} Product
                     {data.productCount !== 1 ? 's' : ''}
                   </Badge>
