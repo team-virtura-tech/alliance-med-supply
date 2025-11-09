@@ -30,7 +30,9 @@ export default function AboutUsPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-              About <span className="text-primary">Alliance Med Supply</span>
+              <span className="text-primary">
+                Alliance Medical Supply & Rental
+              </span>
             </h1>
             <p className="mt-6 text-xl font-semibold text-text-secondary md:text-2xl">
               Your Trusted Partner in Medical Equipment & Healthcare Solutions
@@ -72,7 +74,7 @@ export default function AboutUsPage() {
             <div className="flex flex-col items-center rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
               <Clock className="h-10 w-10 text-accent" />
               <h3 className="mt-3 text-sm font-semibold text-text-primary md:text-base">
-                15+ Years Experience
+                20+Years Experience
               </h3>
               <p className="mt-1 text-center text-xs text-text-muted md:text-sm">
                 Trusted expertise in medical equipment

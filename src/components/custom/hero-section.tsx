@@ -71,9 +71,7 @@ export const HeroSection = () => {
               </p>
 
               <div className="flex flex-wrap items-center gap-6 opacity-70">
-                <div className="text-sm text-gray-600">
-                  15+ Years Experience
-                </div>
+                <div className="text-sm text-gray-600">20+Years Experience</div>
                 <div className="w-1 h-1 bg-gray-400 rounded-full" />
                 <div className="text-sm text-gray-600">JACHO Accredited</div>
                 <div className="w-1 h-1 bg-gray-400 rounded-full" />

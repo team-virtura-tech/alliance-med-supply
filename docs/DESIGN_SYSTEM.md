@@ -1,14 +1,14 @@
 # Design System - Alliance Medical Supply
 
-**Status:** ✅ Finalized  
-**Date:** October 25, 2025  
+**Status:** ✅ Finalized
+**Date:** October 25, 2025
 **Stack:** Tailwind CSS + shadcn/ui
 
 ---
 
 ## 🎨 Standardized Color Palette
 
-**Color Format:** OKLCH (Lightness, Chroma, Hue)  
+**Color Format:** OKLCH (Lightness, Chroma, Hue)
 _We use OKLCH for perceptually uniform colors and better dark mode transitions._
 
 ### Primary Color: Teal
@@ -182,7 +182,7 @@ Use semantic text color tokens for consistent typography across all pages.
 
 ```tsx
 <Button variant="default">Book Now</Button>
-<Button>Call (650) 961-4646</Button>
+<Button>Call (408) 942-9000</Button>
 ```
 
 **Style:**
@@ -465,7 +465,7 @@ import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
 
 <div className="flex items-center gap-2">
   <Award className="h-4 w-4 text-primary" />
-  <span>15+ Years Experience</span>
+  <span>20+Years Experience</span>
 </div>
 ```
 
@@ -474,7 +474,7 @@ import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
 ```tsx
 <Button variant="default">
   <Phone className="h-4 w-4" />
-  Call (650) 961-4646
+  Call (408) 942-9000
 </Button>
 
 <Button variant="secondary">
@@ -510,7 +510,7 @@ import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
 ```tsx
 <Button variant="default">
   <Phone className="mr-2 h-4 w-4" />
-  Call (650) 961-4646
+  Call (408) 942-9000
 </Button>
 <Button variant="secondary">Browse Equipment</Button>
 ```
@@ -554,12 +554,12 @@ import { siGoogle, siFacebook, siInstagram } from 'simple-icons';
 
 ## 🚫 What NOT to Do
 
-❌ Don't create one-off button styles with custom classes  
-❌ Don't mix button variants on the same page without purpose  
-❌ Don't overuse the accent (orange) variant  
-❌ Don't use ghost for primary actions  
-❌ Don't use too many button variants in one section  
-❌ Don't use emoji icons (🔍, 📞, 📍) - use Lucide React instead  
+❌ Don't create one-off button styles with custom classes
+❌ Don't mix button variants on the same page without purpose
+❌ Don't overuse the accent (orange) variant
+❌ Don't use ghost for primary actions
+❌ Don't use too many button variants in one section
+❌ Don't use emoji icons (🔍, 📞, 📍) - use Lucide React instead
 ❌ Don't mix icon libraries or use custom SVGs unnecessarily
 
 ---

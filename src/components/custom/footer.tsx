@@ -64,7 +64,7 @@ export const Footer = () => {
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-teal-400" />
                 <div>
-                  <p className="font-medium">info@alliancemedsupply.com</p>
+                  <p className="font-medium">hello@alliancemedsupply.com</p>
                   <p className="text-sm text-gray-400">Email</p>
                 </div>
               </div>
@@ -86,11 +86,11 @@ export const Footer = () => {
             <div className="space-y-2 mb-6">
               <div className="flex justify-between">
                 <span className="text-gray-300">Mon - Fri:</span>
-                <span className="font-medium">10:00 AM - 6:00 PM</span>
+                <span className="font-medium">11:00 AM - 5:00 PM</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-300">Saturday:</span>
-                <span className="font-medium">10:00 AM - 2:00 PM</span>
+                <span className="font-medium">Appointments Only</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-300">Sunday:</span>
@@ -103,10 +103,10 @@ export const Footer = () => {
                 <div className="h-2 w-2 rounded-full bg-green-400" />
                 <span className="text-sm">Same-Day Delivery</span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400" />
                 <span className="text-sm">Insurance Accepted</span>
-              </div>
+              </div> */}
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-green-400" />
                 <span className="text-sm">Free Setup & Training</span>

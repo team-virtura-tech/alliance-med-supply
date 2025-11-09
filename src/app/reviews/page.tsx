@@ -9,7 +9,7 @@ import {
   type GoogleReviewsResponse,
 } from '@/lib/api/googleReviews';
 import { useEffect, useState } from 'react';
-import { siFacebook, siGoogle, siYelp } from 'simple-icons';
+import { siGoogle, siYelp } from 'simple-icons';
 
 function calcAverageRating(items: GoogleReview[]) {
   const total = items.reduce((sum, t) => sum + (t.rating || 0), 0);
@@ -127,18 +127,6 @@ export default function ReviewsPage() {
                       <path d={siYelp.path} />
                     </svg>
                     Yelp
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style={{ color: siFacebook.hex }}
-                    >
-                      <path d={siFacebook.path} />
-                    </svg>
-                    Facebook
                   </span>
                 </div>
                 <p className="text-sm text-teal-700 font-medium">
