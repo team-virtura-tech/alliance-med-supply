@@ -72,7 +72,7 @@ export const HeroWithBentoGrid = ({
               </div>
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <Award className="h-4 w-4 text-primary" />
-                15+ Years Experience
+                20+Years Experience
               </div>
             </div>
 
@@ -81,7 +81,7 @@ export const HeroWithBentoGrid = ({
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4 lg:mb-6">
-              Bay Area&apos;s Trusted{' '}
+              Bay Area&apos;s Trusted and Durable{' '}
               <span className="text-primary">Medical Equipment</span> Services
             </h1>
 
@@ -120,7 +120,7 @@ export const HeroWithBentoGrid = ({
                 className="w-full sm:w-auto"
               >
                 <Phone className="h-4 w-4" />
-                Call (650) 961-4646
+                Call (408) 942-9000
               </Button>
               <Button
                 variant="secondary"
@@ -135,10 +135,33 @@ export const HeroWithBentoGrid = ({
 
             {/* Hours */}
             <div className="mt-6 pt-4 border-t border-border">
-              <p className="flex items-center gap-2 text-sm text-text-muted">
-                <Clock className="h-4 w-4" />
-                Mon-Fri: 10AM-5PM | Sat: 10AM-2PM
-              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-full">
+                    <Phone className="h-4 w-4 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-text-primary">
+                      Call Us
+                    </p>
+                    <p className="text-xs text-text-muted">Mon-Fri: 9AM-5PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="bg-accent/10 p-2 rounded-full">
+                    <Clock className="h-4 w-4 text-accent" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-text-primary">
+                      Visit Store
+                    </p>
+                    <p className="text-xs text-text-muted">
+                      Mon-Fri: 11AM-5PM | Sat: Appointments
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -170,10 +193,10 @@ export const HeroWithBentoGrid = ({
                 priority
               />
 
-              {/* Tag overlay */}
-              <div className="absolute top-6 left-6">
+              {/* Tag overlays */}
+              <div className="absolute top-6 left-6 flex flex-row gap-2 flex-wrap">
                 <span className="bg-accent text-accent-foreground text-sm px-4 py-2 rounded-full font-medium shadow-lg">
-                  Professional Service
+                  Same Day Delivery Available
                 </span>
               </div>
             </div>

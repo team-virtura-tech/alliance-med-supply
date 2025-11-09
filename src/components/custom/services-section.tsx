@@ -113,7 +113,7 @@ export const ServicesSection = () => {
           {/* Trust indicators */}
           <div className="flex flex-wrap items-center justify-center gap-8 pt-8 opacity-70">
             <div className="text-sm font-medium text-gray-600">
-              15+ Years Experience
+              20+Years Experience
             </div>
             <div className="w-1 h-1 bg-gray-400 rounded-full" />
             <div className="text-sm font-medium text-gray-600">

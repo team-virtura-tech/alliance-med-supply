@@ -496,7 +496,7 @@ export default function UxDemoPage() {
                 <div className="flex flex-wrap gap-3">
                   <Button className="bg-teal-600 text-white hover:bg-teal-700">
                     <Phone className="mr-2 h-4 w-4" />
-                    Call (650) 961-4646
+                    Call (408) 942-9000
                   </Button>
                   <Button className="border border-teal-600 bg-white text-teal-700 hover:bg-teal-50 hover:border-teal-700">
                     Browse Equipment

@@ -104,10 +104,10 @@ export const ContactSection = () => {
                     </h4>
                     <p className="text-xs text-gray-600">
                       <a
-                        href="mailto:info@alliancemedsupply.com"
+                        href="mailto:hello@alliancemedsupply.com"
                         className="hover:text-teal-600 transition-colors"
                       >
-                        info@alliancemedsupply.com
+                        hello@alliancemedsupply.com
                       </a>
                     </p>
                   </div>

@@ -46,7 +46,7 @@ A modern, professional website for Alliance Medical Supply & Rental, serving the
 ### 3. **About Section**
 
 - Company story and values
-- 15+ years of experience highlight
+- 20+years of experience highlight
 - Payment methods accepted
 - Quality and service commitments
 - Serving Bay Area communities
@@ -137,7 +137,7 @@ npm start
 
 - Phone: (408) 942-9000
 - Address: 1630 Oakland Road, Suite A110, San Jose, CA 95131
-- Email: info@alliancemedsupply.com
+- Email: hello@alliancemedsupply.com
 - Hours: Mon-Fri 10AM-6PM, Sat 10AM-2PM
 
 ---
