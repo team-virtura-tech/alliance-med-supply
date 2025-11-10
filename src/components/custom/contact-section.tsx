@@ -60,6 +60,9 @@ export const ContactSection = () => {
                         (408) 942-9000
                       </a>
                     </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Mon-Fri: 9AM-5PM
+                    </p>
                   </div>
                 </div>
 
@@ -74,6 +77,9 @@ export const ContactSection = () => {
                     </h4>
                     <p className="text-xs text-gray-600">
                       1630 Oakland Road, Suite A110, San Jose
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Mon-Fri: 11AM-5PM | Sat: Appointments
                     </p>
                   </div>
                 </div>

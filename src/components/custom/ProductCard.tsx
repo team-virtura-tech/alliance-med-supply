@@ -38,10 +38,7 @@ export const ProductCard = ({
   const reduce = useReducedMotion();
   const componentName = 'ProductCard';
 
-  const defaultDescription =
-    variant === 'category'
-      ? `Professional ${data.name.toLowerCase()} rental with delivery, setup, and 24/7 support included.`
-      : data.description || '';
+  const defaultDescription = data.description || '';
 
   const defaultCtaText =
     variant === 'category' ? 'Browse Products' : 'View Details';
@@ -57,19 +54,19 @@ export const ProductCard = ({
     >
       <Link href={data.href} className="block h-full">
         <Card
-          className="group h-full flex flex-col overflow-hidden border-0 rounded-3xl transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer pt-0"
+          className="group h-full flex flex-col overflow-hidden border-0 rounded-3xl transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer pt-0 gap-4"
           style={{
             background:
               'linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(45 35% 96%) 100%)',
           }}
         >
           {/* Hero Image */}
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden p-0">
             <Image
               src={data.image}
               alt={data.name}
               fill
-              className="object-contain transition-transform duration-500 group-hover:scale-105 p-6"
+              className="object-contain transition-transform duration-500 group-hover:scale-105 p-6 pb-0"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
 
@@ -86,10 +83,10 @@ export const ProductCard = ({
           </div>
 
           {/* Content Below Image */}
-          <div className="flex flex-col flex-1 px-6">
+          <div className="flex flex-col flex-1 px-6 pt-0">
             <h3
               className={cn(
-                'font-bold mb-3 text-text-primary leading-tight min-h-[3.5rem] flex items-start',
+                'font-bold mb-2 text-text-primary leading-tight min-h-[3.5rem] flex items-center',
                 variant === 'category'
                   ? 'text-xl md:text-2xl'
                   : 'text-lg md:text-xl'
@@ -115,7 +112,7 @@ export const ProductCard = ({
 
             <p
               className={cn(
-                'text-text-muted leading-relaxed mb-6 line-clamp-3 flex-1',
+                'text-text-muted leading-relaxed mb-4 line-clamp-3 flex-1',
                 variant === 'category' ? 'text-sm md:text-base' : 'text-sm'
               )}
             >

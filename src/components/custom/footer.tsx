@@ -42,9 +42,16 @@ export const Footer = () => {
               <Button
                 variant="outline"
                 className="border-2 border-orange-400 bg-transparent text-orange-400 hover:bg-orange-400 hover:text-white transition-all duration-200"
+                asChild
               >
-                <ExternalLink className="mr-2 h-4 w-4" />
-                View on Yelp
+                <a
+                  href="https://www.yelp.com/biz/alliance-medical-supply-and-rental-san-jose-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  View on Yelp
+                </a>
               </Button>
             </div>
           </div>

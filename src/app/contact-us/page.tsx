@@ -18,6 +18,7 @@ export default function ContactPage() {
       icon: Phone,
       label: 'Phone',
       value: '(408) 942-9000',
+      href: 'tel:4089429000',
     },
     {
       icon: Mail,
@@ -28,12 +29,17 @@ export default function ContactPage() {
       icon: MapPin,
       label: 'Address',
       value: '1630 Oakland Road, Suite A110, San Jose, CA 95131',
+      href: 'https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose,+CA+95131',
     },
     {
       icon: Clock,
-      label: 'Hours',
-      value:
-        'Mon-Fri: 11:00 AM - 5:00 PM • Sat: By Appointment Only • Sun: Closed',
+      label: 'Call Hours',
+      value: 'Mon-Fri: 9AM-5PM',
+    },
+    {
+      icon: Clock,
+      label: 'Store Hours',
+      value: 'Mon-Fri: 11AM-5PM | Sat: Appointments',
     },
   ];
 

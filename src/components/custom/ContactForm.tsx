@@ -1,341 +1,198 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 export type ContactFormProps = {
   id?: string;
   className?: string;
 };
 
-type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+const formSchema = z.object({
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  email: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(1, 'Subject is required'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
 
-type FormErrors = {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-};
+type FormValues = z.infer<typeof formSchema>;
 
 export const ContactForm = ({ id, className }: ContactFormProps) => {
   const componentName = 'ContactForm';
   const rootId = id ?? componentName;
 
-  const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     'idle' | 'success' | 'error'
   >('idle');
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+  });
 
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First name is required';
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'Last name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
+  const onSubmit = async (data: FormValues) => {
+    setSubmitStatus('idle');
 
     try {
-      // Simulate API call - replace with actual API endpoint
+      // Simulate API call - replace with actual endpoint
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      console.log('Form submitted:', formData);
+      console.log('Form submitted:', data);
 
       setSubmitStatus('success');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
+      form.reset();
+
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
-    <motion.div
+    <div
       id={rootId}
       data-component={componentName}
-      className={`space-y-6 ${className || ''}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
+      className={cn('w-full', className)}
     >
-      <motion.form
-        onSubmit={handleSubmit}
-        className="space-y-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.7 }}
-      >
-        {/* First Name & Last Name */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.8 }}
-        >
-          <motion.div
-            className="space-y-2"
-            whileFocus={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Label
-              htmlFor="firstName"
-              className="typography-small font-medium text-foreground"
-            >
-              First name
-            </Label>
-            <motion.div
-              whileFocus={{ scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Input
-                id="firstName"
-                type="text"
-                placeholder="First name"
-                value={formData.firstName}
-                onChange={(e) => handleInputChange('firstName', e.target.value)}
-                className={`h-12 ${errors.firstName ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-                aria-invalid={!!errors.firstName}
-                aria-describedby={
-                  errors.firstName ? 'firstName-error' : undefined
-                }
-              />
-            </motion.div>
-            {errors.firstName && (
-              <motion.p
-                id="firstName-error"
-                className="typography-small text-destructive"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {errors.firstName}
-              </motion.p>
-            )}
-          </motion.div>
-
-          <div className="space-y-2">
-            <Label
-              htmlFor="lastName"
-              className="typography-small font-medium text-foreground"
-            >
-              Last name
-            </Label>
-            <Input
-              id="lastName"
-              type="text"
-              placeholder="Last name"
-              value={formData.lastName}
-              onChange={(e) => handleInputChange('lastName', e.target.value)}
-              className={`h-12 ${errors.lastName ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-              aria-invalid={!!errors.lastName}
-              aria-describedby={errors.lastName ? 'lastName-error' : undefined}
-            />
-            {errors.lastName && (
-              <p
-                id="lastName-error"
-                className="typography-small text-destructive"
-              >
-                {errors.lastName}
-              </p>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Email */}
-        <div className="space-y-2">
-          <Label
-            htmlFor="email"
-            className="typography-small font-medium text-foreground"
-          >
-            Email
-          </Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => handleInputChange('email', e.target.value)}
-            className={`h-12 ${errors.email ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? 'email-error' : undefined}
-          />
-          {errors.email && (
-            <p id="email-error" className="typography-small text-destructive">
-              {errors.email}
-            </p>
-          )}
-        </div>
-
-        {/* Subject */}
-        <div className="space-y-2">
-          <Label
-            htmlFor="subject"
-            className="typography-small font-medium text-foreground"
-          >
-            Subject
-          </Label>
-          <Input
-            id="subject"
-            type="text"
-            placeholder="What can we help you with?"
-            value={formData.subject}
-            onChange={(e) => handleInputChange('subject', e.target.value)}
-            className={`h-12 ${errors.subject ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-            aria-invalid={!!errors.subject}
-            aria-describedby={errors.subject ? 'subject-error' : undefined}
-          />
-          {errors.subject && (
-            <p id="subject-error" className="typography-small text-destructive">
-              {errors.subject}
-            </p>
-          )}
-        </div>
-
-        {/* Message */}
-        <div className="space-y-2">
-          <Label
-            htmlFor="message"
-            className="typography-small font-medium text-foreground"
-          >
-            Message
-          </Label>
-          <Textarea
-            id="message"
-            placeholder="Tell us how we can help..."
-            rows={4}
-            value={formData.message}
-            onChange={(e) => handleInputChange('message', e.target.value)}
-            className={`min-h-[120px] resize-none ${errors.message ? 'border-destructive focus-visible:ring-destructive' : ''}`}
-            aria-invalid={!!errors.message}
-            aria-describedby={errors.message ? 'message-error' : undefined}
-          />
-          {errors.message && (
-            <p id="message-error" className="typography-small text-destructive">
-              {errors.message}
-            </p>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 1.2 }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <motion.div
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                  Sending...
-                </motion.div>
-              ) : (
-                'Send message'
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {/* First Name & Last Name */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="First name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
               )}
-            </Button>
-          </motion.div>
-        </motion.div>
+            />
 
-        {/* Status Messages */}
-        {submitStatus === 'success' && (
-          <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
-            <p className="typography-small text-primary font-medium">
-              Thank you! Your message has been sent successfully. We&apos;ll get
-              back to you soon.
-            </p>
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Last name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Last name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
-        )}
 
-        {submitStatus === 'error' && (
-          <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-            <p className="typography-small text-destructive font-medium">
-              Sorry, there was an error sending your message. Please try again
-              or contact us directly.
-            </p>
-          </div>
-        )}
-      </motion.form>
-    </motion.div>
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="Email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Subject */}
+          <FormField
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Subject</FormLabel>
+                <FormControl>
+                  <Input placeholder="What can we help you with?" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Message */}
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Message</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Tell us how we can help..."
+                    rows={4}
+                    className="resize-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting && (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            {form.formState.isSubmitting ? 'Sending...' : 'Send message'}
+          </Button>
+
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <div className="rounded-lg border border-primary/20 bg-primary/10 p-4">
+              <p className="text-sm font-medium text-primary">
+                Thank you! Your message has been sent successfully. We&apos;ll
+                get back to you soon.
+              </p>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-4">
+              <p className="text-sm font-medium text-destructive">
+                Sorry, there was an error sending your message. Please try again
+                or contact us directly.
+              </p>
+            </div>
+          )}
+        </form>
+      </Form>
+    </div>
   );
 };

@@ -62,6 +62,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
                 productCount: category.products.length,
                 href: `/products/${getCategorySlug(category.name)}`,
                 ctaText: 'Browse Products',
+                description: category.description,
               }}
             />
           ))}
