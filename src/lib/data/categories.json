@@ -4,6 +4,7 @@
       "id": 1,
       "name": "Wheelchairs",
       "image": "/images/categories/wheelchair-w-brackes.jpg",
+      "description": "Durable, comfortable wheelchairs for daily mobility and independence.",
       "products": [
         {
           "id": 101,
@@ -39,6 +40,7 @@
       "id": 2,
       "name": "Electric Wheelchairs",
       "image": "/images/categories/electric-wheelchair.jpg",
+      "description": "Power wheelchairs designed for effortless mobility and comfort.",
       "products": [
         {
           "id": 201,
@@ -58,6 +60,7 @@
       "id": 3,
       "name": "Transport Chairs",
       "image": "/images/categories/transport-chair.jpg",
+      "description": "Lightweight, foldable chairs for easy patient transport and travel.",
       "products": [
         {
           "id": 301,
@@ -79,6 +82,7 @@
       "id": 4,
       "name": "Knee Scooters",
       "image": "/images/categories/knee-scooters.jpg",
+      "description": "Easy, stable mobility for lower leg injuries without using crutches.",
       "products": [
         {
           "id": 401,
@@ -98,6 +102,7 @@
       "id": 5,
       "name": "Rollators",
       "image": "/images/categories/rollator.jpg",
+      "description": "Stable walkers with seats and brakes for safe, everyday use.",
       "products": [
         {
           "id": 501,
@@ -117,6 +122,7 @@
       "id": 6,
       "name": "Electric Hospital Beds and Mattresses",
       "image": "/images/categories/electric-bed.jpg",
+      "description": "Adjustable beds and mattresses for comfort, safety, and recovery.",
       "products": [
         {
           "id": 601,
@@ -160,6 +166,7 @@
       "id": 7,
       "name": "Stand Assists & Lifts",
       "image": "/images/categories/stand-assists-and-lifts.jpg",
+      "description": "Manual and electric lifts for safe, easy patient transfers.",
       "products": [
         {
           "id": 701,
@@ -191,6 +198,7 @@
       "id": 8,
       "name": "Mobility Scooters",
       "image": "/images/categories/mobility-scooters.jpg",
+      "description": "Reliable scooters for indoor and outdoor independence.",
       "products": [
         {
           "id": 801,
@@ -222,6 +230,7 @@
       "id": 9,
       "name": "CPM Machine",
       "image": "/images/categories/cpm-machine.jpg",
+      "description": "Rehabilitation device that promotes joint recovery and flexibility.",
       "products": [
         {
           "id": 901,
@@ -235,6 +244,7 @@
       "id": 10,
       "name": "Lift Chair",
       "image": "/images/categories/lift-chair.jpg",
+      "description": "Comfortable reclining chairs with gentle lift assistance.",
       "products": [
         {
           "id": 1001,
@@ -248,6 +258,7 @@
       "id": 11,
       "name": "PureWick",
       "image": "/images/categories/purewick.webp",
+      "description": "Non-invasive female catheter system for comfort and hygiene.",
       "products": [
         {
           "id": 1101,

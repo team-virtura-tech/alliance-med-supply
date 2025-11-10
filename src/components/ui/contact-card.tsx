@@ -9,6 +9,8 @@ type ContactInfoProps = React.ComponentProps<'div'> & {
   icon: LucideIcon;
   label: string;
   value: string;
+  hours?: string;
+  href?: string;
 };
 
 type ContactCardProps = React.ComponentProps<'div'> & {
@@ -100,15 +102,12 @@ function ContactInfo({
   icon: Icon,
   label,
   value,
+  hours,
+  href,
   className,
 }: ContactInfoProps) {
-  return (
-    <motion.div
-      className={cn('flex items-center gap-3 py-3', className)}
-      whileHover={{ x: 4 }}
-      transition={{ duration: 0.2 }}
-      data-component="ContactInfo"
-    >
+  const content = (
+    <>
       <motion.div
         className="bg-muted/40 rounded-lg p-3"
         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -117,9 +116,45 @@ function ContactInfo({
         <Icon className="h-5 w-5" />
       </motion.div>
       <div>
-        <p className="font-medium">{label}</p>
-        <p className="text-muted-foreground text-xs">{value}</p>
+        <p className="font-medium text-base md:text-lg">{label}</p>
+        <p className="text-muted-foreground text-sm md:text-base">{value}</p>
+        {hours && (
+          <p className="text-muted-foreground text-xs md:text-sm mt-1">
+            {hours}
+          </p>
+        )}
       </div>
+    </>
+  );
+
+  if (href) {
+    const isExternal = href.startsWith('http');
+    return (
+      <motion.a
+        href={href}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+        className={cn(
+          'flex items-center gap-3 py-3 cursor-pointer hover:opacity-90 transition-opacity',
+          className
+        )}
+        whileHover={{ x: 4 }}
+        transition={{ duration: 0.2 }}
+        data-component="ContactInfo"
+      >
+        {content}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.div
+      className={cn('flex items-center gap-3 py-3', className)}
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.2 }}
+      data-component="ContactInfo"
+    >
+      {content}
     </motion.div>
   );
 }

@@ -42,7 +42,7 @@ function convertGoogleReviewToTestimonial(
     id: review.id || `google-${review.time || index}`,
     profile_photo_url:
       review.profile_photo_url || '/images/aboutUs/maleProfile.png',
-    role: review.role || 'Google Reviewer',
+    role: review.role || '',
     tags: review.tags || ['Google Review', 'Verified'],
     date:
       review.date ||

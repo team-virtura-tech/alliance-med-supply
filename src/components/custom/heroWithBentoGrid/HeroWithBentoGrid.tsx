@@ -43,12 +43,12 @@ export const HeroWithBentoGrid = ({
       id={rootId}
       data-component={componentName}
       className={cn(
-        'w-full min-w-0 min-h-[600px] md:min-h-[700px] lg:h-[calc(100vh-8rem)] flex items-center px-4 py-6 md:px-6 md:py-8 lg:px-8 lg:pb-10',
+        'w-full min-w-0 min-h-[600px] md:min-h-[700px] xl:h-[calc(100vh-8rem)] flex items-center px-4 py-6 md:px-6 md:py-8 xl:px-8 xl:pb-10',
         className
       )}
     >
       {/* Main Layout - Left Content + Right Column */}
-      <div className="w-full h-full flex flex-col lg:flex-row gap-4 lg:gap-6">
+      <div className="w-full h-full flex flex-col xl:flex-row gap-4 md:gap-6">
         {/* LEFT COLUMN - Full Height Content Card (40%) */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
@@ -57,11 +57,11 @@ export const HeroWithBentoGrid = ({
             duration: 0.6,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="w-full lg:flex-[0_0_40%] flex"
+          className="w-full xl:flex-[0_0_40%] flex"
         >
-          <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl lg:rounded-3xl p-6 lg:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
+          <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl xl:rounded-3xl p-6 md:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
             {/* Trust Indicators Header */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
+            <div className="flex flex-wrap items-center gap-4 pb-3">
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                 Licensed Provider
@@ -80,12 +80,12 @@ export const HeroWithBentoGrid = ({
               All equipments are available for rent or purchase
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4 lg:mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-text-primary leading-tight mb-4 md:mb-6">
               Bay Area&apos;s Trusted and Durable{' '}
               <span className="text-primary">Medical Equipment</span> Services
             </h1>
 
-            <p className="text-base lg:text-lg text-text-muted leading-relaxed mb-6 lg:mb-8">
+            <p className="text-base xl:text-lg text-text-muted leading-relaxed mb-6 md:mb-8">
               From mobility aids and hospital beds to specialized equipment for
               recovery, we handle all your medical supply needs quickly and
               professionally. Serving Mountain View, Palo Alto, Sunnyvale, San
@@ -93,7 +93,7 @@ export const HeroWithBentoGrid = ({
             </p>
 
             {/* Service Features Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-6 lg:mb-8">
+            <div className="grid grid-cols-2 gap-4 mb-6 md:mb-8">
               <div className="flex items-center gap-2 text-sm text-text-primary">
                 <div className="w-1 h-4 bg-primary rounded-full"></div>
                 All equipments are sanitized
@@ -112,7 +112,7 @@ export const HeroWithBentoGrid = ({
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 lg:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Button
                 variant="default"
                 size="lg"
@@ -167,7 +167,7 @@ export const HeroWithBentoGrid = ({
         </motion.div>
 
         {/* RIGHT COLUMN - Van Image Top + 4 Images Bottom (60%) */}
-        <div className="w-full lg:flex-[0_0_60%] flex flex-col gap-4 lg:gap-6 min-h-[400px] lg:min-h-0">
+        <div className="w-full xl:flex-[0_0_60%] flex flex-col gap-4 md:gap-6 xl:h-full">
           {/* TOP - Van Image */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}
@@ -177,12 +177,12 @@ export const HeroWithBentoGrid = ({
               delay: 0.2,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="flex-1 min-h-[250px] lg:min-h-0"
+            className="h-[300px] sm:h-[350px] md:h-[400px] xl:flex-1 xl:h-auto"
           >
             <div
               ref={vanParallax.ref}
               style={vanParallax.style}
-              className="relative rounded-2xl lg:rounded-3xl overflow-hidden h-full"
+              className="relative rounded-2xl xl:rounded-3xl overflow-hidden h-full w-full"
             >
               <Image
                 src="/images/branding/van-1.png"
@@ -214,7 +214,7 @@ export const HeroWithBentoGrid = ({
             className="flex-shrink-0"
           >
             {/* Section Title */}
-            <h3 className="text-lg lg:text-xl font-semibold text-text-primary mb-3 lg:mb-4">
+            <h3 className="text-lg xl:text-xl font-semibold text-text-primary mb-3 md:mb-4">
               Popular Rentals
             </h3>
 
@@ -223,7 +223,7 @@ export const HeroWithBentoGrid = ({
               <div
                 ref={cardsParallax.ref}
                 style={cardsParallax.style}
-                className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer"
+                className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer"
               >
                 <Image
                   src="/images/hero-section/hero-1.jpg"
@@ -238,7 +238,7 @@ export const HeroWithBentoGrid = ({
               <div
                 ref={cardsParallax2.ref}
                 style={cardsParallax2.style}
-                className="bg-primary p-3 lg:p-4 relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square"
+                className="bg-primary p-3 md:p-4 relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square"
               >
                 <Image
                   src="/images/hero-section/hero-2.jpg"
@@ -250,7 +250,7 @@ export const HeroWithBentoGrid = ({
               </div>
 
               {/* Image Card 3 */}
-              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-muted">
+              <div className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-muted">
                 <Image
                   src="/images/hero-section/hero-3.jpg"
                   alt="Hero section image 3"
@@ -261,7 +261,7 @@ export const HeroWithBentoGrid = ({
               </div>
 
               {/* Image Card 4 */}
-              <div className="relative rounded-xl lg:rounded-2xl overflow-hidden aspect-square bg-accent/20">
+              <div className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/20">
                 <Image
                   src="/images/hero-section/hero-4.jpg"
                   alt="Hero section image 4"

@@ -54,7 +54,7 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-2 md:flex">
+          <nav className="hidden items-center gap-2 xl:flex">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -64,7 +64,7 @@ export const Header = () => {
                   className={`cursor-pointer rounded-md px-5 py-2.5 text-base font-semibold transition-all ${
                     isActive
                       ? 'bg-muted text-primary'
-                      : 'text-foreground/70 hover:bg-muted hover:text-primary'
+                      : 'text-foreground hover:bg-muted hover:text-primary'
                   }`}
                 >
                   {item.name}
@@ -74,7 +74,7 @@ export const Header = () => {
           </nav>
 
           {/* Contact Info & CTA */}
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <div className="text-right">
               <a
                 href="https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose+CA+95131"
@@ -102,7 +102,7 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="xl:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -116,7 +116,7 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="border-t bg-background md:hidden">
+          <div className="border-t bg-background xl:hidden">
             <div className="space-y-1 py-4">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
