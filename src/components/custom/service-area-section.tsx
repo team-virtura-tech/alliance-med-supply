@@ -3,17 +3,28 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
 
+import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { cn } from '@/lib/utils';
 
 const primaryCities = [
+  'Campbell',
+  'Cupertino',
+  'Dublin',
+  'Fremont',
+  'Gilroy',
+  'Hayward',
+  'Livermore',
+  'Los Gatos',
+  'Milpitas',
+  'Morgan Hill',
+  'Mountain View',
+  'Newark',
+  'Palo Alto',
+  'Pleasanton',
   'San Jose',
   'Santa Clara',
-  'Milpitas',
-  'Fremont',
-  'Palo Alto',
   'Sunnyvale',
-  'Gilroy',
-  'Morgan Hill',
+  'Union City',
 ];
 
 export type ServiceAreaSectionProps = {
@@ -63,16 +74,23 @@ export const ServiceAreaSection = ({
           whileInView={reduce ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
-          className="mb-12 flex flex-wrap justify-center gap-3 md:gap-4"
+          className="mb-12"
         >
-          {primaryCities.map((city) => (
-            <div
-              key={city}
-              className="inline-flex items-center gap-2 rounded-lg bg-primary/5 px-4 py-2 text-sm font-medium text-primary md:px-5 md:py-2.5 md:text-base"
-            >
-              {city}
-            </div>
-          ))}
+          <InfiniteSlider
+            duration={30}
+            durationOnHover={60}
+            gap={16}
+            className="[mask-image:linear-gradient(to_right,transparent_0%,_black_128px,_black_calc(100%-128px),_transparent_100%)]"
+          >
+            {primaryCities.map((city) => (
+              <div
+                key={city}
+                className="inline-flex items-center gap-2 rounded-lg bg-primary/5 px-4 py-2 text-sm font-medium text-primary md:px-5 md:py-2.5 md:text-base whitespace-nowrap"
+              >
+                {city}
+              </div>
+            ))}
+          </InfiniteSlider>
         </motion.div>
 
         {/* Contact Info */}
