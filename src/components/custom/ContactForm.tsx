@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Shield } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -36,6 +37,7 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = ({ id, className }: ContactFormProps) => {
   const componentName = 'ContactForm';
   const rootId = id ?? componentName;
+  const { executeRecaptcha } = useRecaptcha();
 
   const [submitStatus, setSubmitStatus] = useState<
     'idle' | 'success' | 'error'
@@ -56,16 +58,31 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - replace with actual endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('contact_form');
 
-      console.log('Form submitted:', data);
+      // Submit form with reCAPTCHA token
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          recaptchaToken,
+        }),
+      });
 
-      setSubmitStatus('success');
-      form.reset();
+      const result = await response.json();
 
-      // Clear success message after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      if (result.success) {
+        setSubmitStatus('success');
+        form.reset();
+        // Clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
@@ -160,6 +177,32 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
               </FormItem>
             )}
           />
+
+          {/* reCAPTCHA Notice */}
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Shield className="h-3 w-3" />
+            <span>
+              This site is protected by reCAPTCHA and the Google{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                Privacy Policy
+              </a>{' '}
+              and{' '}
+              <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                Terms of Service
+              </a>{' '}
+              apply.
+            </span>
+          </div>
 
           {/* Submit Button */}
           <Button
