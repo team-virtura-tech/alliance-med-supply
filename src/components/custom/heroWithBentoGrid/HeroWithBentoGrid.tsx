@@ -263,7 +263,7 @@ export const HeroWithBentoGrid = ({
               {/* Image Card 4 */}
               <div className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/20">
                 <Image
-                  src="/images/hero-section/hero-4.jpg"
+                  src="/images/hero-section/hero-6.jpg"
                   alt="Hero section image 4"
                   fill
                   className="object-cover"
