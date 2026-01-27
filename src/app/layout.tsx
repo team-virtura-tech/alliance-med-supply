@@ -1,6 +1,14 @@
 import { Footer } from '@/components/custom/footer';
 import { Header } from '@/components/custom/header';
 import { contact } from '@/data/contact';
+import {
+  generateLocalBusinessSchema,
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  jsonLdScriptProps,
+  pageSEO,
+  siteConfig,
+} from '@/lib/seo';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -15,26 +23,106 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+// Comprehensive SEO metadata for the entire site
 export const metadata: Metadata = {
-  title: `${contact.businessName} | Bay Area Medical Equipment`,
-  description: `Professional medical equipment rentals & sales in ${contact.address.cityState}. Wheelchairs, hospital beds, walkers & more. ${contact.accreditation}. Same-day delivery. Call ${contact.phone.display}.`,
-  keywords:
-    'medical equipment, wheelchair rental, hospital bed rental, walkers, San Jose, Bay Area',
-  authors: [{ name: contact.businessName }],
-  robots: 'index, follow',
-  openGraph: {
-    title: `${contact.businessName} | Bay Area Medical Equipment`,
-    description: `Professional medical equipment rentals & sales in ${contact.address.cityState}. Same-day delivery available.`,
-    type: 'website',
-    locale: 'en_US',
-    siteName: contact.businessName,
+  // Base metadata
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: pageSEO.home.title,
+    template: `%s | ${contact.businessName}`,
   },
+  description: pageSEO.home.description,
+  keywords: pageSEO.home.keywords.join(', '),
+  authors: [{ name: contact.businessName, url: siteConfig.url }],
+  creator: contact.businessName,
+  publisher: contact.businessName,
+
+  // Robots and indexing
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  // Open Graph for social sharing
+  openGraph: {
+    title: pageSEO.home.title,
+    description: pageSEO.home.description,
+    url: siteConfig.url,
+    siteName: contact.businessName,
+    locale: siteConfig.locale,
+    type: 'website',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: `${contact.businessName} - Medical Equipment Rental & Sales in San Jose Bay Area`,
+      },
+    ],
+  },
+
+  // Twitter Card
+  twitter: {
+    card: 'summary_large_image',
+    title: pageSEO.home.title,
+    description: pageSEO.home.description,
+    images: ['/images/og-image.jpg'],
+  },
+
+  // Canonical and alternates
+  alternates: {
+    canonical: siteConfig.url,
+  },
+
+  // Additional metadata for local SEO
+  other: {
+    // Geo meta tags for local search
+    'geo.region': siteConfig.geo.region,
+    'geo.placename': siteConfig.geo.placeName,
+    'geo.position': `${siteConfig.geo.latitude};${siteConfig.geo.longitude}`,
+    ICBM: `${siteConfig.geo.latitude}, ${siteConfig.geo.longitude}`,
+    // Business contact
+    'business:contact_data:street_address': `${contact.address.street}, ${contact.address.suite}`,
+    'business:contact_data:locality': contact.address.city,
+    'business:contact_data:region': contact.address.state,
+    'business:contact_data:postal_code': contact.address.zip,
+    'business:contact_data:country_name': 'United States',
+    'business:contact_data:phone_number': contact.phone.display,
+  },
+
+  // App-specific
+  applicationName: contact.businessName,
+  category: 'Medical Equipment',
+  classification: 'Medical Equipment Rental and Sales',
+
+  // Verification (add your codes when available)
+  // verification: {
+  //   google: 'your-google-verification-code',
+  //   yandex: 'your-yandex-verification-code',
+  // },
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 5,
 };
+
+// Generate all structured data schemas
+const structuredData = [
+  generateLocalBusinessSchema(),
+  generateOrganizationSchema(),
+  generateWebSiteSchema(),
+];
 
 export default function RootLayout({
   children,
@@ -44,6 +132,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* JSON-LD Structured Data for SEO - Critical for "near me" searches */}
+        <script {...jsonLdScriptProps(structuredData)} />
+
+        {/* reCAPTCHA */}
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
           async
