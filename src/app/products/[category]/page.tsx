@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ProductCategoryPage } from '@/components/custom/ProductCategoryPage';
+import { contact } from '@/data/contact';
 import { getCategoryBySlug, getCategorySlugs } from '@/lib/categories/utils';
+import {
+  generateBreadcrumbSchema,
+  getCategorySEO,
+  jsonLdScriptProps,
+  siteConfig,
+} from '@/lib/seo';
 
 interface PageProps {
   params: Promise<{
@@ -30,21 +37,37 @@ export async function generateMetadata({
     };
   }
 
+  // Get enhanced SEO data for this category
+  const seoData = getCategorySEO(categorySlug);
+
   return {
-    title: `${category.name} | Alliance Medical Supply and Rental`,
-    description: `Browse our selection of ${category.name.toLowerCase()} available for rent or purchase. Professional medical equipment in the Bay Area.`,
-    keywords: `${category.name.toLowerCase()}, medical equipment rental, Bay Area, San Jose`,
+    title: seoData.title,
+    description: seoData.description,
+    keywords: seoData.keywords.join(', '),
+    alternates: {
+      canonical: `${siteConfig.url}/products/${categorySlug}`,
+    },
     openGraph: {
-      title: `${category.name} | Alliance Medical Supply`,
-      description: `Professional ${category.name.toLowerCase()} rentals and sales in San Jose, CA.`,
+      title: seoData.title,
+      description: seoData.description,
+      url: `${siteConfig.url}/products/${categorySlug}`,
+      siteName: contact.businessName,
+      locale: siteConfig.locale,
+      type: 'website',
       images: [
         {
-          url: category.image,
+          url: `${siteConfig.url}${category.image}`,
           width: 1200,
           height: 630,
-          alt: category.name,
+          alt: `${category.name} - ${contact.businessName}`,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seoData.title,
+      description: seoData.description,
+      images: [`${siteConfig.url}${category.image}`],
     },
   };
 }
@@ -57,5 +80,103 @@ export default async function CategoryPage({ params }: PageProps) {
     notFound();
   }
 
-  return <ProductCategoryPage category={category} />;
+  // Generate breadcrumb schema
+  const breadcrumbData = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Products', url: '/products' },
+    { name: category.name, url: `/products/${categorySlug}` },
+  ]);
+
+  // Generate product list schema for this category
+  const productListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${category.name} - Medical Equipment`,
+    description: category.description,
+    url: `${siteConfig.url}/products/${categorySlug}`,
+    numberOfItems: category.products?.length || 0,
+    itemListElement:
+      category.products?.map((product, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: product.name,
+          description: product.description,
+          image: `${siteConfig.url}${product.image}`,
+          category: category.name,
+          brand: {
+            '@type': 'Brand',
+            name: contact.businessName,
+          },
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            offerCount: 2,
+            highPrice: 'Contact for pricing',
+            lowPrice: 'Contact for pricing',
+            offers: [
+              {
+                '@type': 'Offer',
+                name: 'Rental',
+                availability: 'https://schema.org/InStock',
+                seller: {
+                  '@type': 'Organization',
+                  name: contact.businessName,
+                },
+              },
+              {
+                '@type': 'Offer',
+                name: 'Purchase',
+                availability: 'https://schema.org/InStock',
+                seller: {
+                  '@type': 'Organization',
+                  name: contact.businessName,
+                },
+              },
+            ],
+          },
+        },
+      })) || [],
+  };
+
+  // Service schema for this category
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${category.name} Rental & Sales`,
+    description: category.description,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: contact.businessName,
+      telephone: contact.phone.display,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: `${contact.address.street}, ${contact.address.suite}`,
+        addressLocality: contact.address.city,
+        addressRegion: contact.address.state,
+        postalCode: contact.address.zip,
+        addressCountry: 'US',
+      },
+    },
+    areaServed: contact.serviceAreas.primary.map((area) => ({
+      '@type': 'City',
+      name: area,
+    })),
+    serviceType: 'Medical Equipment Rental',
+  };
+
+  return (
+    <>
+      <script
+        {...jsonLdScriptProps([
+          breadcrumbData,
+          productListSchema,
+          serviceSchema,
+        ])}
+      />
+      <ProductCategoryPage category={category} />
+    </>
+  );
 }

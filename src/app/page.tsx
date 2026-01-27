@@ -8,6 +8,7 @@ import { GoogleReviews } from '@/components/custom/GoogleReviews';
 import { HeroWithBentoGrid } from '@/components/custom/heroWithBentoGrid';
 import { RentalCategoriesGrid } from '@/components/custom/rental-categories';
 import { ServiceAreaSection } from '@/components/custom/service-area-section';
+import { FAQSchema } from '@/components/seo';
 import { useSimpleParallax } from '@/hooks/useParallax';
 
 // Keep the existing commented code for reference
@@ -97,6 +98,9 @@ export default function Home() {
 
   return (
     <div className="pt-24 md:pt-28 lg:pt-32">
+      {/* FAQ Schema for SEO - helps with featured snippets and "near me" searches */}
+      <FAQSchema />
+
       {/* Modern redesigned home page */}
       <div className="w-full">
         <HeroWithBentoGrid />
