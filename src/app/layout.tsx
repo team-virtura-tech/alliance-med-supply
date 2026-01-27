@@ -1,5 +1,6 @@
 import { Footer } from '@/components/custom/footer';
 import { Header } from '@/components/custom/header';
+import { contact } from '@/data/contact';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -15,21 +16,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    'Alliance Medical Supply and Rental | Bay Area Medical Equipment Rentals',
-  description:
-    'Professional medical equipment rentals & sales in San Jose, CA. Wheelchairs, hospital beds, walkers & more. JACHO accredited. Same-day delivery. Call (408) 942-9000.',
+  title: `${contact.businessName} | Bay Area Medical Equipment`,
+  description: `Professional medical equipment rentals & sales in ${contact.address.cityState}. Wheelchairs, hospital beds, walkers & more. ${contact.accreditation}. Same-day delivery. Call ${contact.phone.display}.`,
   keywords:
-    'medical equipment rental, wheelchair rental, hospital bed rental, San Jose, Bay Area, medical supplies, JACHO accredited',
-  authors: [{ name: 'Alliance Medical Supply and Rental' }],
+    'medical equipment, wheelchair rental, hospital bed rental, walkers, San Jose, Bay Area',
+  authors: [{ name: contact.businessName }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Alliance Medical Supply and Rental | Bay Area Medical Equipment',
-    description:
-      'Professional medical equipment rentals & sales in San Jose, CA. Same-day delivery available.',
+    title: `${contact.businessName} | Bay Area Medical Equipment`,
+    description: `Professional medical equipment rentals & sales in ${contact.address.cityState}. Same-day delivery available.`,
     type: 'website',
     locale: 'en_US',
-    siteName: 'Alliance Medical Supply and Rental',
+    siteName: contact.businessName,
   },
 };
 

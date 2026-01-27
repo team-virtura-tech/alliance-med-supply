@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { contact } from '@/data/contact';
 import { ArrowRight, Clock, Mail, MapPin, Phone, Star } from 'lucide-react';
 
 export const ContactSection = () => {
@@ -23,7 +24,7 @@ export const ContactSection = () => {
             Get In Touch
           </Badge>
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-4xl">
-            Contact Alliance Medical{' '}
+            Contact {contact.businessNameShort}{' '}
             <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Supply
             </span>
@@ -54,14 +55,14 @@ export const ContactSection = () => {
                     </h4>
                     <p className="text-sm font-medium text-gray-700">
                       <a
-                        href="tel:4089429000"
+                        href={contact.phone.href}
                         className="hover:text-teal-600 transition-colors"
                       >
-                        (408) 942-9000
+                        {contact.phone.display}
                       </a>
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
-                      Mon-Fri: 9AM-5PM
+                      {contact.hours.callHours}
                     </p>
                   </div>
                 </div>
@@ -76,10 +77,18 @@ export const ContactSection = () => {
                       Visit Our Store
                     </h4>
                     <p className="text-xs text-gray-600">
-                      1630 Oakland Road, Suite A110, San Jose
+                      <a
+                        href={contact.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-orange-600 transition-colors"
+                      >
+                        {contact.address.street}, {contact.address.suite},{' '}
+                        {contact.address.city}
+                      </a>
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
-                      Mon-Fri: 11AM-5PM | Sat: Appointments
+                      {contact.hours.storeHoursSummary}
                     </p>
                   </div>
                 </div>
@@ -94,7 +103,7 @@ export const ContactSection = () => {
                       Store Hours
                     </h4>
                     <p className="text-xs text-gray-600">
-                      Mon-Fri: 10AM-6PM • Sat: 10AM-2PM
+                      {contact.hours.storeHoursSummary}
                     </p>
                   </div>
                 </div>
@@ -110,10 +119,10 @@ export const ContactSection = () => {
                     </h4>
                     <p className="text-xs text-gray-600">
                       <a
-                        href="mailto:hello@alliancemedsupply.com"
+                        href={contact.email.href}
                         className="hover:text-teal-600 transition-colors"
                       >
-                        hello@alliancemedsupply.com
+                        {contact.email.primary}
                       </a>
                     </p>
                   </div>
@@ -130,7 +139,7 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-gray-900">
-                      JACHO Accredited Provider
+                      {contact.accreditation} Provider
                     </h4>
                     <p className="text-xs text-gray-600">
                       Certified for quality and safety standards
@@ -153,9 +162,12 @@ export const ContactSection = () => {
                   <Button
                     size="lg"
                     className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 shadow-md hover:shadow-lg text-base font-medium py-4 h-14"
+                    asChild
                   >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call (408) 942-9000
+                    <a href={contact.phone.href}>
+                      <Phone className="mr-2 h-5 w-5" />
+                      Call {contact.phone.display}
+                    </a>
                   </Button>
 
                   <div className="relative">
@@ -185,9 +197,14 @@ export const ContactSection = () => {
                     Same-Day Delivery Available
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Most equipment delivered and set up same day in San Jose,
-                    Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale,
-                    Gilroy, and Morgan Hill.
+                    Most equipment delivered and set up same day in{' '}
+                    {contact.serviceAreas.primary.slice(0, -1).join(', ')}, and{' '}
+                    {
+                      contact.serviceAreas.primary[
+                        contact.serviceAreas.primary.length - 1
+                      ]
+                    }
+                    .
                   </p>
                 </div>
               </CardContent>
@@ -203,38 +220,15 @@ export const ContactSection = () => {
                 Bay Area Communities We Serve
               </h3>
               <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-5xl mx-auto">
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">San Jose</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Santa Clara</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Milpitas</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Fremont</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Palo Alto</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Sunnyvale</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Gilroy</span>
-                </div>
-                <div className="flex items-center gap-2 whitespace-nowrap">
-                  <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-gray-700">Morgan Hill</span>
-                </div>
+                {contact.serviceAreas.primary.map((area) => (
+                  <div
+                    key={area}
+                    className="flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <div className="h-1.5 w-1.5 rounded-full bg-teal-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-700">{area}</span>
+                  </div>
+                ))}
               </div>
               <div className="mt-4 text-center">
                 <p className="text-xs text-gray-500 bg-gray-50 rounded-lg p-3 inline-block">

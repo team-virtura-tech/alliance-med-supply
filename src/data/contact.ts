@@ -1,0 +1,133 @@
+// Centralized contact information for Alliance Medical Supply & Rental
+// This is the single source of truth for all contact data across the application
+
+export type Address = {
+  street: string;
+  suite: string;
+  city: string;
+  state: string;
+  zip: string;
+  full: string;
+  cityState: string; // e.g., "San Jose, CA"
+};
+
+export type Hours = {
+  callHours: string;
+  storeHours: {
+    weekdays: string;
+    saturday: string;
+    sunday: string;
+  };
+  storeHoursSummary: string; // e.g., "Mon-Fri: 11AM-5PM | Sat: Appointments"
+};
+
+export type SocialLinks = {
+  google?: string;
+  yelp?: string;
+  facebook?: string;
+  instagram?: string;
+};
+
+export type ServiceArea = {
+  primary: string[];
+  description: string;
+};
+
+export type ContactInfo = {
+  businessName: string;
+  businessNameShort: string;
+  tagline: string;
+  phone: {
+    display: string; // Formatted for display: (408) 942-9000
+    raw: string; // For tel: links: 4089429000
+    href: string; // Full tel: link
+  };
+  fax: {
+    display: string;
+    raw: string;
+  };
+  email: {
+    primary: string;
+    href: string;
+  };
+  address: Address;
+  hours: Hours;
+  mapsUrl: string;
+  social: SocialLinks;
+  serviceAreas: ServiceArea;
+  accreditation: string;
+};
+
+export const contact: ContactInfo = {
+  businessName: 'Alliance Medical Supply & Rental',
+  businessNameShort: 'Alliance Medical',
+  tagline: 'Supply and Rental',
+
+  phone: {
+    display: '(408) 942-9000',
+    raw: '4089429000',
+    href: 'tel:4089429000',
+  },
+
+  fax: {
+    display: '(408) 251-1015',
+    raw: '4082511015',
+  },
+
+  email: {
+    primary: 'hello@alliancemedsupply.com',
+    href: 'mailto:hello@alliancemedsupply.com',
+  },
+
+  address: {
+    street: '1630 Oakland Road',
+    suite: 'Suite A110',
+    city: 'San Jose',
+    state: 'CA',
+    zip: '95131',
+    full: '1630 Oakland Road, Suite A110, San Jose, CA 95131',
+    cityState: 'San Jose, CA',
+  },
+
+  hours: {
+    callHours: 'Mon-Fri: 9AM-5PM',
+    storeHours: {
+      weekdays: '11:00 AM - 5:00 PM',
+      saturday: 'Appointments Only',
+      sunday: 'Closed',
+    },
+    storeHoursSummary: 'Mon-Fri: 11AM-5PM\nSat: Appointments',
+  },
+
+  mapsUrl:
+    'https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose,+CA+95131',
+
+  social: {
+    yelp: 'https://www.yelp.com/biz/alliance-medical-supply-and-rental-san-jose-2',
+  },
+
+  serviceAreas: {
+    primary: [
+      'San Jose',
+      'Santa Clara',
+      'Milpitas',
+      'Fremont',
+      'Palo Alto',
+      'Sunnyvale',
+      'Gilroy',
+      'Morgan Hill',
+    ],
+    description:
+      'Serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, Gilroy, Morgan Hill, and surrounding Bay Area communities',
+  },
+
+  accreditation: 'JACHO Accredited',
+};
+
+// Helper function to get formatted phone link text
+export const getPhoneCallText = (prefix?: string) =>
+  prefix ? `${prefix} ${contact.phone.display}` : contact.phone.display;
+
+// Helper to get address for maps embed
+export const getAddressForMapsEmbed = () =>
+  encodeURIComponent(contact.address.full);

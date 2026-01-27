@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { contact } from '@/data/contact';
 import {
   Accessibility,
   Award,
@@ -30,9 +31,7 @@ export default function AboutUsPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-              <span className="text-primary">
-                Alliance Medical Supply & Rental
-              </span>
+              <span className="text-primary">{contact.businessName}</span>
             </h1>
             <p className="mt-6 text-xl font-semibold text-text-secondary md:text-2xl">
               Your Trusted Partner in Medical Equipment & Healthcare Solutions
@@ -47,7 +46,7 @@ export default function AboutUsPage() {
                 Certified Provider
               </h3>
               <p className="mt-1 text-center text-xs text-text-muted md:text-sm">
-                JACHO-accredited & FDA-approved equipment
+                {contact.accreditation} & FDA-approved equipment
               </p>
             </div>
 
@@ -67,7 +66,7 @@ export default function AboutUsPage() {
                 Bay Area Coverage
               </h3>
               <p className="mt-1 text-center text-xs text-text-muted md:text-sm">
-                Serving San Jose & surrounding counties
+                Serving {contact.address.city} & surrounding counties
               </p>
             </div>
 
@@ -99,8 +98,7 @@ export default function AboutUsPage() {
               Alliance Med Supply is a trusted provider of durable medical
               equipment and healthcare supplies, proudly serving clinics,
               hospitals, and home patients throughout the Bay Area communities
-              and counties, including San Jose, Santa Clara, Milpitas, Fremont,
-              Palo Alto, Sunnyvale, Gilroy, and Morgan Hill.
+              and counties, including {contact.serviceAreas.primary.join(', ')}.
             </p>
             <p>
               We proudly offer an extensive selection of quality brand name home
@@ -197,7 +195,7 @@ export default function AboutUsPage() {
                   <p className="mt-2 text-sm leading-relaxed text-text-muted">
                     Certified, reliable equipment from trusted manufacturers
                     meeting the highest industry standards. All products are
-                    JACHO-accredited and FDA-approved.
+                    {contact.accreditation} and FDA-approved.
                   </p>
                 </div>
               </div>
@@ -331,7 +329,7 @@ export default function AboutUsPage() {
             <div className="flex items-start gap-3">
               <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
               <span className="text-base text-text-secondary">
-                JACHO-accredited and FDA-approved equipment
+                {contact.accreditation} and FDA-approved equipment
               </span>
             </div>
 
@@ -451,19 +449,26 @@ export default function AboutUsPage() {
             <div className="mt-8 flex flex-col items-center gap-2 text-sm text-text-muted">
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-accent" />
-                <span>1630 Oakland Road, Suite A110, San Jose, CA 95131</span>
+                <a
+                  href={contact.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary hover:underline transition-colors"
+                >
+                  {contact.address.full}
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5 text-primary" />
                 <a
-                  href="tel:408-942-9000"
+                  href={contact.phone.href}
                   className="text-lg font-semibold text-primary transition-colors hover:text-primary/80 hover:underline"
                 >
-                  (408) 942-9000
+                  {contact.phone.display}
                 </a>
               </div>
               <div className="mt-2 text-xs text-text-muted">
-                Mon-Fri: 11:00 AM - 5:00 PM | Sat: By Appointment Only
+                {contact.hours.storeHoursSummary}
               </div>
             </div>
           </div>

@@ -2,44 +2,12 @@
 
 import { AnimatedSection } from '@/components/custom/Animated';
 import { MasonryWall } from '@/components/custom/reviews/MasonryWall';
-import {
-  fetchGoogleReviews,
-  isGoogleReviewsError,
-  type GoogleReview,
-  type GoogleReviewsResponse,
-} from '@/lib/api/googleReviews';
-import { useEffect, useState } from 'react';
+import { useGoogleReviews } from '@/hooks/useGoogleReviews';
 import { siGoogle, siYelp } from 'simple-icons';
 
-function calcAverageRating(items: GoogleReview[]) {
-  const total = items.reduce((sum, t) => sum + (t.rating || 0), 0);
-  return items.length ? Math.round((total / items.length) * 10) / 10 : 0;
-}
-
 export default function ReviewsPage() {
-  const [googleReviews, setGoogleReviews] = useState<GoogleReview[]>([]);
-  const [googleData, setGoogleData] = useState<GoogleReviewsResponse | null>(
-    null
-  );
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Fetch Google Reviews
-  useEffect(() => {
-    fetchGoogleReviews().then((response) => {
-      if (!isGoogleReviewsError(response)) {
-        setGoogleReviews(response.reviews || []);
-        setGoogleData(response);
-      }
-      setIsLoading(false);
-    });
-  }, []);
-
-  // Combine default testimonials with Google reviews
-  const allTestimonials = [...googleReviews];
-
-  const reviewCount = allTestimonials.length;
-  const avg = googleData?.rating || calcAverageRating(allTestimonials);
-  const totalReviews = googleData?.user_ratings_total || reviewCount;
+  const { reviews, averageRating, totalReviews, isLoading } =
+    useGoogleReviews();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -47,10 +15,10 @@ export default function ReviewsPage() {
     name: 'Alliance Medical Supply & Rental',
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: avg,
+      ratingValue: averageRating,
       reviewCount: totalReviews,
     },
-    review: allTestimonials.slice(0, 20).map((t) => ({
+    review: reviews.slice(0, 20).map((t) => ({
       '@type': 'Review',
       reviewBody: t.text,
       reviewRating: { '@type': 'Rating', ratingValue: t.rating },
@@ -75,7 +43,7 @@ export default function ReviewsPage() {
               <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 border border-teal-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-center gap-1 mb-2">
                   <p className="text-4xl md:text-5xl font-bold text-teal-700">
-                    {avg.toFixed(1)}
+                    {averageRating.toFixed(1)}
                   </p>
                   <span className="text-3xl text-yellow-500">★</span>
                 </div>
@@ -155,7 +123,7 @@ export default function ReviewsPage() {
               <p className="mt-4 text-gray-600">Loading reviews...</p>
             </div>
           ) : (
-            <MasonryWall testimonials={allTestimonials} />
+            <MasonryWall testimonials={reviews} />
           )}
         </div>
       </div>

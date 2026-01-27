@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
 
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
+import { contact } from '@/data/contact';
 import { cn } from '@/lib/utils';
 
 const primaryCities = [
@@ -63,8 +64,8 @@ export const ServiceAreaSection = ({
             Bay Area Communities We Serve
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-            Conveniently located in San Jose with easy access from all major Bay
-            Area cities
+            Conveniently located in {contact.address.city} with easy access from
+            all major Bay Area cities
           </p>
         </motion.div>
 
@@ -106,21 +107,21 @@ export const ServiceAreaSection = ({
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-6">
             <a
-              href="https://www.google.com/maps/place/1630+Oakland+Road+Suite+A110,+San+Jose,+CA+95131"
+              href={contact.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 hover:underline md:text-base"
             >
               <MapPin className="h-4 w-4" />
-              1630 Oakland Road, Suite A110, San Jose CA 95131
+              {contact.address.full}
             </a>
             <span className="hidden text-slate-300 sm:inline">•</span>
             <a
-              href="tel:+14089429000"
+              href={contact.phone.href}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 hover:underline md:text-base"
             >
               <Phone className="h-4 w-4" />
-              (408) 942-9000
+              {contact.phone.display}
             </a>
           </div>
         </motion.div>

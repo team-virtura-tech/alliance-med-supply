@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 import type { Category, Product } from '@/types/categories';
@@ -142,9 +143,9 @@ export const ProductDetailPage = ({
             {/* Call to Action */}
             <div className="space-y-4 pt-2">
               <Button size="lg" className="w-full sm:w-auto" asChild>
-                <a href="tel:4089429000">
+                <a href={contact.phone.href}>
                   <Phone className="mr-2 h-5 w-5" />
-                  Call (408) 942-9000 for Quote
+                  Call {contact.phone.display} for Quote
                 </a>
               </Button>
             </div>

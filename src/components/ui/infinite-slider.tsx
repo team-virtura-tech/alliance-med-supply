@@ -72,16 +72,27 @@ export function InfiniteSlider({
     reverse,
   ]);
 
+  const slowDown = () => {
+    setIsTransitioning(true);
+    setCurrentDuration(durationOnHover!);
+  };
+
+  const speedUp = () => {
+    setIsTransitioning(true);
+    setCurrentDuration(duration);
+  };
+
   const hoverProps = durationOnHover
     ? {
-        onHoverStart: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(durationOnHover);
-        },
-        onHoverEnd: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(duration);
-        },
+        onHoverStart: slowDown,
+        onHoverEnd: speedUp,
+      }
+    : {};
+
+  const touchProps = durationOnHover
+    ? {
+        onTouchStart: slowDown,
+        onTouchEnd: speedUp,
       }
     : {};
 
@@ -98,6 +109,7 @@ export function InfiniteSlider({
         }}
         ref={ref}
         {...hoverProps}
+        {...touchProps}
       >
         {children}
         {children}

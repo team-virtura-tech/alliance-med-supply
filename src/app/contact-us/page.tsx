@@ -2,6 +2,7 @@
 
 import { ContactForm } from '@/components/custom';
 import { ContactCard } from '@/components/ui/contact-card';
+import { contact } from '@/data/contact';
 import { useInView } from '@/hooks/useInView';
 import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -17,29 +18,29 @@ export default function ContactPage() {
     {
       icon: Phone,
       label: 'Phone',
-      value: '(408) 942-9000',
-      href: 'tel:4089429000',
+      value: contact.phone.display,
+      href: contact.phone.href,
     },
     {
       icon: Mail,
       label: 'Fax',
-      value: '(408) 251-1015',
+      value: contact.fax.display,
     },
     {
       icon: MapPin,
       label: 'Address',
-      value: '1630 Oakland Road, Suite A110, San Jose, CA 95131',
-      href: 'https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose,+CA+95131',
+      value: contact.address.full,
+      href: contact.mapsUrl,
     },
     {
       icon: Clock,
       label: 'Call Hours',
-      value: 'Mon-Fri: 9AM-5PM',
+      value: contact.hours.callHours,
     },
     {
       icon: Clock,
       label: 'Store Hours',
-      value: 'Mon-Fri: 11AM-5PM | Sat: Appointments',
+      value: contact.hours.storeHoursSummary,
     },
   ];
 
@@ -82,7 +83,7 @@ export default function ContactPage() {
             className="overflow-hidden rounded-2xl"
           >
             <InteractiveMap
-              address="1630 Oakland Road, Suite A110, San Jose, CA 95131"
+              address={contact.address.full}
               height="h-96 lg:h-[500px]"
               className="w-full"
             />

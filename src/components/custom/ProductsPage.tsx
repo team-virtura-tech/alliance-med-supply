@@ -5,6 +5,7 @@ import { Phone } from 'lucide-react';
 
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { getCategories, getCategorySlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
 
@@ -83,9 +84,11 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
               Our medical equipment specialists are here to help you find the
               right solution.
             </p>
-            <Button variant="default" size="lg">
-              <Phone className="h-4 w-4" />
-              Call (408) 942-9000
+            <Button variant="default" size="lg" asChild>
+              <a href={contact.phone.href}>
+                <Phone className="h-4 w-4" />
+                Call {contact.phone.display}
+              </a>
             </Button>
           </div>
         </motion.section>

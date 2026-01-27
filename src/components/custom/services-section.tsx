@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { contact } from '@/data/contact';
 import {
   Activity,
   ArrowRight,
@@ -117,7 +118,7 @@ export const ServicesSection = () => {
             </div>
             <div className="w-1 h-1 bg-gray-400 rounded-full" />
             <div className="text-sm font-medium text-gray-600">
-              JACHO Accredited
+              {contact.accreditation}
             </div>
             <div className="w-1 h-1 bg-gray-400 rounded-full" />
             <div className="text-sm font-medium text-gray-600">
@@ -197,8 +198,9 @@ export const ServicesSection = () => {
                 <Button
                   size="lg"
                   className="bg-white text-teal-600 hover:bg-gray-50 transition-all duration-300 hover:scale-[1.02] shadow-lg font-semibold px-8 py-3 text-base"
+                  asChild
                 >
-                  Call (408) 942-9000
+                  <a href={contact.phone.href}>Call {contact.phone.display}</a>
                 </Button>
                 <Button
                   size="lg"

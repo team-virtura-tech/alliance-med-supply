@@ -1,34 +1,15 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  fetchGoogleReviews,
-  isGoogleReviewsError,
-  type GoogleReviewsResponse,
-} from '@/lib/api/googleReviews';
+import { useGoogleReviews } from '@/hooks/useGoogleReviews';
 import { ExternalLink, MessageSquare, Star } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { ReviewsCarousel } from '../reviews';
 import { StarRating } from '../reviews/MasonryWall';
-// import { StarRating } from '../star-rating';
 
 export const GoogleReviews = () => {
-  const [data, setData] = useState<GoogleReviewsResponse | null>(null);
-  console.log('<> data: ', data);
-  const [err, setErr] = useState<string | null>(null);
-  // const [currentIndex, setCurrentIndex] = useState(0);
+  const { data, error, isLoading } = useGoogleReviews();
 
-  useEffect(() => {
-    fetchGoogleReviews().then((response) => {
-      if (isGoogleReviewsError(response)) {
-        setErr(response.error);
-      } else {
-        setData(response);
-      }
-    });
-  }, []);
-
-  if (err) {
+  if (error) {
     return (
       <section
         id="GoogleReviews"
@@ -48,7 +29,7 @@ export const GoogleReviews = () => {
     );
   }
 
-  if (!data) {
+  if (isLoading || !data) {
     return (
       <section
         id="GoogleReviews"
@@ -88,6 +69,7 @@ export const GoogleReviews = () => {
   const {
     rating,
     user_ratings_total,
+    place_id,
     url,
     editorial_summary,
     html_attributions,
@@ -141,18 +123,18 @@ export const GoogleReviews = () => {
             </Button>
           )}
 
-          <Button asChild>
-            <a
-              href={`https://search.google.com/local/writereview?placeid=${encodeURIComponent(
-                process.env.NEXT_PUBLIC_ALLIANCE_PLACE_ID || ''
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Star className="mr-2 h-4 w-4" />
-              Write a review
-            </a>
-          </Button>
+          {place_id && (
+            <Button asChild>
+              <a
+                href={`https://search.google.com/local/writereview?placeid=${encodeURIComponent(place_id)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Star className="mr-2 h-4 w-4" />
+                Write a review
+              </a>
+            </Button>
+          )}
         </div>
 
         {/* Required Attribution */}
