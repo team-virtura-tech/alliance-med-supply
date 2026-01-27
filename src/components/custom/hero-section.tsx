@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { contact } from '@/data/contact';
 import { Clock, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 
@@ -25,7 +26,7 @@ export const HeroSection = () => {
           {/* Content Side - Enhanced typography hierarchy */}
           <div className="flex flex-col justify-center space-y-8">
             <Badge className="w-fit bg-teal-50 text-teal-700 border border-teal-200 hover:bg-teal-50 font-medium">
-              ✅ JACHO Accredited Provider
+              ✅ {contact.accreditation} Provider
             </Badge>
 
             <div className="space-y-6">
@@ -51,9 +52,12 @@ export const HeroSection = () => {
               <Button
                 size="lg"
                 className="bg-teal-600 text-white hover:bg-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl text-base font-semibold px-8 py-3"
+                asChild
               >
-                <Phone className="mr-2 h-5 w-5" />
-                Call (408) 942-9000
+                <a href={contact.phone.href}>
+                  <Phone className="mr-2 h-5 w-5" />
+                  Call {contact.phone.display}
+                </a>
               </Button>
               <Button
                 size="lg"
@@ -73,7 +77,9 @@ export const HeroSection = () => {
               <div className="flex flex-wrap items-center gap-6 opacity-70">
                 <div className="text-sm text-gray-600">20+Years Experience</div>
                 <div className="w-1 h-1 bg-gray-400 rounded-full" />
-                <div className="text-sm text-gray-600">JACHO Accredited</div>
+                <div className="text-sm text-gray-600">
+                  {contact.accreditation}
+                </div>
                 <div className="w-1 h-1 bg-gray-400 rounded-full" />
                 <div className="text-sm text-gray-600">Same-Day Delivery</div>
               </div>
@@ -90,7 +96,7 @@ export const HeroSection = () => {
                     Bay Area Coverage
                   </p>
                   <p className="text-xs text-gray-600">
-                    San Jose & Surrounding
+                    {contact.address.city} & Surrounding
                   </p>
                 </div>
               </div>
@@ -101,9 +107,14 @@ export const HeroSection = () => {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">
-                    Mon-Fri 10-6
+                    Mon-Fri{' '}
+                    {contact.hours.storeHours.weekdays
+                      .replace(':00 AM', '')
+                      .replace(':00 PM', '')}
                   </p>
-                  <p className="text-xs text-gray-600">Saturday 10-2</p>
+                  <p className="text-xs text-gray-600">
+                    Saturday: {contact.hours.storeHours.saturday}
+                  </p>
                 </div>
               </div>
 

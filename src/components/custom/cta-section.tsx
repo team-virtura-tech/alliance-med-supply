@@ -5,6 +5,7 @@ import { MessageCircle, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { cn } from '@/lib/utils';
 
 export type CtaSectionProps = {
@@ -48,7 +49,7 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button asChild size="lg" className="min-w-[180px]">
-                <Link href="/contact">
+                <Link href="/contact-us">
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Contact Us
                 </Link>
@@ -60,16 +61,16 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
                 size="lg"
                 className="min-w-[180px]"
               >
-                <a href="tel:+12095791800">
+                <a href={contact.phone.href}>
                   <PhoneCall className="mr-2 h-5 w-5" />
-                  (209) 579-1800
+                  {contact.phone.display}
                 </a>
               </Button>
             </div>
 
             {/* Additional info */}
             <p className="mt-6 text-sm text-slate-500">
-              Available Monday-Friday, 9am-5pm PST
+              {contact.hours.callHours}
             </p>
           </div>
         </motion.div>

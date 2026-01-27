@@ -117,7 +117,9 @@ function ContactInfo({
       </motion.div>
       <div>
         <p className="font-medium text-base md:text-lg">{label}</p>
-        <p className="text-muted-foreground text-sm md:text-base">{value}</p>
+        <p className="text-muted-foreground text-sm md:text-base whitespace-pre-line">
+          {value}
+        </p>
         {hours && (
           <p className="text-muted-foreground text-xs md:text-sm mt-1">
             {hours}

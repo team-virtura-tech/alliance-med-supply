@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import Image from 'next/image';
@@ -77,6 +78,7 @@ type ReviewCardProps = {
   defaultAvatar: string;
   fixedHeight: boolean;
   truncateLength: number;
+  className?: string;
 };
 
 // Inline StarRating component - no external dependencies
@@ -124,6 +126,7 @@ export const ReviewCard = ({
   defaultAvatar,
   fixedHeight,
   truncateLength,
+  className,
 }: ReviewCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -141,9 +144,9 @@ export const ReviewCard = ({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.4, delay: (idx % 9) * 0.05 }}
       data-component="ReviewCard"
-      className={`break-inside-avoid rounded-2xl border border-border bg-white p-6 hover:border-primary/30 transition-all duration-300 ${
+      className={`break-inside-avoid mb-4 md:mb-6 rounded-2xl border border-border bg-white p-6 hover:border-primary/30 transition-all duration-300 ${
         fixedHeight ? 'flex flex-col h-[220px]' : ''
-      }`}
+      } ${className || ''}`}
     >
       {/* Header */}
       <div className="flex items-center gap-4 ">
@@ -191,14 +194,16 @@ export const ReviewCard = ({
       </div>
 
       {showExpandButton && (
-        <button
+        <Button
+          variant="link"
+          size="sm"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-3 text-sm font-medium text-primary hover:text-primary/80 transition-colors underline-offset-4 hover:underline"
+          className="mt-3 p-0 h-auto"
           aria-expanded={isExpanded}
           aria-label={isExpanded ? 'Show less content' : 'Read more content'}
         >
           {isExpanded ? 'Show less' : 'Read more'}
-        </button>
+        </Button>
       )}
 
       {/* Date */}

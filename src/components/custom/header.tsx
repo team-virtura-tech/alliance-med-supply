@@ -2,6 +2,7 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { MapPin, Menu, Phone, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,10 +46,10 @@ export const Header = () => {
             </div>
             <div className="text-center">
               <h1 className="text-xl font-semibold text-foreground md:text-2xl">
-                Alliance Medical
+                {contact.businessNameShort}
               </h1>
               <p className="text-xs text-primary uppercase tracking-widest">
-                Supply and Rental
+                {contact.tagline}
               </p>
             </div>
           </Link>
@@ -77,24 +78,26 @@ export const Header = () => {
           <div className="hidden items-center gap-4 xl:flex">
             <div className="text-right">
               <a
-                href="https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose+CA+95131"
+                href={contact.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex cursor-pointer items-center gap-1.5 typography-small text-slate-600 transition-colors hover:text-slate-800 hover:underline hover:decoration-slate-700"
               >
                 <MapPin className="h-3.5 w-3.5" />
-                San Jose, CA
+                {contact.address.cityState}
               </a>
               <Badge
                 variant="secondary"
                 className="mt-1 text-xs bg-teal-100 text-teal-700 hover:bg-teal-100"
               >
-                JACHO Accredited
+                {contact.accreditation}
               </Badge>
             </div>
-            <Button size="default">
-              <Phone className="h-4 w-4" />
-              (408) 942-9000
+            <Button size="default" asChild>
+              <a href={contact.phone.href}>
+                <Phone className="h-4 w-4" />
+                {contact.phone.display}
+              </a>
             </Button>
           </div>
 
@@ -136,12 +139,14 @@ export const Header = () => {
                 );
               })}
               <div className="border-t px-4 pt-4">
-                <Button size="lg" className="mb-3 w-full">
-                  <Phone className="h-4 w-4" />
-                  Call (408) 942-9000
+                <Button size="lg" className="mb-3 w-full" asChild>
+                  <a href={contact.phone.href}>
+                    <Phone className="h-4 w-4" />
+                    Call {contact.phone.display}
+                  </a>
                 </Button>
                 <div className="typography-small text-center text-muted-foreground">
-                  San Jose, CA • JACHO Accredited
+                  {contact.address.cityState} • {contact.accreditation}
                 </div>
               </div>
             </div>

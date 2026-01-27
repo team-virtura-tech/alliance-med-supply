@@ -52,8 +52,16 @@ export async function GET() {
     const data = await resp.json();
 
     if (data.status !== 'OK' || !data.result) {
+      console.error(
+        'Google Places API error:',
+        data.status,
+        data.error_message
+      );
       return NextResponse.json(
-        { error: data.status || 'No result' },
+        {
+          error: data.status || 'No result',
+          details: data.error_message || 'Unknown error from Google API',
+        },
         { status: 502 }
       );
     }
@@ -75,6 +83,7 @@ export async function GET() {
 
     const payload = {
       name: r.name as string,
+      place_id: r.place_id as string | undefined,
       url: r.url as string | undefined,
       rating: r.rating as number | undefined,
       user_ratings_total: r.user_ratings_total as number | undefined,

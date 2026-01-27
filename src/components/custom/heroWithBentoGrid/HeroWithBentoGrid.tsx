@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { useSimpleParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -118,18 +119,28 @@ export const HeroWithBentoGrid = ({
                 size="lg"
                 onClick={onPrimaryClick}
                 className="w-full sm:w-auto"
+                asChild
               >
-                <Phone className="h-4 w-4" />
-                Call (408) 942-9000
+                <a href={contact.phone.href}>
+                  <Phone className="h-4 w-4" />
+                  Call {contact.phone.display}
+                </a>
               </Button>
               <Button
                 variant="secondary"
                 size="lg"
                 onClick={onSecondaryClick}
                 className="w-full sm:w-auto"
+                asChild
               >
-                <MapPin className="h-4 w-4" />
-                Find Location
+                <a
+                  href={contact.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Find Location
+                </a>
               </Button>
             </div>
 
@@ -144,7 +155,9 @@ export const HeroWithBentoGrid = ({
                     <p className="text-sm font-medium text-text-primary">
                       Call Us
                     </p>
-                    <p className="text-xs text-text-muted">Mon-Fri: 9AM-5PM</p>
+                    <p className="text-xs text-text-muted">
+                      {contact.hours.callHours}
+                    </p>
                   </div>
                 </div>
 
@@ -157,7 +170,7 @@ export const HeroWithBentoGrid = ({
                       Visit Store
                     </p>
                     <p className="text-xs text-text-muted">
-                      Mon-Fri: 11AM-5PM | Sat: Appointments
+                      {contact.hours.storeHoursSummary}
                     </p>
                   </div>
                 </div>
@@ -185,7 +198,7 @@ export const HeroWithBentoGrid = ({
               className="relative rounded-2xl xl:rounded-3xl overflow-hidden h-full w-full"
             >
               <Image
-                src="/images/branding/van-1.png"
+                src="/images/branding/van-2.png"
                 alt="Alliance Medical Supply Van - Professional medical equipment delivery"
                 fill
                 className="object-cover"

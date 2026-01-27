@@ -1,3 +1,5 @@
+import { contact } from '@/data/contact';
+
 interface InteractiveMapProps {
   address?: string;
   latitude?: number;
@@ -6,7 +8,7 @@ interface InteractiveMapProps {
   height?: string;
 }
 export const InteractiveMap = ({
-  address = '1630 Oakland Road, Suite A110, San Jose, CA 95131',
+  address = contact.address.full,
   latitude: _latitude = 37.3817235,
   longitude: _longitude = -121.897189,
   className = '',
@@ -29,7 +31,7 @@ export const InteractiveMap = ({
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Alliance Medical Supply Location - San Jose, CA"
+        title={`${contact.businessNameShort} Location - ${contact.address.cityState}`}
         className="rounded-2xl"
       />
     </div>

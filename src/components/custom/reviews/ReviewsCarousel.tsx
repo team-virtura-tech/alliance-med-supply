@@ -1,7 +1,7 @@
+import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { GoogleReview } from '@/lib/api/googleReviews';
+import { motion, useReducedMotion } from 'framer-motion';
 import 'swiper/css';
-import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { ReviewCard } from './MasonryWall';
 
 export const ReviewsCarousel = ({
@@ -9,29 +9,22 @@ export const ReviewsCarousel = ({
 }: {
   testimonials: GoogleReview[];
 }) => {
+  const reduce = useReducedMotion();
   return (
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={1}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 },
-      }}
-      modules={[Autoplay]}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      speed={1200}
-      effect="slide"
-      cssMode={false}
-      loop
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 20 }}
+      whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+      className="mb-12"
     >
-      {testimonials.map((r, i) => (
-        <SwiperSlide key={i}>
+      <InfiniteSlider
+        duration={50}
+        durationOnHover={6000}
+        gap={16}
+        className="md:[mask-image:linear-gradient(to_right,transparent_0%,_black_128px,_black_calc(100%-128px),_transparent_100%)]"
+      >
+        {testimonials.map((r, i) => (
           <ReviewCard
             key={r.id}
             testimonial={r}
@@ -41,9 +34,10 @@ export const ReviewsCarousel = ({
             defaultAvatar="/images/aboutUs/maleProfile.png"
             fixedHeight={true}
             truncateLength={150}
+            className="w-[320px] sm:w-[380px] shrink-0"
           />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+        ))}
+      </InfiniteSlider>
+    </motion.div>
   );
 };

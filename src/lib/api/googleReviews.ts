@@ -20,6 +20,7 @@ export type GoogleReview = {
 
 export type GoogleReviewsResponse = {
   name?: string;
+  place_id?: string;
   url?: string;
   rating?: number;
   user_ratings_total?: number;
