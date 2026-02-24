@@ -1,4 +1,5 @@
 import { AdminNotificationEmail, ConfirmationEmail } from '@/lib/emails';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -26,22 +27,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify reCAPTCHA
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const verifyUrl = baseUrl.startsWith('http')
-      ? baseUrl
-      : `https://${baseUrl}`;
-    const recaptchaResponse = await fetch(`${verifyUrl}/api/verify-recaptcha`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: recaptchaToken,
-        action: 'contact_form',
-      }),
-    });
-    const recaptchaResult = await recaptchaResponse.json();
+    // Verify reCAPTCHA directly — no internal HTTP round-trip
+    const recaptchaResult = await verifyRecaptcha(
+      recaptchaToken,
+      'contact_form'
+    );
 
     if (!recaptchaResult.success) {
       return NextResponse.json(

@@ -1,3 +1,4 @@
+import { verifyRecaptcha } from '@/lib/recaptcha';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -11,76 +12,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const result = await verifyRecaptcha(token, action);
 
-    if (!secretKey) {
-      console.error('Missing reCAPTCHA secret key');
-      return NextResponse.json(
-        { success: false, error: 'Server configuration error' },
-        { status: 500 }
-      );
+    if (result.success) {
+      return NextResponse.json(result);
     }
 
-    // Verify with Google reCAPTCHA v3 API
-    const response = await fetch(
-      'https://www.google.com/recaptcha/api/siteverify',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `secret=${secretKey}&response=${token}`,
-      }
-    );
-
-    if (!response.ok) {
-      console.error('reCAPTCHA verification failed:', response.statusText);
-      return NextResponse.json(
-        { success: false, error: 'Verification failed' },
-        { status: 500 }
-      );
-    }
-
-    const data = await response.json();
-
-    // Check if the token is valid and the score is acceptable
-    const isValid = data.success === true;
-    const score = data.score || 0;
-    const actionMatch = data.action === action;
-
-    // You can adjust the score threshold (0.0-1.0, higher is less risky)
-    const scoreThreshold = 0.5;
-
-    if (isValid && actionMatch && score >= scoreThreshold) {
-      return NextResponse.json({
-        success: true,
-        score,
-        action: data.action,
-      });
-    } else {
-      console.log('reCAPTCHA verification details:', {
-        valid: isValid,
-        score,
-        actionMatch,
-        expectedAction: action,
-        receivedAction: data.action,
-        errorCodes: data['error-codes'],
-      });
-
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Verification failed',
-          details: {
-            valid: isValid,
-            score,
-            actionMatch,
-            errorCodes: data['error-codes'],
-          },
-        },
-        { status: 403 }
-      );
-    }
+    const status = result.error === 'Server configuration error' ? 500 : 403;
+    return NextResponse.json(result, { status });
   } catch (error) {
     console.error('reCAPTCHA verification error:', error);
     return NextResponse.json(
