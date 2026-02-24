@@ -49,14 +49,6 @@ export const ConfirmationEmail = ({
             padding: 32px;
             text-align: center;
           }
-          .logo {
-            max-width: 160px;
-            height: auto;
-            margin-bottom: 16px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          }
           .header h1 {
             margin: 0;
             font-size: 22px;
@@ -171,7 +163,6 @@ export const ConfirmationEmail = ({
       <body>
         <div class="container">
           <div class="header">
-            <img src="https://www.alliancemedsupply.com/logo/Allience-Medical-logo-large.svg" alt="Alliance Medical Supply" width="140" height="auto" style="display: block; margin: 0 auto 16px;" />
             <h1>Message Received</h1>
           </div>
 
