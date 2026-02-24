@@ -1,4 +1,10 @@
+import { AdminNotificationEmail, ConfirmationEmail } from '@/lib/emails';
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const ADMIN_EMAIL =
+  process.env.CONTACT_FORM_ADMIN_EMAIL ?? 'hello@alliancemedsupply.com';
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,20 +27,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify reCAPTCHA
-    const recaptchaResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/verify-recaptcha`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: recaptchaToken,
-          action: 'contact_form',
-        }),
-      }
-    );
-
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const verifyUrl = baseUrl.startsWith('http')
+      ? baseUrl
+      : `https://${baseUrl}`;
+    const recaptchaResponse = await fetch(`${verifyUrl}/api/verify-recaptcha`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: recaptchaToken,
+        action: 'contact_form',
+      }),
+    });
     const recaptchaResult = await recaptchaResponse.json();
 
     if (!recaptchaResult.success) {
@@ -47,12 +53,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Integrate with CRM
-    // For now, we'll just log and return success
-
+    // Log submission
     console.log('Contact form submission:', {
       firstName,
       lastName,
@@ -63,8 +64,44 @@ export async function POST(request: NextRequest) {
       recaptchaScore: recaptchaResult.score,
     });
 
-    // TODO: Add your email sending logic here
-    // Example: Send email via SendGrid, AWS SES, etc.
+    // Send both emails via Resend using verified domain
+    const [confirmationResult, adminResult] = await Promise.all([
+      resend.emails.send({
+        from: 'Alliance Medical Supply <noreply@alliancemedsupply.com>',
+        to: email,
+        subject: 'We Received Your Message',
+        html: ConfirmationEmail({ firstName, subject, message }),
+      }),
+      resend.emails.send({
+        from: 'Alliance Medical Supply <noreply@alliancemedsupply.com>',
+        to: ADMIN_EMAIL,
+        subject: `New Contact Form Submission: ${subject}`,
+        html: AdminNotificationEmail({
+          firstName,
+          lastName,
+          email,
+          subject,
+          message,
+        }),
+      }),
+    ]);
+
+    const error = confirmationResult.error ?? adminResult.error;
+    if (error) {
+      console.error('Email sending error:', error);
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Failed to send email: ${error.message}. Please try again later.`,
+        },
+        { status: 500 }
+      );
+    }
+
+    console.log('Emails sent successfully:', {
+      confirmationId: confirmationResult.data?.id,
+      adminId: adminResult.data?.id,
+    });
 
     return NextResponse.json({
       success: true,
@@ -73,7 +110,13 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Contact form submission error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      {
+        success: false,
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to process your request. Please try again later.',
+      },
       { status: 500 }
     );
   }
