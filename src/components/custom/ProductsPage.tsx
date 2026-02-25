@@ -22,13 +22,13 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
       id="ProductsPage"
       data-component="ProductsPage"
       className={cn(
-        'min-h-screen bg-background pt-28 pb-12 md:pt-32 lg:pt-36',
+        'min-h-screen bg-background pt-20 pb-12 md:pt-28 lg:pt-36',
         className
       )}
     >
       <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <motion.header
+        {/* Header — use div, not header landmark, to avoid spurious landmark in AT */}
+        <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
@@ -42,20 +42,23 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
             Trusted by healthcare professionals and families across Northern
             California.
           </p>
-        </motion.header>
+        </motion.div>
 
-        {/* Categories Grid */}
+        {/* Categories Grid — flex-wrap so orphaned last-row cards centre automatically */}
         <motion.section
+          aria-label="Equipment categories"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.25, delay: shouldReduceMotion ? 0 : 0.1 }}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+          className="flex flex-wrap justify-center gap-6 md:gap-8"
         >
           {categories.map((category, index) => (
             <ProductCard
               key={category.id}
               variant="category"
               index={index}
+              priority={index < 3}
+              className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.4rem)]"
               data={{
                 id: category.id,
                 name: category.name,
@@ -85,8 +88,17 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
               right solution.
             </p>
             <Button variant="default" size="lg" asChild>
-              <a href={contact.phone.href}>
-                <Phone className="h-4 w-4" />
+              <a
+                href={contact.phone.href}
+                aria-label={`Call us at ${contact.phone.display}`}
+                onKeyDown={(e) => {
+                  if (e.key === ' ') {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
                 Call {contact.phone.display}
               </a>
             </Button>
