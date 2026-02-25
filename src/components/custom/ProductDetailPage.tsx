@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, Phone } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { KeyboardEvent } from 'react';
 
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
@@ -25,6 +26,13 @@ export const ProductDetailPage = ({
   className,
 }: ProductDetailPageProps) => {
   const reduce = useReducedMotion();
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
+  };
 
   return (
     <div
@@ -48,6 +56,7 @@ export const ProductDetailPage = ({
             <li>
               <Link
                 href="/products"
+                onKeyDown={handleKeyDown}
                 className="hover:text-text-primary transition-colors"
               >
                 Products
@@ -57,6 +66,7 @@ export const ProductDetailPage = ({
             <li>
               <Link
                 href={`/products/${getCategorySlug(category.name)}`}
+                onKeyDown={handleKeyDown}
                 className="hover:text-text-primary transition-colors"
               >
                 {category.name}
@@ -143,7 +153,7 @@ export const ProductDetailPage = ({
             {/* Call to Action */}
             <div className="space-y-4 pt-2">
               <Button size="lg" className="w-full sm:w-auto" asChild>
-                <a href={contact.phone.href}>
+                <a href={contact.phone.href} onKeyDown={handleKeyDown}>
                   <Phone className="mr-2 h-5 w-5" />
                   Call {contact.phone.display} for Quote
                 </a>
@@ -177,7 +187,10 @@ export const ProductDetailPage = ({
                 More {category.name}
               </h2>
               <Button variant="secondary" asChild>
-                <Link href={`/products/${getCategorySlug(category.name)}`}>
+                <Link
+                  href={`/products/${getCategorySlug(category.name)}`}
+                  onKeyDown={handleKeyDown}
+                >
                   View All
                 </Link>
               </Button>
@@ -217,6 +230,7 @@ export const ProductDetailPage = ({
           <Button variant="ghost" asChild>
             <Link
               href={`/products/${getCategorySlug(category.name)}`}
+              onKeyDown={handleKeyDown}
               className="inline-flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" />
