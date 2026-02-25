@@ -4,7 +4,6 @@ import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
 import { getCategorySlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
@@ -37,8 +36,14 @@ export const CategoryCard = ({
   return (
     <Link
       href={categoryUrl}
-      className="block w-[calc(50%-1rem)] sm:w-64"
+      className="block w-full"
       aria-label={`View ${name} category with ${productCount || 'available'} products`}
+      onKeyDown={(e) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          e.currentTarget.click();
+        }
+      }}
     >
       <Card
         data-component={componentName}
@@ -67,6 +72,9 @@ export const CategoryCard = ({
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             priority={false}
           />
+
+          {/* Subtle gradient scrim on bottom-right to reduce watermark visibility */}
+          <div className="absolute bottom-0 right-0 h-12 w-28 bg-gradient-to-tl from-black/30 to-transparent pointer-events-none" />
         </div>
 
         {/* Content area with flex-grow to push button down */}
@@ -88,9 +96,9 @@ export const CategoryCard = ({
           </CardContent>
 
           <CardFooter className="mt-auto px-4 pb-4 pt-2">
-            <Button asChild variant="default" className="w-full">
-              <span>View Products</span>
-            </Button>
+            <div className="w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground group-hover:bg-primary/90 transition-colors">
+              View Products
+            </div>
           </CardFooter>
         </div>
       </Card>

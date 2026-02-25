@@ -13,7 +13,11 @@ export const RentalCategoriesGrid = () => {
         id={componentName}
         className="py-16 md:py-20 lg:py-24 mx-auto w-full max-w-screen-xl px-4 md:px-6"
       >
-        <div className="py-12 text-center text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="py-12 text-center text-muted-foreground"
+        >
           Loading categories…
         </div>
       </section>
@@ -40,7 +44,7 @@ export const RentalCategoriesGrid = () => {
     <section
       data-component={componentName}
       id={componentName}
-      className="py-16 md:py-20 lg:py-24 mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8"
+      className="pt-8 pb-16 md:pt-10 md:py-20 lg:pt-12 lg:pb-24 mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8"
     >
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
