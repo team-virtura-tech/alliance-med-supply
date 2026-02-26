@@ -2,15 +2,11 @@ import { contact } from '@/data/contact';
 
 interface InteractiveMapProps {
   address?: string;
-  latitude?: number;
-  longitude?: number;
   className?: string;
   height?: string;
 }
 export const InteractiveMap = ({
   address = contact.address.full,
-  latitude: _latitude = 37.3817235,
-  longitude: _longitude = -121.897189,
   className = '',
   height = 'h-96',
 }: InteractiveMapProps) => {

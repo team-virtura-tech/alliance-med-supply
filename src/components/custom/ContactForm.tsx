@@ -180,7 +180,7 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
 
           {/* reCAPTCHA Notice */}
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Shield className="h-3 w-3" />
+            <Shield aria-hidden={true} className="h-3 w-3" />
             <span>
               This site is protected by reCAPTCHA and the Google{' '}
               <a
@@ -188,8 +188,15 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-primary"
+                onKeyDown={(e) => {
+                  if (e.key === ' ') {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
               >
                 Privacy Policy
+                <span className="sr-only">(opens in new tab)</span>
               </a>{' '}
               and{' '}
               <a
@@ -197,8 +204,15 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-primary"
+                onKeyDown={(e) => {
+                  if (e.key === ' ') {
+                    e.preventDefault();
+                    e.currentTarget.click();
+                  }
+                }}
               >
                 Terms of Service
+                <span className="sr-only">(opens in new tab)</span>
               </a>{' '}
               apply.
             </span>
@@ -211,10 +225,26 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
             disabled={form.formState.isSubmitting}
           >
             {form.formState.isSubmitting && (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2
+                aria-hidden={true}
+                className="mr-2 h-4 w-4 animate-spin"
+              />
             )}
             {form.formState.isSubmitting ? 'Sending...' : 'Send message'}
           </Button>
+
+          {/* Accessible live region — always rendered so screen readers detect changes */}
+          <div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {submitStatus === 'success' &&
+              'Your message has been sent successfully. We will get back to you soon.'}
+            {submitStatus === 'error' &&
+              'There was an error sending your message. Please try again or contact us directly.'}
+          </div>
 
           {/* Status Messages */}
           {submitStatus === 'success' && (

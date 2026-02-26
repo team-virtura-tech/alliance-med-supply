@@ -11,6 +11,7 @@ export const Footer = () => {
       id="footer"
       data-component="Footer"
       className="bg-gray-900 text-white"
+      aria-label="Site footer"
     >
       <div className="mx-auto max-w-screen-xl px-4 md:px-6 lg:px-8">
         {/* Main Footer Content */}
@@ -26,20 +27,33 @@ export const Footer = () => {
             </p>
 
             <div className="flex items-center gap-2 mb-4">
-              <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+              <Star
+                className="h-5 w-5 text-yellow-400 fill-yellow-400"
+                aria-hidden="true"
+              />
               <span className="font-semibold">
                 {contact.accreditation} Provider
               </span>
             </div>
 
             <div className="flex gap-4">
-              <Button
-                variant="outline"
-                className="border-2 border-teal-400 bg-transparent text-teal-400 hover:bg-teal-400 hover:text-white transition-all duration-200"
-              >
-                <ExternalLink className="mr-2 h-4 w-4" />
-                View on Google
-              </Button>
+              {contact.social.google && (
+                <Button
+                  variant="outline"
+                  className="border-2 border-teal-400 bg-transparent text-teal-400 hover:bg-teal-400 hover:text-white transition-all duration-200"
+                  asChild
+                >
+                  <a
+                    href={contact.social.google}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View on Google (opens in new tab)"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
+                    View on Google
+                  </a>
+                </Button>
+              )}
               {contact.social.yelp && (
                 <Button
                   variant="outline"
@@ -50,8 +64,9 @@ export const Footer = () => {
                     href={contact.social.yelp}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="View on Yelp (opens in new tab)"
                   >
-                    <ExternalLink className="mr-2 h-4 w-4" />
+                    <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
                     View on Yelp
                   </a>
                 </Button>
@@ -64,11 +79,11 @@ export const Footer = () => {
             <h4 className="mb-4 text-lg font-semibold">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-teal-400" />
+                <Phone className="h-4 w-4 text-teal-400" aria-hidden="true" />
                 <div>
                   <a
                     href={contact.phone.href}
-                    className="font-medium hover:text-teal-400 transition-colors"
+                    className="font-medium hover:text-teal-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded"
                   >
                     {contact.phone.display}
                   </a>
@@ -77,11 +92,11 @@ export const Footer = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-teal-400" />
+                <Mail className="h-4 w-4 text-teal-400" aria-hidden="true" />
                 <div>
                   <a
                     href={contact.email.href}
-                    className="font-medium hover:text-teal-400 transition-colors"
+                    className="font-medium hover:text-teal-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded"
                   >
                     {contact.email.primary}
                   </a>
@@ -90,13 +105,17 @@ export const Footer = () => {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-teal-400 mt-1" />
+                <MapPin
+                  className="h-4 w-4 text-teal-400 mt-1"
+                  aria-hidden="true"
+                />
                 <div>
                   <a
                     href={contact.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-teal-400 transition-colors"
+                    aria-label="View store location on Google Maps (opens in new tab)"
+                    className="hover:text-teal-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded"
                   >
                     <p className="font-medium">
                       {contact.address.street}, {contact.address.suite}
@@ -138,15 +157,21 @@ export const Footer = () => {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-green-400" />
+                <div
+                  className="h-2 w-2 rounded-full bg-green-400"
+                  aria-hidden="true"
+                />
                 <span className="text-sm">Same-Day Delivery</span>
               </div>
               {/* <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-green-400" />
+                <div className="h-2 w-2 rounded-full bg-green-400" aria-hidden="true" />
                 <span className="text-sm">Insurance Accepted</span>
               </div> */}
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-green-400" />
+                <div
+                  className="h-2 w-2 rounded-full bg-green-400"
+                  aria-hidden="true"
+                />
                 <span className="text-sm">Free Setup & Training</span>
               </div>
             </div>
@@ -163,16 +188,25 @@ export const Footer = () => {
                 &copy; {new Date().getFullYear()} {contact.businessName}. All
                 rights reserved.
               </p>
-              <div className="mt-1 flex gap-4">
-                <a href="/privacy-policy" className="hover:text-teal-400">
+              <div className="mt-1 flex items-center gap-2">
+                <a
+                  href="/privacy-policy"
+                  className="rounded px-1 py-1 hover:text-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+                >
                   Privacy Policy
                 </a>
-                <span>|</span>
-                <a href="/terms-conditions" className="hover:text-teal-400">
+                <span aria-hidden="true">|</span>
+                <a
+                  href="/terms-conditions"
+                  className="rounded px-1 py-1 hover:text-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+                >
                   Terms & Conditions
                 </a>
-                <span>|</span>
-                <a href="/sitemap.xml" className="hover:text-teal-400">
+                <span aria-hidden="true">|</span>
+                <a
+                  href="/sitemap.xml"
+                  className="rounded px-1 py-1 hover:text-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+                >
                   Site Map
                 </a>
               </div>

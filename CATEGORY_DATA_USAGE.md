@@ -1,6 +1,6 @@
 # Category Data System
 
-This system provides a centralized source of truth for medical equipment category and product data throughout the Alliance Med Supply website.
+This system provides a centralized source of truth for medical equipment category and product data throughout the Alliance Medical Supply website.
 
 ## Overview
 

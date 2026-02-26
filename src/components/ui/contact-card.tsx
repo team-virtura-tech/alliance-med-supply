@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import React from 'react';
 
 type ContactInfoProps = React.ComponentProps<'div'> & {
@@ -22,23 +22,23 @@ type ContactCardProps = React.ComponentProps<'div'> & {
 };
 
 export function ContactCard({
-  title = 'Contact With Us',
-  description = 'If you have any questions regarding our Services or need help, please fill out the form here. We do our best to respond within 1 business day.',
+  title = 'Get in Touch',
+  description = 'If you have any questions regarding our services or need help, please fill out the form here. We do our best to respond within 1 business day.',
   contactInfo,
   className,
   formSectionClassName,
   children,
 }: ContactCardProps) {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <motion.div
       className={cn(
         'bg-card relative grid h-full w-full shadow md:grid-cols-2 lg:grid-cols-3',
         className
       )}
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95 }}
+      animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      whileHover={{ y: -2 }}
       data-component="ContactCard"
     >
       <div className="flex flex-col justify-between lg:col-span-2">
@@ -50,32 +50,35 @@ export function ContactCard({
         >
           <motion.h1
             className="text-3xl font-bold md:text-4xl lg:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             {title}
           </motion.h1>
           <motion.p
             className="text-muted-foreground max-w-xl text-sm md:text-base lg:text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             {description}
           </motion.p>
           <motion.div
             className="grid gap-4 md:grid md:grid-cols-2 lg:grid-cols-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={shouldReduceMotion ? {} : { opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             {contactInfo?.map((info, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                key={info.label}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: shouldReduceMotion ? 0 : 0.7 + index * 0.1,
+                }}
               >
                 <ContactInfo {...info} />
               </motion.div>
@@ -88,8 +91,8 @@ export function ContactCard({
           'bg-muted/40 flex h-full w-full items-center p-5 md:col-span-1',
           formSectionClassName
         )}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, x: 20 }}
+        animate={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         {children}
@@ -106,14 +109,24 @@ function ContactInfo({
   href,
   className,
 }: ContactInfoProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const isExternal = href?.startsWith('http');
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
+  };
+
   const content = (
     <>
       <motion.div
-        className="bg-muted/40 rounded-lg p-3"
-        whileHover={{ scale: 1.1, rotate: 5 }}
+        className="shrink-0 bg-muted/40 rounded-lg p-3"
+        whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
         transition={{ duration: 0.2 }}
       >
-        <Icon className="h-5 w-5" />
+        <Icon aria-hidden={true} className="h-5 w-5" />
       </motion.div>
       <div>
         <p className="font-medium text-base md:text-lg">{label}</p>
@@ -125,23 +138,24 @@ function ContactInfo({
             {hours}
           </p>
         )}
+        {isExternal && <span className="sr-only">(opens in new tab)</span>}
       </div>
     </>
   );
 
   if (href) {
-    const isExternal = href.startsWith('http');
     return (
       <motion.a
         href={href}
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         className={cn(
-          'flex items-center gap-3 py-3 cursor-pointer hover:opacity-90 transition-opacity',
+          'flex items-start gap-3 py-3 cursor-pointer hover:opacity-90 transition-opacity',
           className
         )}
-        whileHover={{ x: 4 }}
+        whileHover={shouldReduceMotion ? {} : { x: 4 }}
         transition={{ duration: 0.2 }}
+        onKeyDown={handleKeyDown}
         data-component="ContactInfo"
       >
         {content}
@@ -150,13 +164,11 @@ function ContactInfo({
   }
 
   return (
-    <motion.div
-      className={cn('flex items-center gap-3 py-3', className)}
-      whileHover={{ x: 4 }}
-      transition={{ duration: 0.2 }}
+    <div
+      className={cn('flex items-start gap-3 py-3', className)}
       data-component="ContactInfo"
     >
       {content}
-    </motion.div>
+    </div>
   );
 }
