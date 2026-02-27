@@ -109,7 +109,6 @@ function ContactInfo({
   href,
   className,
 }: ContactInfoProps) {
-  const shouldReduceMotion = useReducedMotion();
   const isExternal = href?.startsWith('http');
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
@@ -121,13 +120,9 @@ function ContactInfo({
 
   const content = (
     <>
-      <motion.div
-        className="shrink-0 bg-muted/40 rounded-lg p-3"
-        whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
-        transition={{ duration: 0.2 }}
-      >
+      <div className="shrink-0 bg-muted/40 rounded-lg p-3">
         <Icon aria-hidden={true} className="h-5 w-5" />
-      </motion.div>
+      </div>
       <div>
         <p className="font-medium text-base md:text-lg">{label}</p>
         <p className="text-muted-foreground text-sm md:text-base whitespace-pre-line">
@@ -145,21 +140,16 @@ function ContactInfo({
 
   if (href) {
     return (
-      <motion.a
+      <a
         href={href}
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
-        className={cn(
-          'flex items-start gap-3 py-3 cursor-pointer hover:opacity-90 transition-opacity',
-          className
-        )}
-        whileHover={shouldReduceMotion ? {} : { x: 4 }}
-        transition={{ duration: 0.2 }}
+        className={cn('flex items-start gap-3 py-3 cursor-pointer', className)}
         onKeyDown={handleKeyDown}
         data-component="ContactInfo"
       >
         {content}
-      </motion.a>
+      </a>
     );
   }
 

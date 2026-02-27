@@ -7,7 +7,7 @@ import { ReviewsCarousel } from '../reviews';
 import { StarRating } from '../reviews/MasonryWall';
 
 export const GoogleReviews = () => {
-  const { data, error, isLoading, refetch } = useGoogleReviews();
+  const { data, error, isLoading } = useGoogleReviews();
 
   if (error) {
     return (
@@ -30,12 +30,7 @@ export const GoogleReviews = () => {
           <p className="text-sm text-muted-foreground mb-6">
             Live reviews are temporarily unavailable.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            {refetch && (
-              <Button variant="outline" size="sm" onClick={refetch}>
-                Try again
-              </Button>
-            )}
+          <div className="flex items-center justify-center">
             <Button variant="default" size="sm" asChild>
               <a
                 href="https://www.google.com/search?q=Alliance+Medical+Supply+%26+Rental+San+Jose"

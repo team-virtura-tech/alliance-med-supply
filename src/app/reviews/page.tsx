@@ -2,11 +2,14 @@
 
 import { AnimatedSection } from '@/components/custom/Animated';
 import { MasonryWall } from '@/components/custom/reviews/MasonryWall';
+import { Button } from '@/components/ui/button';
+import { contact } from '@/data/contact';
 import { useGoogleReviews } from '@/hooks/useGoogleReviews';
+import { ExternalLink, Star } from 'lucide-react';
 import { siGoogle, siYelp } from 'simple-icons';
 
 export default function ReviewsPage() {
-  const { reviews, averageRating, totalReviews, isLoading } =
+  const { reviews, averageRating, totalReviews, isLoading, error } =
     useGoogleReviews();
 
   const jsonLd = {
@@ -43,7 +46,7 @@ export default function ReviewsPage() {
               <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 border border-teal-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-center gap-1 mb-2">
                   <p className="text-4xl md:text-5xl font-bold text-teal-700">
-                    {averageRating.toFixed(1)}
+                    {error ? '4.9' : averageRating.toFixed(1)}
                   </p>
                   <span className="text-3xl text-yellow-500">★</span>
                 </div>
@@ -54,7 +57,7 @@ export default function ReviewsPage() {
 
               <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 border border-teal-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
                 <p className="text-4xl md:text-5xl font-bold text-teal-700 mb-2">
-                  {isLoading ? '...' : `${totalReviews}+`}
+                  {isLoading ? '...' : error ? '100+' : `${totalReviews}+`}
                 </p>
                 <p className="text-sm text-teal-700 font-medium">
                   Customer Reviews
@@ -121,6 +124,73 @@ export default function ReviewsPage() {
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600" />
               <p className="mt-4 text-gray-600">Loading reviews...</p>
+            </div>
+          ) : error ? (
+            <div className="rounded-2xl border bg-card p-10 shadow-sm text-center max-w-lg mx-auto">
+              <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-50 border border-amber-200 mb-4 mx-auto">
+                <Star className="h-8 w-8 text-amber-400 fill-amber-400" />
+              </div>
+              <h2 className="text-xl font-bold text-foreground mb-2">
+                Reviews temporarily unavailable
+              </h2>
+              <p className="text-muted-foreground text-sm mb-6">
+                Live reviews couldn&apos;t be loaded right now. You can read our
+                reviews directly on Google or Yelp.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Button variant="default" size="sm" asChild>
+                  <a
+                    href={contact.social.google}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onKeyDown={(e) => {
+                      if (e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="mr-2"
+                      style={{ color: 'white' }}
+                    >
+                      <path d={siGoogle.path} />
+                    </svg>
+                    View on Google
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <a
+                    href={contact.social.yelp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onKeyDown={(e) => {
+                      if (e.key === ' ') {
+                        e.preventDefault();
+                        e.currentTarget.click();
+                      }
+                    }}
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="mr-2"
+                      style={{ color: `#${siYelp.hex}` }}
+                    >
+                      <path d={siYelp.path} />
+                    </svg>
+                    View on Yelp
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
             </div>
           ) : (
             <MasonryWall testimonials={reviews} />
