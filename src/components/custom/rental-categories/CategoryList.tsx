@@ -16,7 +16,10 @@ export const CategoryList = ({ products, className }: CategoryListProps) => {
     <section
       id={componentName}
       data-component={componentName}
-      className={cn('flex flex-wrap justify-center gap-8', className)}
+      className={cn(
+        'grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4',
+        className
+      )}
     >
       {products.map((product) => (
         <CategoryCard

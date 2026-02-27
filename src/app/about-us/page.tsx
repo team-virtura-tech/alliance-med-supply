@@ -1,6 +1,6 @@
-'use client';
-
-import { Button } from '@/components/ui/button';
+import { CTAButtons } from '@/components/custom/CTAButtons';
+import { KeyableAnchor } from '@/components/custom/KeyableAnchor';
+import { KeyableCard } from '@/components/custom/KeyableCard';
 import { Card, CardContent } from '@/components/ui/card';
 import { contact } from '@/data/contact';
 import {
@@ -17,7 +17,6 @@ import {
   Stethoscope,
   Users,
 } from 'lucide-react';
-import Link from 'next/link';
 
 export default function AboutUsPage() {
   return (
@@ -31,7 +30,7 @@ export default function AboutUsPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-              <span className="text-primary">{contact.businessName}</span>
+              <span className="text-primary">About {contact.businessName}</span>
             </h1>
             <p className="mt-6 text-xl font-semibold text-text-secondary md:text-2xl">
               Your Trusted Partner in Medical Equipment & Healthcare Solutions
@@ -39,9 +38,9 @@ export default function AboutUsPage() {
           </div>
 
           {/* Key Stats/Badges */}
-          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
             <div className="flex flex-col items-center rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-              <Award className="h-10 w-10 text-primary" />
+              <Award aria-hidden={true} className="h-10 w-10 text-primary" />
               <h3 className="mt-3 text-sm font-semibold text-text-primary md:text-base">
                 Certified Provider
               </h3>
@@ -51,7 +50,10 @@ export default function AboutUsPage() {
             </div>
 
             <div className="flex flex-col items-center rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-              <Star className="h-10 w-10 fill-star text-star" />
+              <Star
+                aria-hidden={true}
+                className="h-10 w-10 fill-star text-star"
+              />
               <h3 className="mt-3 text-sm font-semibold text-text-primary md:text-base">
                 4.9/5 Rating
               </h3>
@@ -61,7 +63,7 @@ export default function AboutUsPage() {
             </div>
 
             <div className="flex flex-col items-center rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-              <MapPin className="h-10 w-10 text-primary" />
+              <MapPin aria-hidden={true} className="h-10 w-10 text-primary" />
               <h3 className="mt-3 text-sm font-semibold text-text-primary md:text-base">
                 Bay Area Coverage
               </h3>
@@ -71,9 +73,9 @@ export default function AboutUsPage() {
             </div>
 
             <div className="flex flex-col items-center rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-              <Clock className="h-10 w-10 text-accent" />
+              <Clock aria-hidden={true} className="h-10 w-10 text-accent" />
               <h3 className="mt-3 text-sm font-semibold text-text-primary md:text-base">
-                20+Years Experience
+                20+ Years Experience
               </h3>
               <p className="mt-1 text-center text-xs text-text-muted md:text-sm">
                 Trusted expertise in medical equipment
@@ -95,10 +97,11 @@ export default function AboutUsPage() {
 
           <div className="mt-8 space-y-4 text-base leading-relaxed text-text-muted md:text-lg">
             <p>
-              Alliance Med Supply is a trusted provider of durable medical
-              equipment and healthcare supplies, proudly serving clinics,
-              hospitals, and home patients throughout the Bay Area communities
-              and counties, including {contact.serviceAreas.primary.join(', ')}.
+              Alliance Medical Supply and Rental is a trusted provider of
+              durable medical equipment and healthcare supplies,serving clinics,
+              clinics, hospitals, and home patients throughout the communities
+              communities and counties, including{' '}
+              {contact.serviceAreas.primary.join(', ')}.
             </p>
             <p>
               We proudly offer an extensive selection of quality brand name home
@@ -127,7 +130,7 @@ export default function AboutUsPage() {
             <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent">
-                  <Heart className="h-6 w-6 text-white" />
+                  <Heart aria-hidden={true} className="h-6 w-6 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-text-primary md:text-3xl">
                   Our Mission
@@ -148,7 +151,7 @@ export default function AboutUsPage() {
             <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
-                  <Shield className="h-6 w-6 text-white" />
+                  <Shield aria-hidden={true} className="h-6 w-6 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-text-primary md:text-3xl">
                   Our Goal
@@ -182,11 +185,11 @@ export default function AboutUsPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Quality Excellence - Teal */}
-            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md">
+            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm">
               <div className="absolute left-0 top-0 h-full w-1 bg-primary" />
               <div className="flex flex-col gap-4 p-6 pl-8">
                 <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-primary">
-                  <Award className="h-8 w-8 text-white" />
+                  <Award aria-hidden={true} className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-text-primary">
@@ -202,11 +205,11 @@ export default function AboutUsPage() {
             </div>
 
             {/* Compassionate Care - Orange */}
-            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md">
+            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm">
               <div className="absolute left-0 top-0 h-full w-1 bg-accent" />
               <div className="flex flex-col gap-4 p-6 pl-8">
                 <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-accent">
-                  <Heart className="h-8 w-8 text-white" />
+                  <Heart aria-hidden={true} className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-text-primary">
@@ -221,12 +224,12 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-            {/* Community Partnership - Cyan */}
-            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md">
-              <div className="absolute left-0 top-0 h-full w-1 bg-primary" />
+            {/* Community Partnership */}
+            <div className="relative overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+              <div className="absolute left-0 top-0 h-full w-1 bg-accent" />
               <div className="flex flex-col gap-4 p-6 pl-8">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-primary">
-                  <Users className="h-8 w-8 text-white" />
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-accent">
+                  <Users aria-hidden={true} className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-text-primary">
@@ -259,54 +262,75 @@ export default function AboutUsPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Card 1: Mobility & Accessibility */}
-            <Card className="border-border shadow-sm transition-all hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary">
-                  <Accessibility className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-text-primary">
-                  Mobility & Accessibility
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                  Wheelchairs, walkers, rollators, mobility scooters, and lift
-                  chairs designed to restore independence and freedom of
-                  movement.
-                </p>
-              </CardContent>
-            </Card>
+            <KeyableCard
+              href="/products?category=wheelchairs-and-mobility"
+              className="border-border shadow-sm transition-all hover:shadow-lg"
+            >
+              <Card className="border-0 shadow-none h-full">
+                <CardContent className="p-6">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary">
+                    <Accessibility
+                      aria-hidden={true}
+                      className="h-7 w-7 text-white"
+                    />
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-text-primary">
+                    Mobility & Accessibility
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    Wheelchairs, walkers, rollators, mobility scooters, and lift
+                    chairs designed to restore independence and freedom of
+                    movement.
+                  </p>
+                </CardContent>
+              </Card>
+            </KeyableCard>
 
             {/* Card 2: Home Care & Recovery */}
-            <Card className="border-border shadow-sm transition-all hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-accent">
-                  <Home className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-text-primary">
-                  Home Care & Recovery
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                  Hospital beds, patient lifts, bedside commodes, and recovery
-                  aids to support healing and comfort in the home environment.
-                </p>
-              </CardContent>
-            </Card>
+            <KeyableCard
+              href="/products?category=home-care"
+              className="border-border shadow-sm transition-all hover:shadow-lg"
+            >
+              <Card className="border-0 shadow-none h-full">
+                <CardContent className="p-6">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-accent">
+                    <Home aria-hidden={true} className="h-7 w-7 text-white" />
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-text-primary">
+                    Home Care & Recovery
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    Hospital beds, patient lifts, bedside commodes, and recovery
+                    aids to support healing and comfort in the home environment.
+                  </p>
+                </CardContent>
+              </Card>
+            </KeyableCard>
 
             {/* Card 3: Medical Equipment Rentals */}
-            <Card className="border-border shadow-sm transition-all hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary">
-                  <Stethoscope className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mt-4 text-xl font-semibold text-text-primary">
-                  Medical Equipment Rentals
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                  Flexible short-term and long-term rental options for CPM
-                  machines, oxygen concentrators, and other specialized medical
-                  devices.
-                </p>
-              </CardContent>
-            </Card>
+            <KeyableCard
+              href="/products?category=rentals"
+              className="border-border shadow-sm transition-all hover:shadow-lg"
+            >
+              <Card className="border-0 shadow-none h-full">
+                <CardContent className="p-6">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary">
+                    <Stethoscope
+                      aria-hidden={true}
+                      className="h-7 w-7 text-white"
+                    />
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-text-primary">
+                    Medical Equipment Rentals
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                    Flexible short-term and long-term rental options for CPM
+                    machines, oxygen concentrators, and other specialized
+                    medical devices.
+                  </p>
+                </CardContent>
+              </Card>
+            </KeyableCard>
           </div>
         </div>
       </section>
@@ -316,7 +340,7 @@ export default function AboutUsPage() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
-              Why Choose Alliance Med Supply
+              Why Choose Alliance Medical Supply and Rental?
             </h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-primary" />
             <p className="mx-auto mt-6 max-w-3xl text-base text-text-muted md:text-lg">
@@ -327,70 +351,100 @@ export default function AboutUsPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-16 md:gap-y-6">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 {contact.accreditation} and FDA-approved equipment
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Same-day and next-day delivery available
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Trusted brands: Invacare, Medline, Drive Medical
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Professional equipment setup and training
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Flexible rental and purchase options available
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Serving Bay Area clinics, hospitals, and homes
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Home safety education and guidance provided
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Insurance billing assistance and support
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Equipment maintenance and repair services
               </span>
             </div>
 
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+              <CheckCircle2
+                aria-hidden={true}
+                className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary"
+              />
               <span className="text-base text-text-secondary">
                 Individual attention to every customer&apos;s needs
               </span>
@@ -410,12 +464,13 @@ export default function AboutUsPage() {
               To report a patient safety event or concern not resolved by our
               company, you may contact the Joint Commission Resources Customer
               Service at{' '}
-              <a
+              <KeyableAnchor
                 href="tel:630-792-5800"
                 className="font-medium text-primary hover:underline"
+                aria-label="Joint Commission Resources Customer Service: 630-792-5800"
               >
                 630-792-5800
-              </a>
+              </KeyableAnchor>
               .
             </p>
           </div>
@@ -434,38 +489,28 @@ export default function AboutUsPage() {
               have questions about our services, our team is here to help you
               find the right solution.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Link href="/contact-us">
-                <Button size="lg" variant="default">
-                  Contact Us Today
-                </Button>
-              </Link>
-              <Link href="/products">
-                <Button size="lg" variant="secondary">
-                  Browse Equipment
-                </Button>
-              </Link>
-            </div>
+            <CTAButtons />
             <div className="mt-8 flex flex-col items-center gap-2 text-sm text-text-muted">
               <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-accent" />
-                <a
+                <MapPin aria-hidden={true} className="h-5 w-5 text-accent" />
+                <KeyableAnchor
                   href={contact.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary hover:underline transition-colors"
                 >
                   {contact.address.full}
-                </a>
+                  <span className="sr-only">(opens in new tab)</span>
+                </KeyableAnchor>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-primary" />
-                <a
+                <Phone aria-hidden={true} className="h-5 w-5 text-primary" />
+                <KeyableAnchor
                   href={contact.phone.href}
                   className="text-lg font-semibold text-primary transition-colors hover:text-primary/80 hover:underline"
                 >
                   {contact.phone.display}
-                </a>
+                </KeyableAnchor>
               </div>
               <div className="mt-2 text-xs text-text-muted">
                 {contact.hours.storeHoursSummary}

@@ -57,7 +57,7 @@ export const ServiceAreaSection = ({
           className="mb-12 text-center md:mb-16"
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-4 w-4" aria-hidden="true" />
             Service Area
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl">
@@ -77,21 +77,30 @@ export const ServiceAreaSection = ({
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
           className="mb-12"
         >
-          <InfiniteSlider
-            duration={30}
-            durationOnHover={60}
-            gap={16}
-            className="[mask-image:linear-gradient(to_right,transparent_0%,_black_128px,_black_calc(100%-128px),_transparent_100%)]"
-          >
+          {/* Screen-reader accessible city list */}
+          <ul className="sr-only">
             {primaryCities.map((city) => (
-              <div
-                key={city}
-                className="inline-flex items-center gap-2 rounded-lg bg-primary/5 px-4 py-2 text-sm font-medium text-primary md:px-5 md:py-2.5 md:text-base whitespace-nowrap"
-              >
-                {city}
-              </div>
+              <li key={city}>{city}</li>
             ))}
-          </InfiniteSlider>
+          </ul>
+
+          <div aria-hidden="true">
+            <InfiniteSlider
+              duration={30}
+              durationOnHover={60}
+              gap={16}
+              className="[mask-image:linear-gradient(to_right,transparent_0%,_black_128px,_black_calc(100%-128px),_transparent_100%)]"
+            >
+              {primaryCities.map((city) => (
+                <div
+                  key={city}
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary/5 px-4 py-2 text-sm font-medium text-primary md:px-5 md:py-2.5 md:text-base whitespace-nowrap"
+                >
+                  {city}
+                </div>
+              ))}
+            </InfiniteSlider>
+          </div>
         </motion.div>
 
         {/* Contact Info */}
@@ -110,17 +119,24 @@ export const ServiceAreaSection = ({
               href={contact.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${contact.address.full} - view on Google Maps (opens in a new tab)`}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 hover:underline md:text-base"
             >
-              <MapPin className="h-4 w-4" />
+              <MapPin className="h-4 w-4" aria-hidden="true" />
               {contact.address.full}
             </a>
-            <span className="hidden text-slate-300 sm:inline">•</span>
+            <span
+              className="hidden text-slate-300 sm:inline"
+              aria-hidden="true"
+            >
+              •
+            </span>
             <a
               href={contact.phone.href}
+              aria-label={`Call us at ${contact.phone.display}`}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 hover:underline md:text-base"
             >
-              <Phone className="h-4 w-4" />
+              <Phone className="h-4 w-4" aria-hidden="true" />
               {contact.phone.display}
             </a>
           </div>

@@ -49,8 +49,16 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Button asChild size="lg" className="min-w-[180px]">
-                <Link href="/contact-us">
-                  <MessageCircle className="mr-2 h-5 w-5" />
+                <Link
+                  href="/contact-us"
+                  onKeyDown={(e) => {
+                    if (e.key === ' ') {
+                      e.preventDefault();
+                      e.currentTarget.click();
+                    }
+                  }}
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
                   Contact Us
                 </Link>
               </Button>
@@ -61,8 +69,17 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
                 size="lg"
                 className="min-w-[180px]"
               >
-                <a href={contact.phone.href}>
-                  <PhoneCall className="mr-2 h-5 w-5" />
+                <a
+                  href={contact.phone.href}
+                  aria-label={`Call us at ${contact.phone.display}`}
+                  onKeyDown={(e) => {
+                    if (e.key === ' ') {
+                      e.preventDefault();
+                      e.currentTarget.click();
+                    }
+                  }}
+                >
+                  <PhoneCall className="mr-2 h-5 w-5" aria-hidden="true" />
                   {contact.phone.display}
                 </a>
               </Button>

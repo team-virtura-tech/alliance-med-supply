@@ -44,7 +44,13 @@ export const ProductCategoryPage = ({
         >
           <Link
             href="/products"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-text-muted hover:text-text-primary transition-colors md:mb-8"
+            className="mb-6 inline-flex items-center gap-2 rounded-sm text-sm text-text-muted hover:text-text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:mb-8"
+            onKeyDown={(e) => {
+              if (e.key === ' ') {
+                e.preventDefault();
+                e.currentTarget.click();
+              }
+            }}
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Products

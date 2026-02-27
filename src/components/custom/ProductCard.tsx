@@ -8,6 +8,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { KeyboardEvent } from 'react';
 
 export type ProductCardData = {
   id: number | string;
@@ -26,6 +27,7 @@ export type ProductCardProps = {
   index?: number;
   className?: string;
   id?: string;
+  priority?: boolean;
 };
 
 export const ProductCard = ({
@@ -34,6 +36,7 @@ export const ProductCard = ({
   index = 0,
   className,
   id,
+  priority = false,
 }: ProductCardProps) => {
   const reduce = useReducedMotion();
   const componentName = 'ProductCard';
@@ -42,6 +45,18 @@ export const ProductCard = ({
 
   const defaultCtaText =
     variant === 'category' ? 'Browse Products' : 'View Details';
+
+  const ariaLabel =
+    variant === 'category'
+      ? `Browse ${data.name}`
+      : `View details for ${data.name}`;
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
+  };
 
   return (
     <motion.div
@@ -52,7 +67,12 @@ export const ProductCard = ({
       transition={{ duration: 0.3, delay: reduce ? 0 : 0.1 + index * 0.05 }}
       className={className}
     >
-      <Link href={data.href} className="block h-full">
+      <Link
+        href={data.href}
+        aria-label={ariaLabel}
+        onKeyDown={handleKeyDown}
+        className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
         <Card
           className="group h-full flex flex-col overflow-hidden border-0 rounded-3xl transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer pt-0 gap-4"
           style={{
@@ -66,7 +86,8 @@ export const ProductCard = ({
               src={data.image}
               alt={data.name}
               fill
-              className="object-contain transition-transform duration-500 group-hover:scale-105 p-6 pb-0"
+              priority={priority}
+              className="object-contain transition-transform duration-500 group-hover:scale-105 p-3 pb-0 md:p-6 md:pb-0"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
 
@@ -86,7 +107,7 @@ export const ProductCard = ({
           <div className="flex flex-col flex-1 px-6 pt-0">
             <h3
               className={cn(
-                'font-bold mb-2 text-text-primary leading-tight min-h-[3.5rem] flex items-center',
+                'font-bold mb-2 text-text-primary leading-tight',
                 variant === 'category'
                   ? 'text-xl md:text-2xl'
                   : 'text-lg md:text-xl'
@@ -119,8 +140,13 @@ export const ProductCard = ({
               {defaultDescription}
             </p>
 
-            {/* CTA Button - pushed to bottom */}
-            <Button className="w-full mt-auto" size="lg">
+            {/* CTA — decorative only; the entire card is the interactive link */}
+            <Button
+              className="w-full mt-auto pointer-events-none"
+              size="lg"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               {data.ctaText || defaultCtaText}
               <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>

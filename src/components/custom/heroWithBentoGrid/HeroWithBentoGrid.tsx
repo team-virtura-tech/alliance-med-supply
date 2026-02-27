@@ -3,8 +3,9 @@ import { contact } from '@/data/contact';
 import { useSimpleParallax } from '@/hooks/useParallax';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Award, Clock, MapPin, Phone, Star } from 'lucide-react';
+import { Award, Clock, ExternalLink, MapPin, Phone, Star } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export type HeroWithBentoGridProps = {
   id?: string;
@@ -44,7 +45,7 @@ export const HeroWithBentoGrid = ({
       id={rootId}
       data-component={componentName}
       className={cn(
-        'w-full min-w-0 min-h-[600px] md:min-h-[700px] xl:h-[calc(100vh-8rem)] flex items-center px-4 py-6 md:px-6 md:py-8 xl:px-8 xl:pb-10',
+        'w-full min-w-0 min-h-[600px] md:min-h-[700px] xl:h-[calc(100vh-8rem)] flex items-center px-4 py-6 md:px-6 md:py-8 xl:px-8 xl:pb-6',
         className
       )}
     >
@@ -62,23 +63,29 @@ export const HeroWithBentoGrid = ({
         >
           <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl xl:rounded-3xl p-6 md:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
             {/* Trust Indicators Header */}
-            <div className="flex flex-wrap items-center gap-4 pb-3">
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+            <div className="flex flex-wrap items-center gap-3 pb-4 mb-2">
+              <div className="flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
+                <div
+                  className="w-1.5 h-1.5 bg-green-500 rounded-full"
+                  aria-hidden="true"
+                ></div>
                 Licensed Provider
               </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <Star className="h-4 w-4 fill-star text-star" />
+              <div className="flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 border border-amber-200">
+                <Star
+                  className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
+                  aria-hidden="true"
+                />
                 4.9/5 Rating
               </div>
-              <div className="flex items-center gap-2 text-sm text-text-muted">
-                <Award className="h-4 w-4 text-primary" />
-                20+Years Experience
+              <div className="flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary border border-primary/20">
+                <Award className="h-3.5 w-3.5" aria-hidden="true" />
+                20+ Years Experience
               </div>
             </div>
 
             <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm text-primary w-fit mb-6">
-              All equipments are available for rent or purchase
+              All equipment is available for rent or purchase
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-text-primary leading-tight mb-4 md:mb-6">
@@ -94,24 +101,36 @@ export const HeroWithBentoGrid = ({
             </p>
 
             {/* Service Features Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-6 md:mb-8">
-              <div className="flex items-center gap-2 text-sm text-text-primary">
-                <div className="w-1 h-4 bg-primary rounded-full"></div>
-                All equipments are sanitized
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-primary">
-                <div className="w-1 h-4 bg-primary rounded-full"></div>
+            <ul className="grid grid-cols-2 gap-4 mb-6 md:mb-8 list-none">
+              <li className="flex items-center gap-2 text-sm text-text-primary">
+                <div
+                  className="w-1 h-4 bg-primary rounded-full"
+                  aria-hidden="true"
+                ></div>
+                All equipment is sanitized
+              </li>
+              <li className="flex items-center gap-2 text-sm text-text-primary">
+                <div
+                  className="w-1 h-4 bg-primary rounded-full"
+                  aria-hidden="true"
+                ></div>
                 Walk-ins welcome
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-primary">
-                <div className="w-1 h-4 bg-primary rounded-full"></div>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-text-primary">
+                <div
+                  className="w-1 h-4 bg-primary rounded-full"
+                  aria-hidden="true"
+                ></div>
                 Professional delivery service
-              </div>
-              <div className="flex items-center gap-2 text-sm text-text-primary">
-                <div className="w-1 h-4 bg-primary rounded-full"></div>
+              </li>
+              <li className="flex items-center gap-2 text-sm text-text-primary">
+                <div
+                  className="w-1 h-4 bg-primary rounded-full"
+                  aria-hidden="true"
+                ></div>
                 Trusted by 15,000+ customers
-              </div>
-            </div>
+              </li>
+            </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Button
@@ -121,8 +140,17 @@ export const HeroWithBentoGrid = ({
                 className="w-full sm:w-auto"
                 asChild
               >
-                <a href={contact.phone.href}>
-                  <Phone className="h-4 w-4" />
+                <a
+                  href={contact.phone.href}
+                  aria-label={`Call us at ${contact.phone.display}`}
+                  onKeyDown={(e) => {
+                    if (e.key === ' ') {
+                      e.preventDefault();
+                      e.currentTarget.click();
+                    }
+                  }}
+                >
+                  <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {contact.phone.display}
                 </a>
               </Button>
@@ -137,23 +165,40 @@ export const HeroWithBentoGrid = ({
                   href={contact.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Find our location on Google Maps (opens in a new tab)"
+                  onKeyDown={(e) => {
+                    if (e.key === ' ') {
+                      e.preventDefault();
+                      e.currentTarget.click();
+                    }
+                  }}
                 >
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
                   Find Location
+                  <ExternalLink
+                    className="h-3 w-3 ml-1 opacity-60"
+                    aria-hidden="true"
+                  />
                 </a>
               </Button>
             </div>
 
             {/* Hours */}
             <div className="mt-6 pt-4 border-t border-border">
+              <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">
+                Hours
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-2 rounded-full">
+                  <div
+                    className="bg-primary/10 p-2 rounded-full shrink-0"
+                    aria-hidden="true"
+                  >
                     <Phone className="h-4 w-4 text-primary" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-text-primary">
-                      Call Us
+                      Phone Hours
                     </p>
                     <p className="text-xs text-text-muted">
                       {contact.hours.callHours}
@@ -162,14 +207,17 @@ export const HeroWithBentoGrid = ({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="bg-accent/10 p-2 rounded-full">
+                  <div
+                    className="bg-accent/10 p-2 rounded-full shrink-0"
+                    aria-hidden="true"
+                  >
                     <Clock className="h-4 w-4 text-accent" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-text-primary">
-                      Visit Store
+                      Store Hours
                     </p>
-                    <p className="text-xs text-text-muted">
+                    <p className="text-xs text-text-muted whitespace-pre-line">
                       {contact.hours.storeHoursSummary}
                     </p>
                   </div>
@@ -227,62 +275,99 @@ export const HeroWithBentoGrid = ({
             className="flex-shrink-0"
           >
             {/* Section Title */}
-            <h3 className="text-lg xl:text-xl font-semibold text-text-primary mb-3 md:mb-4">
+            <h2 className="text-lg xl:text-xl font-semibold text-text-primary mb-3 md:mb-4">
               Popular Rentals
-            </h3>
+            </h2>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-              {/* Image Card 1 */}
-              <div
-                ref={cardsParallax.ref}
-                style={cardsParallax.style}
-                className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer"
-              >
-                <Image
-                  src="/images/hero-section/hero-1.jpg"
-                  alt="Hero section image 1"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 50vw, 15vw"
-                />
+              {/* Image Card 1 - Wheelchairs */}
+              <div ref={cardsParallax.ref} style={cardsParallax.style}>
+                <Link
+                  href="/products/wheelchairs"
+                  className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/30 group cursor-pointer block"
+                  aria-label="Wheelchairs"
+                >
+                  <Image
+                    src="/images/hero-section/hero-1.jpg"
+                    alt="Wheelchair rental"
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 15vw"
+                  />
+                  {/* Scrim to reduce watermark visibility */}
+                  <div className="absolute bottom-0 right-0 h-8 w-20 bg-gradient-to-tl from-black/40 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-6 pb-2 px-2">
+                    <p className="text-white text-xs font-semibold truncate">
+                      Wheelchairs
+                    </p>
+                  </div>
+                </Link>
               </div>
 
-              {/* Image Card 2 */}
-              <div
-                ref={cardsParallax2.ref}
-                style={cardsParallax2.style}
-                className="bg-primary p-3 md:p-4 relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square"
-              >
-                <Image
-                  src="/images/hero-section/hero-2.jpg"
-                  alt="Hero section image 2"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 50vw, 15vw"
-                />
+              {/* Image Card 2 - Mobility Scooters */}
+              <div ref={cardsParallax2.ref} style={cardsParallax2.style}>
+                <Link
+                  href="/products/mobility-scooters"
+                  className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square group cursor-pointer block"
+                  aria-label="Mobility Scooters"
+                >
+                  <Image
+                    src="/images/hero-section/hero-2.jpg"
+                    alt="Mobility scooter rental"
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 15vw"
+                  />
+                  <div className="absolute bottom-0 right-0 h-8 w-20 bg-gradient-to-tl from-black/40 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-6 pb-2 px-2">
+                    <p className="text-white text-xs font-semibold truncate">
+                      Mobility Scooters
+                    </p>
+                  </div>
+                </Link>
               </div>
 
-              {/* Image Card 3 */}
-              <div className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-muted">
+              {/* Image Card 3 - Rollators */}
+              <Link
+                href="/products/rollators"
+                className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-muted group cursor-pointer block"
+                aria-label="Rollators"
+              >
                 <Image
                   src="/images/hero-section/hero-3.jpg"
-                  alt="Hero section image 3"
+                  alt="Rollator rental"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 15vw"
                 />
-              </div>
+                <div className="absolute bottom-0 right-0 h-8 w-20 bg-gradient-to-tl from-black/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-6 pb-2 px-2">
+                  <p className="text-white text-xs font-semibold truncate">
+                    Rollators
+                  </p>
+                </div>
+              </Link>
 
-              {/* Image Card 4 */}
-              <div className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/20">
+              {/* Image Card 4 - Hospital Beds */}
+              <Link
+                href="/products/electric-hospital-beds-and-mattresses"
+                className="relative rounded-xl xl:rounded-2xl overflow-hidden aspect-square bg-accent/20 group cursor-pointer block"
+                aria-label="Hospital Beds"
+              >
                 <Image
                   src="/images/hero-section/hero-6.jpg"
-                  alt="Hero section image 4"
+                  alt="Hospital bed rental"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 1024px) 50vw, 15vw"
                 />
-              </div>
+                <div className="absolute bottom-0 right-0 h-8 w-20 bg-gradient-to-tl from-black/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-6 pb-2 px-2">
+                  <p className="text-white text-xs font-semibold truncate">
+                    Hospital Beds
+                  </p>
+                </div>
+              </Link>
             </div>
           </motion.div>
         </div>

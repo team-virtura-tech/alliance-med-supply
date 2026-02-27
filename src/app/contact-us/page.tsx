@@ -4,14 +4,15 @@ import { ContactForm } from '@/components/custom';
 import { ContactCard } from '@/components/ui/contact-card';
 import { contact } from '@/data/contact';
 import { useInView } from '@/hooks/useInView';
-import { Clock, Mail, MapPin, Phone } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Clock, MapPin, Phone, Printer } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
 import { InteractiveMap } from './interactiveMap';
 
 export default function ContactPage() {
   // Scroll-triggered animations
   const { ref: cardRef, isInView: cardInView } = useInView({ amount: 0.3 });
   const { ref: mapRef, isInView: mapInView } = useInView({ amount: 0.2 });
+  const shouldReduceMotion = useReducedMotion();
 
   // Contact information data for the ContactCard component
   const contactInfo = [
@@ -22,7 +23,7 @@ export default function ContactPage() {
       href: contact.phone.href,
     },
     {
-      icon: Mail,
+      icon: Printer,
       label: 'Fax',
       value: contact.fax.display,
     },
@@ -47,16 +48,22 @@ export default function ContactPage() {
   return (
     <motion.main
       className="min-h-screen bg-background"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={shouldReduceMotion ? false : { opacity: 0 }}
+      animate={shouldReduceMotion ? {} : { opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-4 py-16 lg:py-24 space-y-12 lg:space-y-16">
         {/* ContactCard with form */}
         <motion.div
           ref={cardRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={cardInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 50 }}
+          animate={
+            shouldReduceMotion
+              ? {}
+              : cardInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 50 }
+          }
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <ContactCard
@@ -73,21 +80,23 @@ export default function ContactPage() {
         <motion.div
           ref={mapRef}
           className="w-full"
-          initial={{ opacity: 0, y: 50 }}
-          animate={mapInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 50 }}
+          animate={
+            shouldReduceMotion
+              ? {}
+              : mapInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 50 }
+          }
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden rounded-2xl"
-          >
+          <div className="overflow-hidden rounded-2xl">
             <InteractiveMap
               address={contact.address.full}
               height="h-96 lg:h-[500px]"
               className="w-full"
             />
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </motion.main>

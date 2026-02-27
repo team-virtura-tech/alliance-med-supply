@@ -103,6 +103,8 @@ export const contact: ContactInfo = {
     'https://www.google.com/maps/search/?api=1&query=1630+Oakland+Road,+Suite+A110,+San+Jose,+CA+95131',
 
   social: {
+    google:
+      'https://www.google.com/search?q=Alliance+Medical+Supply+%26+Rental+San+Jose+CA',
     yelp: 'https://www.yelp.com/biz/alliance-medical-supply-and-rental-san-jose-2',
   },
 
@@ -121,7 +123,7 @@ export const contact: ContactInfo = {
       'Serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, Gilroy, Morgan Hill, and surrounding Bay Area communities',
   },
 
-  accreditation: 'JACHO Accredited',
+  accreditation: 'JCAHO Accredited',
 };
 
 // Helper function to get formatted phone link text

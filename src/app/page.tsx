@@ -97,7 +97,7 @@ export default function Home() {
   const sectionsParallax = useSimpleParallax(0.05);
 
   return (
-    <div className="pt-24 md:pt-28 lg:pt-32">
+    <main className="pt-24 md:pt-28 lg:pt-32">
       {/* FAQ Schema for SEO - helps with featured snippets and "near me" searches */}
       <FAQSchema />
 
@@ -118,6 +118,6 @@ export default function Home() {
       <ServiceAreaSection />
       <CtaSection />
       <ScrollProgress />
-    </div>
+    </main>
   );
 }

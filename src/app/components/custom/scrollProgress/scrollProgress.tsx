@@ -41,7 +41,7 @@ export const ScrollProgress = ({
   useEffect(() => {
     const unsubscribe = percentage.on('change', (latest) => {
       percentageValue.set(Math.round(latest));
-      setIsVisible(latest > 0.1); // Show scroll-to-top after 10% scroll
+      setIsVisible(latest > 0.3); // Show scroll-to-top after 30% scroll
     });
 
     return () => unsubscribe();
