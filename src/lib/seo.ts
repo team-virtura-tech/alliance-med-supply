@@ -13,7 +13,8 @@ export const siteConfig = {
   description:
     "Alliance Medical Supply & Rental is the Bay Area's trusted provider of medical equipment rentals and sales. JACHO accredited with 20+ years of experience serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, and surrounding communities. Same-day delivery available.",
   url: 'https://www.alliancemedsupply.com',
-  ogImage: '/images/og-image.jpg',
+  ogImage:
+    'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
   locale: 'en_US',
   type: 'website',
 
@@ -147,10 +148,10 @@ export function generateLocalBusinessSchema() {
 
     // Images
     image: [
-      `${siteConfig.url}/images/storefront.jpg`,
-      `${siteConfig.url}/images/medical-equipment.jpg`,
+      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/branding/van.png',
+      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/wheelchair-w-brackes.jpg',
     ],
-    logo: `${siteConfig.url}/images/logo.png`,
+    logo: `${siteConfig.url}/logo/Allience-Medical-Full-logo.svg`,
 
     // Additional business info
     foundingDate: '2004',
@@ -199,7 +200,7 @@ export function generateOrganizationSchema() {
     '@id': `${siteConfig.url}/#organization`,
     name: contact.businessName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/logo.png`,
+    logo: `${siteConfig.url}/logo/Allience-Medical-Full-logo.svg`,
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: contact.phone.display,
