@@ -25,6 +25,9 @@
 *.pem
 .playwright-mcp
 
+# images (migrated to Vercel Blob storage)
+public/images/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

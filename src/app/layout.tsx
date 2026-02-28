@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: 'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
         width: 1200,
         height: 630,
         alt: `${contact.businessName} - Medical Equipment Rental & Sales in San Jose Bay Area`,
@@ -76,7 +76,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: pageSEO.home.title,
     description: pageSEO.home.description,
-    images: ['/images/og-image.jpg'],
+    images: [
+      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
+    ],
   },
 
   // Canonical and alternates

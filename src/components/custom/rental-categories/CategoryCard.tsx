@@ -4,6 +4,7 @@ import { Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
 import { getCategorySlug } from '@/lib/categories/utils';
 import { cn } from '@/lib/utils';
@@ -96,9 +97,9 @@ export const CategoryCard = ({
           </CardContent>
 
           <CardFooter className="mt-auto px-4 pb-4 pt-2">
-            <div className="w-full rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground group-hover:bg-primary/90 transition-colors">
-              View Products
-            </div>
+            <Button asChild className="w-full" tabIndex={-1}>
+              <span>View Products</span>
+            </Button>
           </CardFooter>
         </div>
       </Card>

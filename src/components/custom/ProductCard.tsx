@@ -81,26 +81,25 @@ export const ProductCard = ({
           }}
         >
           {/* Hero Image */}
-          <div className="relative aspect-[4/3] overflow-hidden p-0">
-            <Image
-              src={data.image}
-              alt={data.name}
-              fill
-              priority={priority}
-              className="object-contain transition-transform duration-500 group-hover:scale-105 p-3 pb-0 md:p-6 md:pb-0"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-
+          <div className="relative aspect-[4/3] overflow-hidden">
             {/* Product Count Badge (Category variant only) */}
             {variant === 'category' &&
               typeof data.productCount === 'number' && (
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-accent text-accent-foreground font-semibold px-3 py-1.5 text-sm rounded-full hover:bg-accent/90">
+                <div className="absolute top-0 left-0 z-10">
+                  <Badge className="bg-accent text-accent-foreground font-semibold px-4 py-2 text-base rounded-none rounded-br-2xl shadow-md hover:bg-accent/90">
                     {data.productCount} Product
                     {data.productCount !== 1 ? 's' : ''}
                   </Badge>
                 </div>
               )}
+            <Image
+              src={data.image}
+              alt={data.name}
+              fill
+              priority={priority}
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
           </div>
 
           {/* Content Below Image */}
