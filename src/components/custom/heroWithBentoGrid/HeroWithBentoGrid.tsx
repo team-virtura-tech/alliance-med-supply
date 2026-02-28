@@ -61,9 +61,9 @@ export const HeroWithBentoGrid = ({
           }}
           className="w-full xl:flex-[0_0_40%] flex"
         >
-          <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl xl:rounded-3xl p-6 md:p-8 xl:p-10 w-full flex flex-col justify-center shadow-sm h-full">
+          <div className="bg-gradient-to-br from-muted via-background to-accent/10 rounded-2xl xl:rounded-3xl p-6 md:p-8 xl:p-8 w-full flex flex-col justify-center shadow-sm h-full">
             {/* Trust Indicators Header */}
-            <div className="flex flex-wrap items-center gap-3 pb-4 mb-2">
+            <div className="flex flex-wrap items-center gap-3 pb-3">
               <div className="flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 border border-green-200">
                 <div
                   className="w-1.5 h-1.5 bg-green-500 rounded-full"
@@ -84,16 +84,16 @@ export const HeroWithBentoGrid = ({
               </div>
             </div>
 
-            <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm text-primary w-fit mb-6">
+            <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm text-primary w-fit mb-5">
               All equipment is available for rent or purchase
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-text-primary leading-tight mb-4 md:mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-text-primary leading-tight mb-4 md:mb-5">
               Bay Area&apos;s Trusted and Durable{' '}
               <span className="text-primary">Medical Equipment</span> Services
             </h1>
 
-            <p className="text-base xl:text-lg text-text-muted leading-relaxed mb-6 md:mb-8">
+            <p className="text-md xl:text-lg text-text-muted leading-relaxed mb-5 md:mb-6">
               From mobility aids and hospital beds to specialized equipment for
               recovery, we handle all your medical supply needs quickly and
               professionally. Serving Mountain View, Palo Alto, Sunnyvale, San
@@ -101,7 +101,7 @@ export const HeroWithBentoGrid = ({
             </p>
 
             {/* Service Features Grid */}
-            <ul className="grid grid-cols-2 gap-4 mb-6 md:mb-8 list-none">
+            <ul className="grid grid-cols-2 gap-3 mb-5 md:mb-6 list-none">
               <li className="flex items-center gap-2 text-sm text-text-primary">
                 <div
                   className="w-1 h-4 bg-primary rounded-full"
@@ -132,7 +132,7 @@ export const HeroWithBentoGrid = ({
               </li>
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 variant="default"
                 size="lg"
@@ -184,40 +184,34 @@ export const HeroWithBentoGrid = ({
             </div>
 
             {/* Hours */}
-            <div className="mt-6 pt-4 border-t border-border">
-              <p className="text-xs text-text-muted mb-3 font-medium uppercase tracking-wide">
-                Hours
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="bg-primary/10 p-2 rounded-full shrink-0"
+            <div className="mt-4 pt-3 border-t border-border">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-2">
+                  <Phone
+                    className="h-6 w-6 text-primary shrink-0"
                     aria-hidden="true"
-                  >
-                    <Phone className="h-4 w-4 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-text-primary">
+                  />
+
+                  <div className="min-w-0">
+                    <p className="text-md font-medium text-text-primary">
                       Phone Hours
                     </p>
-                    <p className="text-xs text-text-muted">
+
+                    <p className="text-md text-text-muted">
                       {contact.hours.callHours}
                     </p>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-3">
-                  <div
-                    className="bg-accent/10 p-2 rounded-full shrink-0"
+                <div className="flex items-center gap-2">
+                  <Clock
+                    className="h-6 w-6 text-accent shrink-0"
                     aria-hidden="true"
-                  >
-                    <Clock className="h-4 w-4 text-accent" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-text-primary">
+                  />
+                  <div className="min-w-0">
+                    <p className="text-md font-medium text-text-primary">
                       Store Hours
                     </p>
-                    <p className="text-xs text-text-muted whitespace-pre-line">
+                    <p className="text-md text-text-muted whitespace-pre-line">
                       {contact.hours.storeHoursSummary}
                     </p>
                   </div>
@@ -246,7 +240,7 @@ export const HeroWithBentoGrid = ({
               className="relative rounded-2xl xl:rounded-3xl overflow-hidden h-full w-full"
             >
               <Image
-                src="/images/branding/van-2.png"
+                src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/branding/van.png"
                 alt="Alliance Medical Supply Van - Professional medical equipment delivery"
                 fill
                 className="object-cover"
@@ -288,7 +282,7 @@ export const HeroWithBentoGrid = ({
                   aria-label="Wheelchairs"
                 >
                   <Image
-                    src="/images/hero-section/hero-1.jpg"
+                    src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-1.jpg"
                     alt="Wheelchair rental"
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -312,7 +306,7 @@ export const HeroWithBentoGrid = ({
                   aria-label="Mobility Scooters"
                 >
                   <Image
-                    src="/images/hero-section/hero-2.jpg"
+                    src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-2.png"
                     alt="Mobility scooter rental"
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -334,7 +328,7 @@ export const HeroWithBentoGrid = ({
                 aria-label="Rollators"
               >
                 <Image
-                  src="/images/hero-section/hero-3.jpg"
+                  src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-3.png"
                   alt="Rollator rental"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -355,7 +349,7 @@ export const HeroWithBentoGrid = ({
                 aria-label="Hospital Beds"
               >
                 <Image
-                  src="/images/hero-section/hero-6.jpg"
+                  src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-6.jpg"
                   alt="Hospital bed rental"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
