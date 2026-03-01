@@ -184,34 +184,36 @@ export const HeroWithBentoGrid = ({
             </div>
 
             {/* Hours */}
-            <div className="mt-4 pt-3 border-t border-border">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center gap-2">
-                  <Phone
-                    className="h-6 w-6 text-primary shrink-0"
-                    aria-hidden="true"
-                  />
-
+            <div className="mt-3 md:mt-4 pt-3 border-t border-border">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="flex items-center justify-center h-9 w-9 md:h-10 md:w-10 rounded-full bg-primary/10 shrink-0">
+                    <Phone
+                      className="h-4 w-4 md:h-5 md:w-5 text-primary"
+                      aria-hidden="true"
+                    />
+                  </div>
                   <div className="min-w-0">
-                    <p className="text-md font-medium text-text-primary">
+                    <p className="text-sm md:text-md font-medium text-text-primary">
                       Phone Hours
                     </p>
-
-                    <p className="text-md text-text-muted">
+                    <p className="text-sm md:text-md text-text-muted">
                       {contact.hours.callHours}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock
-                    className="h-6 w-6 text-accent shrink-0"
-                    aria-hidden="true"
-                  />
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="flex items-center justify-center h-9 w-9 md:h-10 md:w-10 rounded-full bg-accent/10 shrink-0">
+                    <Clock
+                      className="h-4 w-4 md:h-5 md:w-5 text-accent"
+                      aria-hidden="true"
+                    />
+                  </div>
                   <div className="min-w-0">
-                    <p className="text-md font-medium text-text-primary">
+                    <p className="text-sm md:text-md font-medium text-text-primary">
                       Store Hours
                     </p>
-                    <p className="text-md text-text-muted whitespace-pre-line">
+                    <p className="text-sm md:text-md text-text-muted whitespace-pre-line">
                       {contact.hours.storeHoursSummary}
                     </p>
                   </div>

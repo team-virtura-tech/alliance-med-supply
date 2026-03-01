@@ -1,0 +1,32 @@
+name: Conditional Branch Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Delete Head Branch
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const headBranch = context.payload.pull_request.head.ref;
+            const reservedBranches = ['main', 'develop'];
+
+            if (!reservedBranches.includes(headBranch)) {
+              console.log(`Deleting feature branch: ${headBranch}`);
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `heads/${headBranch}`
+                });
+              } catch (error) {
+                console.log(`Failed to delete ${headBranch}: ${error.message}`);
+              }
+            } else {
+              console.log(`Skipping deletion for protected branch: ${headBranch}`);
+            }
