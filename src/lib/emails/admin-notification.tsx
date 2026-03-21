@@ -10,12 +10,14 @@ export const AdminNotificationEmail = ({
   firstName,
   lastName,
   email,
+  phone,
   subject,
   message,
 }: {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
 }) => {
@@ -27,6 +29,7 @@ export const AdminNotificationEmail = ({
   const safeFirstName = escapeHtml(firstName);
   const safeLastName = escapeHtml(lastName);
   const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
   const safeSubject = escapeHtml(subject);
   const safeMessage = escapeHtml(message);
 
@@ -160,6 +163,10 @@ export const AdminNotificationEmail = ({
               <div class="info-row">
                 <span class="info-label">Email</span>
                 <span class="info-value"><a href="mailto:${safeEmail}" style="color: #0d9488; text-decoration: none;">${safeEmail}</a></span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Phone</span>
+                <span class="info-value"><a href="tel:${safePhone}" style="color: #0d9488; text-decoration: none;">${safePhone}</a></span>
               </div>
               <div class="info-row">
                 <span class="info-label">Subject</span>

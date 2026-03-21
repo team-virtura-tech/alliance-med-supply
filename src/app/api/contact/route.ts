@@ -9,11 +9,18 @@ const ADMIN_EMAIL =
 
 export async function POST(request: NextRequest) {
   try {
-    const { firstName, lastName, email, subject, message, recaptchaToken } =
-      await request.json();
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      subject,
+      message,
+      recaptchaToken,
+    } = await request.json();
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !subject || !message) {
+    if (!firstName || !lastName || !email || !phone || !subject || !message) {
       return NextResponse.json(
         { success: false, error: 'All fields are required' },
         { status: 400 }
@@ -48,6 +55,7 @@ export async function POST(request: NextRequest) {
       firstName,
       lastName,
       email,
+      phone,
       subject,
       message,
       timestamp: new Date().toISOString(),
@@ -70,6 +78,7 @@ export async function POST(request: NextRequest) {
           firstName,
           lastName,
           email,
+          phone,
           subject,
           message,
         }),

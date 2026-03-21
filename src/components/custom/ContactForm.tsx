@@ -28,11 +28,26 @@ const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
   email: z.string().email('Please enter a valid email address'),
+  phone: z
+    .string()
+    .min(1, 'Phone number is required')
+    .refine(
+      (val) => val.replace(/\D/g, '').length === 10,
+      'Please enter a valid 10-digit phone number'
+    ),
   subject: z.string().min(1, 'Subject is required'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const formatPhoneNumber = (value: string): string => {
+  const digits = value.replace(/\D/g, '').slice(0, 10);
+  if (digits.length === 0) return '';
+  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+};
 
 export const ContactForm = ({ id, className }: ContactFormProps) => {
   const componentName = 'ContactForm';
@@ -49,6 +64,7 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
       firstName: '',
       lastName: '',
       email: '',
+      phone: '',
       subject: '',
       message: '',
     },
@@ -128,20 +144,43 @@ export const ContactForm = ({ id, className }: ContactFormProps) => {
             />
           </div>
 
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="Email" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Email & Phone */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone number</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="tel"
+                      placeholder="(555) 123-4567"
+                      {...field}
+                      onChange={(e) => {
+                        field.onChange(formatPhoneNumber(e.target.value));
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
           {/* Subject */}
           <FormField
