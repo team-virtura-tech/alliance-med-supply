@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
 import { useSimpleParallax } from '@/hooks/useParallax';
+import { IMAGES } from '@/lib/images';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Award, Clock, ExternalLink, MapPin, Phone, Star } from 'lucide-react';
@@ -242,7 +243,7 @@ export const HeroWithBentoGrid = ({
               className="relative rounded-2xl xl:rounded-3xl overflow-hidden h-full w-full"
             >
               <Image
-                src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/branding/van.png"
+                src={IMAGES.van}
                 alt="Alliance Medical Supply Van - Professional medical equipment delivery"
                 fill
                 className="object-cover"
@@ -284,7 +285,7 @@ export const HeroWithBentoGrid = ({
                   aria-label="Wheelchairs"
                 >
                   <Image
-                    src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-1.jpg"
+                    src={IMAGES.hero1}
                     alt="Wheelchair rental"
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -308,7 +309,7 @@ export const HeroWithBentoGrid = ({
                   aria-label="Mobility Scooters"
                 >
                   <Image
-                    src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-2.png"
+                    src={IMAGES.hero2}
                     alt="Mobility scooter rental"
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -330,7 +331,7 @@ export const HeroWithBentoGrid = ({
                 aria-label="Rollators"
               >
                 <Image
-                  src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-3.png"
+                  src={IMAGES.hero3}
                   alt="Rollator rental"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -351,7 +352,7 @@ export const HeroWithBentoGrid = ({
                 aria-label="Hospital Beds"
               >
                 <Image
-                  src="https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/hero-section/hero-6.jpg"
+                  src={IMAGES.hero6}
                   alt="Hospital bed rental"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

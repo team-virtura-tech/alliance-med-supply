@@ -8,6 +8,7 @@ import {
   GoogleReviewsResponse,
   isGoogleReviewsError,
 } from '@/lib/api/googleReviews';
+import { config } from '@/lib/config';
 
 type LoadingState = 'idle' | 'loading' | 'success' | 'error';
 
@@ -43,11 +44,19 @@ export function calcAverageRating(reviews: GoogleReview[]): number {
  * Returns both the full response and extracted reviews for convenience
  */
 export const useGoogleReviews = (): UseGoogleReviewsReturn => {
+  const liveReviewsEnabled = config.features.enableLiveReviews;
+
   const [data, setData] = useState<GoogleReviewsResponse | null>(null);
-  const [loading, setLoading] = useState<LoadingState>('idle');
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<LoadingState>(
+    liveReviewsEnabled ? 'idle' : 'error'
+  );
+  const [error, setError] = useState<string | null>(
+    liveReviewsEnabled ? null : 'Live reviews are disabled.'
+  );
 
   const fetchReviews = useCallback(async () => {
+    if (!liveReviewsEnabled) return;
+
     setLoading('loading');
     setError(null);
 
@@ -70,7 +79,7 @@ export const useGoogleReviews = (): UseGoogleReviewsReturn => {
       setLoading('error');
       setData(null);
     }
-  }, []);
+  }, [liveReviewsEnabled]);
 
   useEffect(() => {
     fetchReviews();

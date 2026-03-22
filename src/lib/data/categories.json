@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Wheelchairs",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/wheelchair-w-brackes.jpg",
+      "image": "/categories/wheelchair-w-brackes.jpg",
       "description": "Durable, comfortable wheelchairs for daily mobility and independence.",
       "products": [
         {
@@ -11,55 +11,55 @@
           "name": "Pediatric Wheelchair",
           "sizes": ["12\"", "14\""],
           "description": "Sized for children, lightweight and easy to maneuver.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/wheelchairs/pediatric-wheelchair.png"
+          "image": "/wheelchairs/pediatric-wheelchair.png"
         },
         {
           "id": 102,
           "name": "Bariatric Wheelchair",
           "sizes": ["22\"", "24\""],
           "description": "Heavy-duty design with wider seat options for extra support.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/wheelchairs/bariatric-wheelchair.png"
+          "image": "/wheelchairs/bariatric-wheelchair.png"
         },
         {
           "id": 103,
           "name": "Standard Wheelchair",
           "sizes": ["17\"", "18\"", "20\""],
           "description": "Everyday wheelchair in multiple seat widths for comfort and fit.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/wheelchairs/standard-wheelchair.png"
+          "image": "/wheelchairs/standard-wheelchair.png"
         },
         {
           "id": 104,
           "name": "Reclining Wheelchair",
           "sizes": ["18\"", "20\""],
           "description": "Reclining backrest for added comfort and medical support.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/wheelchairs/reclining-wheelchair.png"
+          "image": "/wheelchairs/reclining-wheelchair.png"
         }
       ]
     },
     {
       "id": 2,
       "name": "Electric Wheelchairs",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/electric-wheelchair.png",
+      "image": "/categories/electric-wheelchair.png",
       "description": "Power wheelchairs designed for effortless mobility and comfort.",
       "products": [
         {
           "id": 201,
           "name": "Collapsible Electric Wheelchair",
           "description": "Compact, foldable powered chair for portability and convenience.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/electric-wheelchairs/collapsible-electric-wheelchair.png"
+          "image": "/electric-wheelchairs/collapsible-electric-wheelchair.png"
         },
         {
           "id": 202,
           "name": "Power Chair",
           "description": "Full-featured electric chair for smooth indoor and outdoor use.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/electric-wheelchairs/power-chair.png"
+          "image": "/electric-wheelchairs/power-chair.png"
         }
       ]
     },
     {
       "id": 3,
       "name": "Transport Chairs",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/transport-chair.png",
+      "image": "/categories/transport-chair.png",
       "description": "Lightweight, foldable chairs for easy patient transport and travel.",
       "products": [
         {
@@ -67,204 +67,204 @@
           "name": "Transport Chair with Brakes",
           "sizes": ["19\""],
           "description": "Lightweight, caregiver-controlled with rear brakes for safety.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/transport-chairs/transport-chair-w_-brakes.png"
+          "image": "/transport-chairs/transport-chair-w_-brakes.png"
         },
         {
           "id": 302,
           "name": "Transport Chair without Brakes",
           "sizes": ["19\""],
           "description": "Simple, portable chair designed for easy travel.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/transport-chairs/transport-chair-w_out-brakes.png"
+          "image": "/transport-chairs/transport-chair-w_out-brakes.png"
         }
       ]
     },
     {
       "id": 4,
       "name": "Knee Scooters",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/knee-scooters.png",
+      "image": "/categories/knee-scooters.png",
       "description": "Easy, stable mobility for lower leg injuries without using crutches.",
       "products": [
         {
           "id": 401,
           "name": "Seated Knee Walker",
           "description": "Allows seated use for comfort during longer recovery.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/knee-scooters/seated-knee-walker.png"
+          "image": "/knee-scooters/seated-knee-walker.png"
         },
         {
           "id": 402,
           "name": "Standard Knee Walker",
           "description": "Easy mobility solution for foot or ankle injuries.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/knee-scooters/standard-knee-walker.png"
+          "image": "/knee-scooters/standard-knee-walker.png"
         }
       ]
     },
     {
       "id": 5,
       "name": "Rollators",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/rollator.png",
+      "image": "/categories/rollator.png",
       "description": "Stable walkers with seats and brakes for safe, everyday use.",
       "products": [
         {
           "id": 501,
           "name": "Standard Rollator",
           "description": "Four-wheel walker with seat and hand brakes for everyday mobility.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/rollators/standard-rollator.png"
+          "image": "/rollators/standard-rollator.png"
         },
         {
           "id": 502,
           "name": "Bariatric Rollator",
           "description": "Heavy-duty rollator with wider seat and reinforced frame.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/rollators/bariatric-rollator.png"
+          "image": "/rollators/bariatric-rollator.png"
         }
       ]
     },
     {
       "id": 6,
       "name": "Electric Hospital Beds and Mattresses",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/electric-bed.png",
+      "image": "/categories/electric-bed.png",
       "description": "Adjustable beds and mattresses for comfort, safety, and recovery.",
       "products": [
         {
           "id": 601,
           "name": "Full Electric Bed",
           "description": "Fully adjustable head, foot, and height with remote control.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/electric-beds/full-electric-bed.png"
+          "image": "/electric-beds/full-electric-bed.png"
         },
         {
           "id": 602,
           "name": "Semi-Electric Bed",
           "description": "Electric head and foot adjustments with manual height control.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/electric-beds/semi-electric-bed.png"
+          "image": "/electric-beds/semi-electric-bed.png"
         },
         {
           "id": 603,
           "name": "Bariatric Bed",
           "description": "Extra-wide, heavy-duty bed for added safety and support.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/electric-beds/full-electric-bed.png"
+          "image": "/electric-beds/full-electric-bed.png"
         },
         {
           "id": 604,
           "name": "Gel Foam Mattress",
           "description": "Provides pressure relief and comfort with supportive gel-infused foam.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mattresses/gel-foam-mattress.png"
+          "image": "/mattresses/gel-foam-mattress.png"
         },
         {
           "id": 605,
           "name": "Low Air Loss Mattress",
           "description": "Circulates air to reduce pressure sores and improve skin health.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mattresses/low-air-loss-mattress.png"
+          "image": "/mattresses/low-air-loss-mattress.png"
         },
         {
           "id": 606,
           "name": "Bariatric Mattress",
           "description": "Extra-wide, heavy-duty design for safe and comfortable support.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mattresses/bariatric-mattress.png"
+          "image": "/mattresses/bariatric-mattress.png"
         }
       ]
     },
     {
       "id": 7,
       "name": "Stand Assists & Lifts",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/stand-assists-and-lifts.png",
+      "image": "/categories/stand-assists-and-lifts.png",
       "description": "Manual and electric lifts for safe, easy patient transfers.",
       "products": [
         {
           "id": 701,
           "name": "Manual Stand Assist",
           "description": "Sturdy support for caregiver-assisted transfers.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/stand-assists-and-lifts/manual-stand-assist.png"
+          "image": "/stand-assists-and-lifts/manual-stand-assist.png"
         },
         {
           "id": 702,
           "name": "Electric Stand Assist",
           "description": "Power-assisted transfers for ease and independence.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/stand-assists-and-lifts/electric-stand-assist.png"
+          "image": "/stand-assists-and-lifts/electric-stand-assist.png"
         },
         {
           "id": 703,
           "name": "Manual Hoyer Lift",
           "description": "Hydraulic lift for safe patient handling.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/stand-assists-and-lifts/manual-hoyer-lift.png"
+          "image": "/stand-assists-and-lifts/manual-hoyer-lift.png"
         },
         {
           "id": 704,
           "name": "Electric Hoyer Lift",
           "description": "Powered lift for smooth, effortless transfers.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/stand-assists-and-lifts/electric-hoyer-lift.png"
+          "image": "/stand-assists-and-lifts/electric-hoyer-lift.png"
         }
       ]
     },
     {
       "id": 8,
       "name": "Mobility Scooters",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/mobility-scooters.png",
+      "image": "/categories/mobility-scooters.png",
       "description": "Reliable scooters for indoor and outdoor independence.",
       "products": [
         {
           "id": 801,
           "name": "Small Mobility Scooter",
           "description": "Compact and collapsible for travel.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mobility-scooters/small-mobility-scooter.png"
+          "image": "/mobility-scooters/small-mobility-scooter.png"
         },
         {
           "id": 802,
           "name": "Standard Mobility Scooter",
           "description": "Reliable for daily indoor and outdoor use.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mobility-scooters/standard-mobility-scooter.png"
+          "image": "/mobility-scooters/standard-mobility-scooter.png"
         },
         {
           "id": 803,
           "name": "Lightweight Mobility Scooter",
           "description": "Easy to lift and transport.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mobility-scooters/lightweight-mobility-scooter.png"
+          "image": "/mobility-scooters/lightweight-mobility-scooter.png"
         },
         {
           "id": 804,
           "name": "Heavy Duty Mobility Scooter",
           "description": "High-capacity scooter built for rough terrain/all surfaces.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/mobility-scooters/heavy-duty-mobility-scooter.png"
+          "image": "/mobility-scooters/heavy-duty-mobility-scooter.png"
         }
       ]
     },
     {
       "id": 9,
       "name": "CPM Machine",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/cpm-machine.png",
+      "image": "/categories/cpm-machine.png",
       "description": "Rehabilitation device that promotes joint recovery and flexibility.",
       "products": [
         {
           "id": 901,
           "name": "Continuous Passive Motion Machine",
           "description": "Therapy device to gently move joints after surgery. Ideal for knee surgery patients.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/cpm-machine/cpm-machine.png"
+          "image": "/cpm-machine/cpm-machine.png"
         }
       ]
     },
     {
       "id": 10,
       "name": "Lift Chair",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/lift-chair.png",
+      "image": "/categories/lift-chair.png",
       "description": "Comfortable reclining chairs with gentle lift assistance.",
       "products": [
         {
           "id": 1001,
           "name": "Reclining Lift Chair",
           "description": "Reclining chair with lift assistance to help users sit and stand safely.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/lift-chair/lift-chair.png"
+          "image": "/lift-chair/lift-chair.png"
         }
       ]
     },
     {
       "id": 11,
       "name": "PureWick",
-      "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/purewick.png",
+      "image": "/categories/purewick.png",
       "description": "Non-invasive female catheter system for comfort and hygiene.",
       "products": [
         {
           "id": 1101,
           "name": "PureWick System",
           "description": "Non-invasive external catheter system for female patients, designed for comfort.",
-          "image": "https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/purewick/purewick.png"
+          "image": "/purewick/purewick.png"
         }
       ]
     }

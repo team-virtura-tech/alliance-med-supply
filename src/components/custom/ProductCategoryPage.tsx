@@ -3,6 +3,7 @@
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
 import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
+import { img } from '@/lib/images';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/types/categories';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -60,7 +61,7 @@ export const ProductCategoryPage = ({
             {/* Category Image */}
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl md:h-32 md:w-32 lg:h-36 lg:w-36">
               <Image
-                src={category.image}
+                src={img(category.image)}
                 alt={category.name}
                 fill
                 className="object-cover"

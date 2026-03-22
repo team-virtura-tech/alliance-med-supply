@@ -1,4 +1,5 @@
 import { contact } from '@/data/contact';
+import { IMAGES } from '@/lib/images';
 import {
   generateBreadcrumbSchema,
   jsonLdScriptProps,
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
+        url: IMAGES.ogHome,
         width: 1200,
         height: 630,
         alt: `About ${contact.businessName}`,

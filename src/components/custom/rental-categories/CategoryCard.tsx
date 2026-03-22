@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
 import { getCategorySlug } from '@/lib/categories/utils';
+import { img } from '@/lib/images';
 import { cn } from '@/lib/utils';
 
 export type CategoryCardProps = {
@@ -66,7 +67,7 @@ export const CategoryCard = ({
           )}
 
           <Image
-            src={image}
+            src={img(image)}
             alt={name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
