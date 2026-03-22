@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
 import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
+import { img } from '@/lib/images';
 import { cn } from '@/lib/utils';
 import type { Category, Product } from '@/types/categories';
 
@@ -87,7 +88,7 @@ export const ProductDetailPage = ({
             className="relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-teal-50/50 to-cyan-50/30 border border-gray-100"
           >
             <Image
-              src={product.image}
+              src={img(product.image)}
               alt={product.name}
               fill
               className="object-cover"

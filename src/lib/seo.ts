@@ -2,6 +2,7 @@
 // This file contains all SEO-related data, structured data generators, and meta tag utilities
 
 import { contact } from '@/data/contact';
+import { img } from '@/lib/images';
 
 // =============================================================================
 // BUSINESS CONFIGURATION
@@ -13,8 +14,7 @@ export const siteConfig = {
   description:
     "Alliance Medical Supply & Rental is the Bay Area's trusted provider of medical equipment rentals and sales. JACHO accredited with 20+ years of experience serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, and surrounding communities. Same-day delivery available.",
   url: 'https://www.alliancemedsupply.com',
-  ogImage:
-    'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
+  ogImage: img('/seo/home-ogImage.png'),
   locale: 'en_US',
   type: 'website',
 
@@ -148,8 +148,8 @@ export function generateLocalBusinessSchema() {
 
     // Images
     image: [
-      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/branding/van.png',
-      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/categories/wheelchair-w-brackes.jpg',
+      img('/branding/van.png'),
+      img('/categories/wheelchair-w-brackes.jpg'),
     ],
     logo: `${siteConfig.url}/logo/Allience-Medical-Full-logo.svg`,
 
@@ -245,7 +245,7 @@ export function generateProductSchema(product: {
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: `${siteConfig.url}${product.image}`,
+    image: img(product.image),
     sku: product.sku || product.name.toLowerCase().replace(/\s+/g, '-'),
     brand: {
       '@type': 'Brand',
@@ -452,7 +452,7 @@ export function generateMetadata({
       type,
       images: [
         {
-          url: `${siteConfig.url}${ogImage}`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -465,7 +465,7 @@ export function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${siteConfig.url}${ogImage}`],
+      images: [ogImage],
     },
 
     // Verification (add your actual verification codes)

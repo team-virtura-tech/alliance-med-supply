@@ -1,6 +1,7 @@
 import { Footer } from '@/components/custom/footer';
 import { Header } from '@/components/custom/header';
 import { contact } from '@/data/contact';
+import { IMAGES } from '@/lib/images';
 import {
   generateLocalBusinessSchema,
   generateOrganizationSchema,
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
+        url: IMAGES.ogHome,
         width: 1200,
         height: 630,
         alt: `${contact.businessName} - Medical Equipment Rental & Sales in San Jose Bay Area`,
@@ -76,9 +77,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: pageSEO.home.title,
     description: pageSEO.home.description,
-    images: [
-      'https://vid2aacotq8yjr89.public.blob.vercel-storage.com/alliance-med/seo/home-ogImage.png',
-    ],
+    images: [IMAGES.ogHome],
   },
 
   // Canonical and alternates

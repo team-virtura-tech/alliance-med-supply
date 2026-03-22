@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { img } from '@/lib/images';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
@@ -93,7 +94,7 @@ export const ProductCard = ({
                 </div>
               )}
             <Image
-              src={data.image}
+              src={img(data.image)}
               alt={data.name}
               fill
               priority={priority}
