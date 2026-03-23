@@ -7,7 +7,7 @@ export const config = {
     // Feature flag for infinite moving cards in hero section
     enableInfiniteMovingCards: false,
     // Feature flag for live Google Reviews API calls
-    enableLiveReviews: false,
+    enableLiveReviews: true,
   },
 } as const;
 
