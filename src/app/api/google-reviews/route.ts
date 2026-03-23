@@ -1,6 +1,34 @@
 import { NextResponse } from 'next/server';
 
-type GoogleReview = {
+// ─── New Places API (v1) types ───────────────────────────────────────────────
+
+type PlacesReview = {
+  name?: string;
+  rating?: number;
+  text?: { text?: string; languageCode?: string };
+  originalText?: { text?: string; languageCode?: string };
+  authorAttribution?: {
+    displayName?: string;
+    uri?: string;
+    photoUri?: string;
+  };
+  relativePublishTimeDescription?: string;
+  publishTime?: string;
+};
+
+type PlacesResponse = {
+  displayName?: { text?: string; languageCode?: string };
+  id?: string;
+  googleMapsUri?: string;
+  rating?: number;
+  userRatingCount?: number;
+  editorialSummary?: { text?: string; languageCode?: string };
+  reviews?: PlacesReview[];
+};
+
+// ─── Normalise into the shape the front-end already expects ──────────────────
+
+type NormalisedReview = {
   author_name: string;
   author_url?: string;
   profile_photo_url?: string;
@@ -9,6 +37,22 @@ type GoogleReview = {
   text: string;
   time?: number;
 };
+
+function normaliseReview(r: PlacesReview): NormalisedReview {
+  return {
+    author_name: r.authorAttribution?.displayName ?? 'Anonymous',
+    author_url: r.authorAttribution?.uri,
+    profile_photo_url: r.authorAttribution?.photoUri,
+    rating: r.rating ?? 5,
+    relative_time_description: r.relativePublishTimeDescription,
+    text: r.text?.text ?? '',
+    time: r.publishTime
+      ? Math.floor(new Date(r.publishTime).getTime() / 1000)
+      : undefined,
+  };
+}
+
+// ─── Route handler ───────────────────────────────────────────────────────────
 
 export async function GET() {
   const key = process.env.GOOGLE_MAPS_API_KEY;
@@ -21,79 +65,56 @@ export async function GET() {
     );
   }
 
-  // Request only what we need (keeps payload small = cheaper/faster)
-  const fields = [
-    'name',
-    'place_id',
-    'url',
-    'rating',
-    'user_ratings_total',
-    'editorial_summary',
-    'reviews',
-  ].join('%2C');
+  // Places API (New) endpoint
+  const url = `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}?key=${key}`;
 
-  const url =
-    `https://maps.googleapis.com/maps/api/place/details/json` +
-    `?place_id=${encodeURIComponent(placeId)}` +
-    `&fields=${fields}` +
-    `&reviews_sort=newest` + // newest first (still max 5)
-    `&key=${key}`;
+  // Only request the fields we use — keeps cost + payload minimal
+  const fieldMask = [
+    'displayName',
+    'id',
+    'googleMapsUri',
+    'rating',
+    'userRatingCount',
+    'editorialSummary',
+    'reviews',
+  ].join(',');
 
   try {
     const resp = await fetch(url, {
-      // Cache on the server for 6 hours; refresh in background
+      headers: {
+        'X-Goog-FieldMask': fieldMask,
+      },
+      // Cache on server for 6 hours; refresh in background
       next: { revalidate: 60 * 60 * 6 },
     });
 
     if (!resp.ok) {
-      return NextResponse.json({ error: 'Google API error' }, { status: 502 });
-    }
-
-    const data = await resp.json();
-
-    if (data.status !== 'OK' || !data.result) {
-      console.error(
-        'Google Places API error:',
-        data.status,
-        data.error_message
-      );
+      const body = await resp.json().catch(() => ({}));
+      console.error('Google Places API error:', resp.status, body);
       return NextResponse.json(
         {
-          error: data.status || 'No result',
-          details: data.error_message || 'Unknown error from Google API',
+          error: body?.error?.message || 'Google API error',
+          details: body?.error?.message,
         },
         { status: 502 }
       );
     }
 
-    const r = data.result;
+    const data: PlacesResponse = await resp.json();
 
-    // Normalize + trim to the essentials you'll render
-    const reviews: GoogleReview[] = Array.isArray(r.reviews)
-      ? r.reviews.map((rev: GoogleReview) => ({
-          author_name: rev?.author_name,
-          author_url: rev?.author_url,
-          profile_photo_url: rev?.profile_photo_url,
-          rating: rev?.rating,
-          relative_time_description: rev?.relative_time_description,
-          text: rev?.text,
-          time: rev?.time,
-        }))
-      : [];
+    const reviews = (data.reviews ?? []).map(normaliseReview).slice(0, 5);
 
     const payload = {
-      name: r.name as string,
-      place_id: r.place_id as string | undefined,
-      url: r.url as string | undefined,
-      rating: r.rating as number | undefined,
-      user_ratings_total: r.user_ratings_total as number | undefined,
-      editorial_summary: r.editorial_summary?.overview as string | undefined,
-      html_attributions: data.html_attributions as string[] | undefined,
-      reviews: reviews.slice(0, 5),
+      name: data.displayName?.text,
+      place_id: data.id,
+      url: data.googleMapsUri,
+      rating: data.rating,
+      user_ratings_total: data.userRatingCount,
+      editorial_summary: data.editorialSummary?.text,
+      reviews,
     };
 
     const res = NextResponse.json(payload);
-    // Helpful for Vercel's CDN
     res.headers.set(
       'Cache-Control',
       's-maxage=21600, stale-while-revalidate=86400'

@@ -9,7 +9,7 @@ import { ExternalLink, Star } from 'lucide-react';
 import { siGoogle, siYelp } from 'simple-icons';
 
 export default function ReviewsPage() {
-  const { reviews, averageRating, totalReviews, isLoading, error } =
+  const { data, reviews, averageRating, totalReviews, isLoading, error } =
     useGoogleReviews();
 
   const jsonLd = {
@@ -75,7 +75,12 @@ export default function ReviewsPage() {
 
               <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 border border-teal-200 rounded-2xl p-6 text-center hover:shadow-md transition-shadow col-span-2 lg:col-span-1">
                 <div className="flex items-center justify-center gap-2 mb-3 flex-wrap">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
+                  <a
+                    href={contact.social.google}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  >
                     <svg
                       width="14"
                       height="14"
@@ -86,8 +91,13 @@ export default function ReviewsPage() {
                       <path d={siGoogle.path} />
                     </svg>
                     Google
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
+                  </a>
+                  <a
+                    href={contact.social.yelp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  >
                     <svg
                       width="14"
                       height="14"
@@ -98,7 +108,7 @@ export default function ReviewsPage() {
                       <path d={siYelp.path} />
                     </svg>
                     Yelp
-                  </span>
+                  </a>
                 </div>
                 <p className="text-sm text-teal-700 font-medium">
                   Verified Reviews
@@ -193,7 +203,43 @@ export default function ReviewsPage() {
               </div>
             </div>
           ) : (
-            <MasonryWall testimonials={reviews} />
+            <>
+              <MasonryWall testimonials={reviews} />
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-12">
+                {data?.url && (
+                  <Button variant="outline" asChild>
+                    <a
+                      href={data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View all reviews on Google (opens in a new tab)"
+                    >
+                      <ExternalLink
+                        className="mr-2 h-4 w-4"
+                        aria-hidden="true"
+                      />
+                      View all reviews
+                    </a>
+                  </Button>
+                )}
+
+                {data?.place_id && (
+                  <Button asChild>
+                    <a
+                      href={`https://search.google.com/local/writereview?placeid=${encodeURIComponent(data.place_id)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Write a review on Google (opens in a new tab)"
+                    >
+                      <Star className="mr-2 h-4 w-4" aria-hidden="true" />
+                      Write a review
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>
