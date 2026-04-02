@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { KeyboardEvent } from 'react';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -154,10 +155,10 @@ export const ProductDetailPage = ({
             {/* Call to Action */}
             <div className="space-y-4 pt-2">
               <Button size="lg" className="w-full sm:w-auto" asChild>
-                <a href={contact.phone.href} onKeyDown={handleKeyDown}>
+                <PhoneLink onKeyDown={handleKeyDown}>
                   <Phone className="mr-2 h-5 w-5" />
                   Call {contact.phone.display} for Quote
-                </a>
+                </PhoneLink>
               </Button>
             </div>
 

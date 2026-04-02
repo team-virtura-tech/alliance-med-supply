@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { contact } from '@/data/contact';
 import { cn } from '@/lib/utils';
@@ -131,14 +132,13 @@ export const ServiceAreaSection = ({
             >
               •
             </span>
-            <a
-              href={contact.phone.href}
+            <PhoneLink
               aria-label={`Call us at ${contact.phone.display}`}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 hover:underline md:text-base"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               {contact.phone.display}
-            </a>
+            </PhoneLink>
           </div>
         </motion.div>
       </div>

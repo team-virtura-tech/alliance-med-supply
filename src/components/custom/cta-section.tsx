@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { MessageCircle, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
 import { cn } from '@/lib/utils';
@@ -69,8 +70,7 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
                 size="lg"
                 className="min-w-[180px]"
               >
-                <a
-                  href={contact.phone.href}
+                <PhoneLink
                   aria-label={`Call us at ${contact.phone.display}`}
                   onKeyDown={(e) => {
                     if (e.key === ' ') {
@@ -81,7 +81,7 @@ export const CtaSection = ({ className }: CtaSectionProps) => {
                 >
                   <PhoneCall className="mr-2 h-5 w-5" aria-hidden="true" />
                   {contact.phone.display}
-                </a>
+                </PhoneLink>
               </Button>
             </div>
 

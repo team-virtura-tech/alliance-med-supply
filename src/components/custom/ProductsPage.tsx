@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
@@ -88,8 +89,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
               right solution.
             </p>
             <Button variant="default" size="lg" asChild>
-              <a
-                href={contact.phone.href}
+              <PhoneLink
                 aria-label={`Call us at ${contact.phone.display}`}
                 onKeyDown={(e) => {
                   if (e.key === ' ') {
@@ -100,7 +100,7 @@ export const ProductsPage = ({ className }: ProductsPageProps) => {
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 Call {contact.phone.display}
-              </a>
+              </PhoneLink>
             </Button>
           </div>
         </motion.section>

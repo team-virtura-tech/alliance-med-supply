@@ -1,5 +1,6 @@
 'use client';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -54,12 +55,9 @@ export const ContactSection = () => {
                       Call Us
                     </h4>
                     <p className="text-sm font-medium text-gray-700">
-                      <a
-                        href={contact.phone.href}
-                        className="hover:text-teal-600 transition-colors"
-                      >
+                      <PhoneLink className="hover:text-teal-600 transition-colors">
                         {contact.phone.display}
-                      </a>
+                      </PhoneLink>
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
                       {contact.hours.callHours}
@@ -164,10 +162,10 @@ export const ContactSection = () => {
                     className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 shadow-md hover:shadow-lg text-base font-medium py-4 h-14"
                     asChild
                   >
-                    <a href={contact.phone.href}>
+                    <PhoneLink>
                       <Phone className="mr-2 h-5 w-5" />
                       Call {contact.phone.display}
-                    </a>
+                    </PhoneLink>
                   </Button>
 
                   <div className="relative">

@@ -1,6 +1,7 @@
 import { CTAButtons } from '@/components/custom/CTAButtons';
 import { KeyableAnchor } from '@/components/custom/KeyableAnchor';
 import { KeyableCard } from '@/components/custom/KeyableCard';
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Card, CardContent } from '@/components/ui/card';
 import { contact } from '@/data/contact';
 import {
@@ -505,12 +506,9 @@ export default function AboutUsPage() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone aria-hidden={true} className="h-5 w-5 text-primary" />
-                <KeyableAnchor
-                  href={contact.phone.href}
-                  className="text-lg font-semibold text-primary transition-colors hover:text-primary/80 hover:underline"
-                >
+                <PhoneLink className="text-lg font-semibold text-primary transition-colors hover:text-primary/80 hover:underline">
                   {contact.phone.display}
-                </KeyableAnchor>
+                </PhoneLink>
               </div>
               <div className="mt-2 text-xs text-text-muted">
                 {contact.hours.storeHoursSummary}

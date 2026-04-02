@@ -1,5 +1,6 @@
 'use client';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
@@ -131,8 +132,7 @@ export const Header = () => {
                 </Link>
               </div>
               <Button size="default" asChild>
-                <a
-                  href={contact.phone.href}
+                <PhoneLink
                   onKeyDown={(e) => {
                     if (e.key === ' ') {
                       e.preventDefault();
@@ -142,7 +142,7 @@ export const Header = () => {
                 >
                   <Phone className="h-4 w-4" />
                   {contact.phone.display}
-                </a>
+                </PhoneLink>
               </Button>
             </div>
 
@@ -202,10 +202,10 @@ export const Header = () => {
               })}
               <div className="border-t px-4 pt-4">
                 <Button size="lg" className="mb-3 w-full" asChild>
-                  <a href={contact.phone.href}>
+                  <PhoneLink>
                     <Phone className="h-4 w-4" />
                     Call {contact.phone.display}
-                  </a>
+                  </PhoneLink>
                 </Button>
                 <div className="typography-small text-center text-muted-foreground">
                   {contact.address.cityState} • {contact.accreditation}{' '}
