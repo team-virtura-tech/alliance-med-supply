@@ -91,15 +91,15 @@ export const HeroWithBentoGrid = ({
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-text-primary leading-tight mb-4 md:mb-5">
-              Bay Area&apos;s Trusted and Durable{' '}
-              <span className="text-primary">Medical Equipment</span> Services
+              Bay Area&apos;s #1 Durable{' '}
+              <span className="text-primary">Medical Equipment</span> Rental
+              &amp; Supply
             </h1>
 
             <p className="text-md xl:text-lg text-text-muted leading-relaxed mb-5 md:mb-6">
-              From mobility aids and hospital beds to specialized equipment for
-              recovery, we handle all your medical supply needs quickly and
-              professionally. Serving Mountain View, Palo Alto, Sunnyvale, San
-              Jose, and entire Bay Area.
+              Wheelchair, hospital bed, and mobility scooter rentals delivered
+              to your door in San Jose, Mountain View, Palo Alto, Sunnyvale, and
+              across the Bay Area.
             </p>
 
             {/* Service Features Grid */}

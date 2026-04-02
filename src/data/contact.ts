@@ -113,16 +113,20 @@ export const contact: ContactInfo = {
   serviceAreas: {
     primary: [
       'San Jose',
-      'Santa Clara',
-      'Milpitas',
+      'San Francisco',
+      'Oakland',
       'Fremont',
-      'Palo Alto',
       'Sunnyvale',
-      'Gilroy',
-      'Morgan Hill',
+      'Santa Clara',
+      'Hayward',
+      'Berkeley',
+      'Palo Alto',
+      'Walnut Creek',
+      'San Mateo',
+      'Concord',
     ],
     description:
-      'Serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, Gilroy, Morgan Hill, and surrounding Bay Area communities',
+      'Serving San Jose, San Francisco, Oakland, Fremont, Sunnyvale, Santa Clara, Hayward, Berkeley, Palo Alto, Walnut Creek, San Mateo, Concord, and surrounding Bay Area communities',
   },
 
   accreditation: 'Exemplary Provider',
