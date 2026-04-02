@@ -23,8 +23,8 @@ export const Footer = () => {
             <p className="mb-6 text-gray-300 leading-relaxed">
               Serving Bay Area communities for over 15 years with quality
               durable medical equipment and supplies. We are a{' '}
-              {contact.accreditation} provider committed to helping you maintain
-              independence and comfort at home.
+              {contact.accreditation} accredited, committed to helping you
+              maintain independence and comfort at home.
             </p>
 
             <div className="flex items-center gap-2 mb-4">
@@ -33,7 +33,7 @@ export const Footer = () => {
                 aria-hidden="true"
               />
               <span className="font-semibold">
-                {contact.accreditation} Provider
+                {contact.accreditation} Accredited
               </span>
             </div>
 
