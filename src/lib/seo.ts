@@ -12,7 +12,7 @@ export const siteConfig = {
   name: contact.businessName,
   shortName: contact.businessNameShort,
   description:
-    "Alliance Medical Supply & Rental is the Bay Area's trusted provider of medical equipment rentals and sales. JACHO accredited with 20+ years of experience serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, and surrounding communities. Same-day delivery available.",
+    "Alliance Medical Supply & Rental is the Bay Area's trusted provider of medical equipment rentals and sales. Exemplary Provider accredited by The Compliance Team with 20+ years of experience serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, and surrounding communities. Same-day delivery available.",
   url: 'https://www.alliancemedsupply.com',
   ogImage: img('/seo/home-ogImage.png'),
   locale: 'en_US',
@@ -172,7 +172,8 @@ export function generateLocalBusinessSchema() {
       name: contact.accreditation,
       recognizedBy: {
         '@type': 'Organization',
-        name: 'Joint Commission',
+        name: contact.accreditationOrg,
+        url: contact.accreditationUrl,
       },
     },
 
@@ -492,7 +493,7 @@ export function generateMetadata({
 export const pageSEO = {
   home: {
     title: `${contact.businessName} | Medical Equipment Rental & Sales in San Jose, Bay Area`,
-    description: `Bay Area's trusted medical equipment rental and sales. Wheelchairs, hospital beds, mobility scooters, walkers & more. JACHO accredited. Same-day delivery in San Jose, Santa Clara, Fremont, Palo Alto. Call ${contact.phone.display}.`,
+    description: `Bay Area's trusted medical equipment rental and sales. Wheelchairs, hospital beds, mobility scooters, walkers & more. Exemplary Provider accredited. Same-day delivery in San Jose, Santa Clara, Fremont, Palo Alto. Call ${contact.phone.display}.`,
     keywords: [
       'medical equipment rental San Jose',
       'wheelchair rental near me',
@@ -501,16 +502,16 @@ export const pageSEO = {
       'medical supply store near me',
       'mobility equipment rental',
       'home medical equipment',
-      'JACHO accredited medical supplier',
+      'Exemplary Provider accredited medical supplier',
     ],
   },
 
   about: {
     title: `About Us | ${contact.businessName} - 20+ Years Serving Bay Area`,
-    description: `Learn about ${contact.businessName}, the Bay Area's trusted JACHO accredited medical equipment provider. 20+ years of experience serving San Jose, Santa Clara County, and Silicon Valley communities.`,
+    description: `Learn about ${contact.businessName}, the Bay Area's trusted Exemplary Provider accredited medical equipment provider. 20+ years of experience serving San Jose, Santa Clara County, and Silicon Valley communities.`,
     keywords: [
       'about Alliance Medical Supply',
-      'JACHO accredited medical supplier',
+      'Exemplary Provider accredited medical supplier',
       'Bay Area medical equipment company',
       'San Jose DME provider',
       'trusted medical supply store',
@@ -566,7 +567,7 @@ export const categorySEO: Record<
     title:
       'Wheelchair Rental & Sales San Jose | Manual & Pediatric Wheelchairs',
     description:
-      'Rent or buy wheelchairs in San Jose Bay Area. Standard, pediatric, bariatric & reclining wheelchairs. Same-day delivery. JACHO accredited. Call (408) 942-9000.',
+      'Rent or buy wheelchairs in San Jose Bay Area. Standard, pediatric, bariatric & reclining wheelchairs. Same-day delivery. Exemplary Provider accredited. Call (408) 942-9000.',
     keywords: [
       'wheelchair rental San Jose',
       'wheelchair rental near me',

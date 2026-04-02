@@ -1,4 +1,8 @@
-import { getCategorySlugs } from '@/lib/categories/utils';
+import {
+  getCategories,
+  getCategorySlug,
+  getProductSlug,
+} from '@/lib/categories/utils';
 import { siteConfig } from '@/lib/seo';
 import type { MetadataRoute } from 'next';
 
@@ -40,15 +44,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic category pages
-  const categorySlugs = getCategorySlugs();
-  const categoryPages: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({
-    url: `${baseUrl}/products/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  // Dynamic category and product pages
+  const categories = getCategories();
+  const categoryPages: MetadataRoute.Sitemap = [];
+  const productPages: MetadataRoute.Sitemap = [];
 
-  // Combine all pages
-  return [...staticPages, ...categoryPages];
+  categories.forEach((category) => {
+    const categorySlug = getCategorySlug(category.name);
+
+    categoryPages.push({
+      url: `${baseUrl}/products/${categorySlug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    });
+
+    category.products.forEach((product) => {
+      productPages.push({
+        url: `${baseUrl}/products/${categorySlug}/${getProductSlug(product.name)}`,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      });
+    });
+  });
+
+  return [...staticPages, ...categoryPages, ...productPages];
 }

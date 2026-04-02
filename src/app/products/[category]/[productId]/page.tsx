@@ -2,12 +2,19 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ProductDetailPage } from '@/components/custom/ProductDetailPage';
+import { contact } from '@/data/contact';
 import {
   getCategories,
   getCategorySlug,
   getProductBySlugInCategory,
   getProductSlug,
 } from '@/lib/categories/utils';
+import {
+  generateBreadcrumbSchema,
+  generateProductSchema,
+  jsonLdScriptProps,
+  siteConfig,
+} from '@/lib/seo';
 
 interface PageProps {
   params: Promise<{
@@ -46,14 +53,22 @@ export async function generateMetadata({
   }
 
   const { product, category } = result;
+  const url = `${siteConfig.url}/products/${categorySlug}/${productSlug}`;
 
   return {
     title: `${product.name} | ${category.name} | Alliance Medical Supply`,
     description: `${product.description} Available for rent or purchase in the Bay Area.`,
     keywords: `${product.name}, ${category.name.toLowerCase()}, medical equipment rental, Bay Area, San Jose`,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: `${product.name} | Alliance Medical Supply`,
       description: product.description,
+      url,
+      siteName: contact.businessName,
+      locale: siteConfig.locale,
+      type: 'website',
       images: [
         {
           url: product.image,
@@ -62,6 +77,12 @@ export async function generateMetadata({
           alt: product.name,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Alliance Medical Supply`,
+      description: product.description,
+      images: [product.image],
     },
   };
 }
@@ -76,5 +97,24 @@ export default async function ProductPage({ params }: PageProps) {
 
   const { product, category } = result;
 
-  return <ProductDetailPage product={product} category={category} />;
+  const breadcrumbData = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Products', url: '/products' },
+    { name: category.name, url: `/products/${categorySlug}` },
+    { name: product.name, url: `/products/${categorySlug}/${productSlug}` },
+  ]);
+
+  const productSchema = generateProductSchema({
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    category: category.name,
+  });
+
+  return (
+    <>
+      <script {...jsonLdScriptProps([breadcrumbData, productSchema])} />
+      <ProductDetailPage product={product} category={category} />
+    </>
+  );
 }

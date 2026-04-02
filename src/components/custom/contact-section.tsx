@@ -137,7 +137,7 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-gray-900">
-                      {contact.accreditation} Provider
+                      {contact.accreditation} Accredited
                     </h4>
                     <p className="text-xs text-gray-600">
                       Certified for quality and safety standards

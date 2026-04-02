@@ -463,14 +463,15 @@ export default function AboutUsPage() {
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
               To report a patient safety event or concern not resolved by our
-              company, you may contact the Joint Commission Resources Customer
-              Service at{' '}
+              company, you may contact{' '}
               <KeyableAnchor
-                href="tel:630-792-5800"
+                href={contact.accreditationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-medium text-primary hover:underline"
-                aria-label="Joint Commission Resources Customer Service: 630-792-5800"
+                aria-label={`${contact.accreditationOrg} website`}
               >
-                630-792-5800
+                {contact.accreditationOrg}
               </KeyableAnchor>
               .
             </p>
