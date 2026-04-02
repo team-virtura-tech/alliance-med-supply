@@ -117,10 +117,10 @@ export const Header = () => {
                   </Link>
                 </Button>
                 <Link
-                  href="https://www.jointcommission.org"
+                  href={contact.accreditationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Joint Commission on Accreditation of Healthcare Organizations – a nationally recognized healthcare quality accreditor"
+                  aria-label={`${contact.accreditation} – accredited by ${contact.accreditationOrg}`}
                   className="block mt-1 text-right"
                 >
                   <Badge
@@ -208,8 +208,7 @@ export const Header = () => {
                   </PhoneLink>
                 </Button>
                 <div className="typography-small text-center text-muted-foreground">
-                  {contact.address.cityState} • {contact.accreditation}{' '}
-                  Accredited
+                  {contact.address.cityState} • {contact.accreditation}
                 </div>
               </div>
             </div>

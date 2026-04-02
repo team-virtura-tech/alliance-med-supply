@@ -22,8 +22,8 @@ const businessFAQs = [
     answer: `We are located at ${contact.address.full}. Our store hours are ${contact.hours.storeHours.weekdays} Monday through Friday, and by appointment on Saturdays. Call us at ${contact.phone.display} for directions or to schedule a visit.`,
   },
   {
-    question: 'Are you JACHO accredited?',
-    answer: `Yes, ${contact.businessName} is ${contact.accreditation}. All our equipment meets FDA standards and is properly maintained and sanitized for your safety.`,
+    question: 'Are you accredited?',
+    answer: `Yes, ${contact.businessName} is an ${contact.accreditation} accredited by ${contact.accreditationOrg}. All our equipment meets FDA standards and is properly maintained and sanitized for your safety.`,
   },
   {
     question: 'Can I rent a wheelchair near me in San Jose?',

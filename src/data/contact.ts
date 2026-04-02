@@ -56,6 +56,8 @@ export type ContactInfo = {
   social: SocialLinks;
   serviceAreas: ServiceArea;
   accreditation: string;
+  accreditationOrg: string;
+  accreditationUrl: string;
 };
 
 export const contact: ContactInfo = {
@@ -123,7 +125,9 @@ export const contact: ContactInfo = {
       'Serving San Jose, Santa Clara, Milpitas, Fremont, Palo Alto, Sunnyvale, Gilroy, Morgan Hill, and surrounding Bay Area communities',
   },
 
-  accreditation: 'JCAHO Accredited',
+  accreditation: 'Exemplary Provider',
+  accreditationOrg: 'The Compliance Team',
+  accreditationUrl: 'https://www.thecomplianceteam.org',
 };
 
 // Helper function to get formatted phone link text
