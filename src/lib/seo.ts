@@ -258,32 +258,11 @@ export function generateProductSchema(product: {
     },
     category: product.category,
     offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'USD',
+      '@type': 'Offer',
       availability: 'https://schema.org/InStock',
-      offerCount: 2,
-      offers: [
-        {
-          '@type': 'Offer',
-          name: 'Rental',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock',
-          itemCondition: 'https://schema.org/NewCondition',
-          seller: {
-            '@id': `${siteConfig.url}/#organization`,
-          },
-        },
-        {
-          '@type': 'Offer',
-          name: 'Purchase',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock',
-          itemCondition: 'https://schema.org/NewCondition',
-          seller: {
-            '@id': `${siteConfig.url}/#organization`,
-          },
-        },
-      ],
+      seller: {
+        '@id': `${siteConfig.url}/#organization`,
+      },
     },
   };
 }

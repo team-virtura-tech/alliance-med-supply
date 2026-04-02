@@ -110,32 +110,12 @@ export default async function CategoryPage({ params }: PageProps) {
             name: contact.businessName,
           },
           offers: {
-            '@type': 'AggregateOffer',
-            priceCurrency: 'USD',
+            '@type': 'Offer',
             availability: 'https://schema.org/InStock',
-            offerCount: 2,
-            highPrice: 'Contact for pricing',
-            lowPrice: 'Contact for pricing',
-            offers: [
-              {
-                '@type': 'Offer',
-                name: 'Rental',
-                availability: 'https://schema.org/InStock',
-                seller: {
-                  '@type': 'Organization',
-                  name: contact.businessName,
-                },
-              },
-              {
-                '@type': 'Offer',
-                name: 'Purchase',
-                availability: 'https://schema.org/InStock',
-                seller: {
-                  '@type': 'Organization',
-                  name: contact.businessName,
-                },
-              },
-            ],
+            seller: {
+              '@type': 'Organization',
+              name: contact.businessName,
+            },
           },
         },
       })) || [],
