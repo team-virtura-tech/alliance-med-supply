@@ -1,5 +1,6 @@
 'use client';
 
+import { trackPhoneClick } from '@/lib/gtag';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
@@ -110,6 +111,7 @@ function ContactInfo({
   className,
 }: ContactInfoProps) {
   const isExternal = href?.startsWith('http');
+  const isPhone = href?.startsWith('tel:');
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (e.key === ' ') {
@@ -145,6 +147,7 @@ function ContactInfo({
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         className={cn('flex items-start gap-3 py-3 cursor-pointer', className)}
+        onClick={isPhone ? trackPhoneClick : undefined}
         onKeyDown={handleKeyDown}
         data-component="ContactInfo"
       >

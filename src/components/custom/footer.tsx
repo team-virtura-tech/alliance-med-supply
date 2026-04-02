@@ -1,5 +1,6 @@
 'use client';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { contact } from '@/data/contact';
@@ -81,12 +82,9 @@ export const Footer = () => {
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-teal-400" aria-hidden="true" />
                 <div>
-                  <a
-                    href={contact.phone.href}
-                    className="font-medium hover:text-teal-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded"
-                  >
+                  <PhoneLink className="font-medium hover:text-teal-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded">
                     {contact.phone.display}
-                  </a>
+                  </PhoneLink>
                   <p className="text-sm text-gray-400">Main Phone</p>
                 </div>
               </div>

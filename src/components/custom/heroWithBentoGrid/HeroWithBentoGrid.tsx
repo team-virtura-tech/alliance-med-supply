@@ -1,3 +1,4 @@
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
 import { useSimpleParallax } from '@/hooks/useParallax';
@@ -141,8 +142,7 @@ export const HeroWithBentoGrid = ({
                 className="w-full sm:w-auto"
                 asChild
               >
-                <a
-                  href={contact.phone.href}
+                <PhoneLink
                   aria-label={`Call us at ${contact.phone.display}`}
                   onKeyDown={(e) => {
                     if (e.key === ' ') {
@@ -153,7 +153,7 @@ export const HeroWithBentoGrid = ({
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {contact.phone.display}
-                </a>
+                </PhoneLink>
               </Button>
               <Button
                 variant="secondary"

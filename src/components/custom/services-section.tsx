@@ -1,5 +1,6 @@
 'use client';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -200,7 +201,7 @@ export const ServicesSection = () => {
                   className="bg-white text-teal-600 hover:bg-gray-50 transition-all duration-300 hover:scale-[1.02] shadow-lg font-semibold px-8 py-3 text-base"
                   asChild
                 >
-                  <a href={contact.phone.href}>Call {contact.phone.display}</a>
+                  <PhoneLink>Call {contact.phone.display}</PhoneLink>
                 </Button>
                 <Button
                   size="lg"
