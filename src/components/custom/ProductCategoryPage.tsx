@@ -1,7 +1,9 @@
 'use client';
 
+import { PhoneLink } from '@/components/custom/PhoneLink';
 import { ProductCard } from '@/components/custom/ProductCard';
 import { Badge } from '@/components/ui/badge';
+import { contact } from '@/data/contact';
 import { getCategorySlug, getProductSlug } from '@/lib/categories/utils';
 import { img } from '@/lib/images';
 import { cn } from '@/lib/utils';
@@ -77,7 +79,10 @@ export const ProductCategoryPage = ({
               </h1>
               <p className="text-base text-text-muted md:text-lg lg:text-xl">
                 Browse our selection of {category.name.toLowerCase()} available
-                for rent or purchase
+                for rent or purchase. Not sure which one you need? Call us:{' '}
+                <PhoneLink className="font-semibold text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
+                  {contact.phone.display}
+                </PhoneLink>
               </p>
               <div className="flex items-center gap-2 pt-1">
                 <Badge
