@@ -134,6 +134,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* LLMs.txt for AI crawlers */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" />
+
         {/* JSON-LD Structured Data for SEO - Critical for "near me" searches */}
         <script {...jsonLdScriptProps(structuredData)} />
 
